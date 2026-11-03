@@ -1,10 +1,17 @@
-name: Daily Life OS Morning Briefing
+name: Daily Life OS Morning & Evening Briefings
 
 on:
   schedule:
-    # 02:30 UTC is 08:00 AM IST (Indian Standard Time)
+    # 02:30 UTC is 08:00 AM IST (Morning Briefing)
     - cron: '30 2 * * *'
+    # 16:00 UTC is 09:30 PM IST (Evening Reflection)
+    - cron: '0 16 * * *'
   workflow_dispatch:
+    inputs:
+      type:
+        description: 'Briefing type (morning, evening, or auto)'
+        required: false
+        default: 'auto'
 
 jobs:
   dispatch_briefing:
@@ -23,4 +30,4 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          python3 scripts/daily_briefing.py
+          python3 scripts/daily_briefing.py "${{ github.event.inputs.type || 'auto' }}"
