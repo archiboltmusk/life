@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Asymmetric Blueprint | 15-Year Life & Capital Roadmap</title>
+  <title>Project Autonomy | 15-Year Life & Capital Operating System</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -18,12 +18,15 @@
           },
           colors: {
             brand: {
-              bg: '#0a0d14',
-              surface: '#111726',
-              border: '#1f293d',
+              bg: '#080b11',
+              surface: '#0f172a',
+              card: '#131d31',
+              border: '#1e293b',
               accent: '#38bdf8',
               emerald: '#10b981',
               amber: '#f59e0b',
+              purple: '#a855f7',
+              rose: '#f43f5e',
             }
           }
         }
@@ -31,301 +34,1015 @@
     }
   </script>
   <style>
-    body { background-color: #0a0d14; color: #f1f5f9; }
+    body { background-color: #080b11; color: #f1f5f9; }
     .glass-card {
-      background: rgba(17, 23, 38, 0.85);
+      background: rgba(15, 23, 42, 0.75);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+    }
+    .glass-card-interactive {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card-interactive:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+      transform: translateY(-2px);
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #080b11; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+
+    .checkbox-custom:checked + label {
+      text-decoration: line-through;
+      color: #64748b;
     }
   </style>
 </head>
-<body class="font-sans antialiased selection:bg-sky-500 selection:text-white">
+<body class="font-sans antialiased selection:bg-sky-500 selection:text-white min-h-screen flex flex-col">
 
-  <!-- Navigation -->
-  <header class="border-b border-brand-border/60 sticky top-0 z-50 glass-card">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+  <!-- Top Sticky Navigation & Live Progress -->
+  <header class="border-b border-brand-border/80 sticky top-0 z-50 glass-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <div class="h-3 w-3 rounded-full bg-sky-400 animate-pulse"></div>
-        <span class="font-mono text-sm tracking-widest uppercase font-bold text-slate-200">PROJECT: AUTONOMY</span>
+        <div class="h-3 w-3 rounded-full bg-emerald-400 animate-pulse"></div>
+        <div>
+          <span class="font-mono text-xs sm:text-sm tracking-widest uppercase font-bold text-slate-100">PROJECT: AUTONOMY</span>
+          <span class="hidden sm:inline-block ml-2 text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950 text-sky-400 border border-sky-800">COMJNMH → PURULIA</span>
+        </div>
       </div>
-      <div class="font-mono text-xs text-slate-400">
-        TARGET: <span class="text-sky-400 font-bold">AGE 43</span> | CORPUS: <span class="text-emerald-400 font-bold">₹20–25 CR</span>
+      
+      <!-- Progress Bar & Target -->
+      <div class="flex items-center gap-4 sm:gap-6">
+        <div class="hidden md:flex flex-col text-right">
+          <div class="font-mono text-[10px] text-slate-400 uppercase">Master Progress</div>
+          <div class="font-mono text-xs font-bold text-sky-400"><span id="completedCount">0</span> / <span id="totalCount">0</span> Completed (<span id="progressPercent">0%</span>)</div>
+        </div>
+        <div class="w-24 sm:w-32 bg-slate-800 h-2 rounded-full overflow-hidden border border-slate-700">
+          <div id="masterProgressBar" class="bg-gradient-to-r from-sky-400 to-emerald-400 h-full w-0 transition-all duration-300"></div>
+        </div>
+        <div class="font-mono text-xs text-slate-300">
+          <span class="text-sky-400 font-bold">AGE 43</span> | <span class="text-emerald-400 font-bold">₹25 CR</span>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <main class="max-w-6xl mx-auto px-6 py-12 space-y-16">
-    <section class="space-y-4">
-      <div class="inline-block px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 font-mono text-xs uppercase tracking-wider">
-        Operational Roadmap
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-10 space-y-16 flex-grow">
+    
+    <!-- Hero / The Strategic Thesis -->
+    <section class="space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 font-mono text-xs uppercase tracking-wider">
+          <span class="h-1.5 w-1.5 rounded-full bg-sky-400"></span>
+          15-Year Life Operating System (2026–2041)
+        </div>
+        <div class="flex items-center gap-2 font-mono text-xs">
+          <button onclick="exportData()" class="px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition">Export OS State</button>
+          <label class="px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 cursor-pointer transition">
+            Import
+            <input type="file" id="importInput" onchange="importData(event)" class="hidden" accept=".json">
+          </label>
+          <button onclick="resetData()" class="px-2.5 py-1 rounded bg-rose-950/40 hover:bg-rose-900/60 text-rose-400 border border-rose-900/60 transition" title="Reset all checkboxes">Reset</button>
+        </div>
       </div>
-      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white max-w-3xl leading-tight">
-        The Asymmetric Blueprint: Clinical Depth, Software Leverage, and Sovereign Wealth.
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white max-w-4xl leading-tight">
+        The Asymmetric Blueprint: Clinical Depth, Software Leverage, and Sovereign Autonomy.
       </h1>
-      <p class="text-slate-400 text-lg max-w-2xl leading-relaxed">
-        Trading linear time for wages hits a ceiling. This system transitions clinical stability into digital leverage, equity ownership, and a self-sustaining perpetual yield engine.
+      <p class="text-slate-400 text-base sm:text-lg max-w-3xl leading-relaxed">
+        Trading linear hours for clinical shifts hits an unavoidable ceiling. This deterministic system transforms medical domain credibility into software leverage, equity capitalization, and an unshakeable ₹25 Crore perpetual yield engine—terminating in pro-bono service in Purulia and sovereign civic engineering.
       </p>
     </section>
 
     <!-- Key Metrics Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-      <div class="glass-card p-5 rounded-xl border border-brand-border">
-        <div class="font-mono text-xs text-slate-400 uppercase">Target Exit Age</div>
-        <div class="text-3xl font-extrabold text-white mt-1">42 – 45</div>
-        <div class="text-xs text-slate-500 mt-2">14-17 yr execution window</div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="glass-card p-5 rounded-2xl border border-brand-border">
+        <div class="font-mono text-xs text-slate-400 uppercase tracking-wider">Target Exit Age</div>
+        <div class="text-2xl sm:text-3xl font-extrabold text-white mt-1">42 – 45 <span class="text-sm font-normal text-slate-500">(Age 43 Anchor)</span></div>
+        <div class="text-xs text-slate-500 mt-2 font-mono">15-year execution horizon</div>
       </div>
-      <div class="glass-card p-5 rounded-xl border border-brand-border">
-        <div class="font-mono text-xs text-slate-400 uppercase">Target Liquid Corpus</div>
-        <div class="text-3xl font-extrabold text-emerald-400 mt-1">₹20 – 25 Cr</div>
-        <div class="text-xs text-slate-500 mt-2">Inflation-shielded principal</div>
+      <div class="glass-card p-5 rounded-2xl border border-brand-border">
+        <div class="font-mono text-xs text-slate-400 uppercase tracking-wider">Target Liquid Corpus</div>
+        <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1">₹20 – 25 Cr</div>
+        <div class="text-xs text-slate-500 mt-2 font-mono">Inflation-shielded principal</div>
       </div>
-      <div class="glass-card p-5 rounded-xl border border-brand-border">
-        <div class="font-mono text-xs text-slate-400 uppercase">Passive Annual Yield</div>
-        <div class="text-3xl font-extrabold text-sky-400 mt-1">₹1.2 – 1.5 Cr</div>
-        <div class="text-xs text-slate-500 mt-2">6% post-tax safe distribution</div>
+      <div class="glass-card p-5 rounded-2xl border border-brand-border">
+        <div class="font-mono text-xs text-slate-400 uppercase tracking-wider">Safe Passive Yield</div>
+        <div class="text-2xl sm:text-3xl font-extrabold text-sky-400 mt-1">₹1.2 – 1.5 Cr/yr</div>
+        <div class="text-xs text-slate-500 mt-2 font-mono">~₹10–12.5L/month post-tax</div>
       </div>
-      <div class="glass-card p-5 rounded-xl border border-brand-border">
-        <div class="font-mono text-xs text-slate-400 uppercase">Operating Principle</div>
-        <div class="text-2xl font-bold text-amber-400 mt-1">Zero Linear Traps</div>
-        <div class="text-xs text-slate-500 mt-2">Build once, compound forever</div>
+      <div class="glass-card p-5 rounded-2xl border border-brand-border">
+        <div class="font-mono text-xs text-slate-400 uppercase tracking-wider">Operating Axiom</div>
+        <div class="text-xl sm:text-2xl font-bold text-amber-400 mt-1">Zero Linear Traps</div>
+        <div class="text-xs text-slate-500 mt-2 font-mono">Build once, compound forever</div>
       </div>
     </div>
 
-    <!-- The 4 Execution Phases -->
-    <section class="space-y-8">
-      <div>
-        <h2 class="text-2xl font-bold tracking-tight text-white">Execution Phases</h2>
-        <p class="text-slate-400 text-sm mt-1">Sequential steps to build ownership without burning out.</p>
+    <!-- Immediate 90-Day Triage Section (Active Focus) -->
+    <section class="glass-card p-6 sm:p-8 rounded-3xl border border-sky-500/30 bg-gradient-to-b from-sky-950/20 to-brand-surface relative overflow-hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="inline-block px-2.5 py-0.5 rounded bg-sky-950 text-sky-400 font-mono text-[11px] uppercase tracking-wider border border-sky-800">
+            Immediate Tactical Horizon
+          </div>
+          <h2 class="text-2xl font-bold text-white mt-2">Current 90-Day Action Triage (Nov 2026 – Feb 2027)</h2>
+        </div>
+        <div class="font-mono text-xs text-slate-400">
+          Age: <span class="text-white font-bold">28</span> | Baseline: <span class="text-emerald-400 font-bold">COMJNMH Graduate</span>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Phase 1 -->
-        <div class="glass-card p-6 rounded-2xl border border-brand-border space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Triage 1 -->
+        <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-sky-950 text-sky-400 border border-sky-800">PHASE 1 (AGES 28–31)</span>
-            <span class="text-xs text-slate-400 font-mono">Milestone: ₹50L Liquid</span>
+            <span class="text-xs font-mono font-bold text-sky-400">01. EMOTIONAL REBOOT</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Phase 0</span>
           </div>
-          <h3 class="text-xl font-bold text-white">Foundational Floor & Runway</h3>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            Eliminate cognitive friction and secure financial traction. Maintain a 65%+ savings rate enabled by local cost advantages.
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Halt reactive outreach & forum scrolling. Treat the upcoming INI-CET percentile as pure objective market data, not personal identity. Protect circadian anchor: 7.5h sleep + daily heavy training.
           </p>
-          <ul class="text-sm text-slate-400 space-y-2 font-mono">
-            <li class="flex items-start gap-2">
-              <span class="text-sky-400">▹</span> Lock 2027 Anchor: NEET-PG clinical focus or direct health-tech engineering track.
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-sky-400">▹</span> SIP Momentum: Allocate ₹75k–₹1.5L/month to low-cost broad index & mid-cap funds.
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-sky-400">▹</span> Domain Software: Build modular open-source clinical & geospatial public utilities.
-            </li>
-          </ul>
+          <div class="pt-2 border-t border-slate-800 space-y-2">
+            <div class="flex items-start gap-2.5">
+              <input type="checkbox" id="triage_1" onchange="toggleItem('triage_1')" class="checkbox-custom mt-1 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-sky-500 accent-sky-400 cursor-pointer">
+              <label for="triage_1" class="text-xs text-slate-300 cursor-pointer select-none">Halt all exam forum scrolling & gossip channels</label>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <input type="checkbox" id="triage_2" onchange="toggleItem('triage_2')" class="checkbox-custom mt-1 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-sky-500 accent-sky-400 cursor-pointer">
+              <label for="triage_2" class="text-xs text-slate-300 cursor-pointer select-none">Baseline blood panel (ApoB, HbA1c, Vitals)</label>
+            </div>
+          </div>
         </div>
 
-        <!-- Phase 2 -->
-        <div class="glass-card p-6 rounded-2xl border border-brand-border space-y-4">
+        <!-- Triage 2 -->
+        <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-amber-950 text-amber-400 border border-amber-800">PHASE 2 (AGES 32–37)</span>
-            <span class="text-xs text-slate-400 font-mono">Milestone: ₹4–6 Cr Invested</span>
+            <span class="text-xs font-mono font-bold text-amber-400">02. LOCK 2027 TARGET</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Decision Gate</span>
           </div>
-          <h3 class="text-xl font-bold text-white">Product Leverage & Equity</h3>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            Transition from hourly fees to scalable systems. Use medicine for regulatory moats and software for unlimited distribution.
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Commit unambiguously: either an intense 6-month NEET-PG push for high-leverage branch (Radio/Derm/Psych/Path/DNB) or direct entry into health-tech engineering/founding. No limbo.
           </p>
-          <ul class="text-sm text-slate-400 space-y-2 font-mono">
-            <li class="flex items-start gap-2">
-              <span class="text-amber-400">▹</span> Launch Vertical SaaS or scaled diagnostic center with automated workflows.
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-amber-400">▹</span> Route revenue through an LLP/Private Limited for corporate tax optimization (22–25%).
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-amber-400">▹</span> Scale capital injections to ₹3–5 Lakhs/month into equity and commercial assets.
-            </li>
-          </ul>
+          <div class="pt-2 border-t border-slate-800 space-y-2">
+            <div class="flex items-start gap-2.5">
+              <input type="checkbox" id="triage_3" onchange="toggleItem('triage_3')" class="checkbox-custom mt-1 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-amber-500 accent-amber-400 cursor-pointer">
+              <label for="triage_3" class="text-xs text-slate-300 cursor-pointer select-none">Review INI-CET percentile against branch criteria</label>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <input type="checkbox" id="triage_4" onchange="toggleItem('triage_4')" class="checkbox-custom mt-1 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-amber-500 accent-amber-400 cursor-pointer">
+              <label for="triage_4" class="text-xs text-slate-300 cursor-pointer select-none">Lock 6-mo NEET sprint or sign tech contract</label>
+            </div>
+          </div>
         </div>
 
-        <!-- Phase 3 -->
-        <div class="glass-card p-6 rounded-2xl border border-brand-border space-y-4">
+        <!-- Triage 3 -->
+        <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">PHASE 3 (AGES 38–43)</span>
-            <span class="text-xs text-slate-400 font-mono">Milestone: Monetization Event</span>
+            <span class="text-xs font-mono font-bold text-emerald-400">03. ASSET ENGINE PIPING</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Financial Base</span>
           </div>
-          <h3 class="text-xl font-bold text-white">The Exit & De-Risking</h3>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            Convert equity and operational value into liquid net worth. Remove reliance on personal day-to-day presence.
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Automate monthly SIPs on day one of income. Zero lifestyle inflation. Direct all excess surplus to equity instruments; secure pure term life and independent super top-up health insurance.
           </p>
-          <ul class="text-sm text-slate-400 space-y-2 font-mono">
-            <li class="flex items-start gap-2">
-              <span class="text-emerald-400">▹</span> Secondary equity sale or full buyout of health-tech / clinic infrastructure assets.
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-emerald-400">▹</span> Lock ₹20–25 Crore liquid capital into the three-bucket defensive portfolio.
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-emerald-400">▹</span> Delegate all operational leadership to hired management or partners.
-            </li>
-          </ul>
-        </div>
-
-        <!-- Phase 4 -->
-        <div class="glass-card p-6 rounded-2xl border border-brand-border space-y-4">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-purple-950 text-purple-400 border border-purple-800">PHASE 4 (AGE 44+)</span>
-            <span class="text-xs text-slate-400 font-mono">Milestone: Sovereign Freedom</span>
+          <div class="pt-2 border-t border-slate-800 space-y-2">
+            <div class="flex items-start gap-2.5">
+              <input type="checkbox" id="triage_5" onchange="toggleItem('triage_5')" class="checkbox-custom mt-1 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-emerald-500 accent-emerald-400 cursor-pointer">
+              <label for="triage_5" class="text-xs text-slate-300 cursor-pointer select-none">Setup auto-debit index SIPs (₹50k/mo initial)</label>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <input type="checkbox" id="triage_6" onchange="toggleItem('triage_6')" class="checkbox-custom mt-1 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-emerald-500 accent-emerald-400 cursor-pointer">
+              <label for="triage_6" class="text-xs text-slate-300 cursor-pointer select-none">Secure ₹2 Cr Term Insurance + Super Top-up Health</label>
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-white">Full Autonomy</h3>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            Live off passive yields of ₹1.2–1.5 Crore/year without touching principal capital. Time belongs entirely to you.
-          </p>
-          <ul class="text-sm text-slate-400 space-y-2 font-mono">
-            <li class="flex items-start gap-2">
-              <span class="text-purple-400">▹</span> Zero forced clinical shifts, corporate politics, or emergency rosters.
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-purple-400">▹</span> Build open-source civic tools and write strictly on your own schedule.
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-purple-400">▹</span> Provide pro-bono, unpressured clinical care in Purulia on your own terms.
-            </li>
-          </ul>
         </div>
       </div>
     </section>
 
-    <!-- The 3-Bucket Portfolio Structure -->
-    <section class="glass-card p-8 rounded-2xl border border-brand-border space-y-6">
-      <h2 class="text-2xl font-bold tracking-tight text-white">The ₹20 Crore Terminal Asset Allocation</h2>
-      <p class="text-sm text-slate-400 max-w-2xl">
-        Designed to protect against inflation, currency depreciation, and sudden equity downturns while ensuring steady monthly cash flows.
-      </p>
+    <!-- The Master Age-by-Age Checklist Engine -->
+    <section class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="inline-block px-2.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[11px] uppercase tracking-wider border border-slate-700">
+            Interactive Roadmap
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Age-by-Age Execution Checklists</h2>
+          <p class="text-slate-400 text-sm mt-1">Every age between 28 and 45+ has concrete milestones, financial thresholds, and verification gates.</p>
+        </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
-          <div class="text-sky-400 font-mono text-xs font-bold uppercase">Bucket 1: Direct Income (40%)</div>
-          <div class="text-2xl font-extrabold text-white">₹8.0 Crore</div>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Target-maturity debt funds, high-grade corporate bonds, SGBs, and commercial REITs yielding 7–8% (₹55–65 Lakhs/yr post-tax).
-          </p>
+        <!-- Filter / View Modes -->
+        <div class="flex items-center gap-2 font-mono text-xs">
+          <span class="text-slate-500">View:</span>
+          <button id="viewTabBtn" onclick="switchView('tab')" class="px-3 py-1.5 rounded-lg bg-sky-950 text-sky-400 border border-sky-800 font-bold transition">Single Age</button>
+          <button id="viewAllBtn" onclick="switchView('all')" class="px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition">All Ages</button>
         </div>
-        <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
-          <div class="text-emerald-400 font-mono text-xs font-bold uppercase">Bucket 2: Growth Engine (45%)</div>
-          <div class="text-2xl font-extrabold text-white">₹9.0 Crore</div>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Nifty 50/500 index funds and global equity ETFs compounding at 11–13% CAGR. Acts as an ongoing hedge against inflation.
-          </p>
-        </div>
-        <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
-          <div class="text-amber-400 font-mono text-xs font-bold uppercase">Bucket 3: High-Yield Real Assets (15%)</div>
-          <div class="text-2xl font-extrabold text-white">₹3.0 Crore</div>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Prime commercial lease property or clinical outpatient space generating steady quarterly rental cash flow.
-          </p>
-        </div>
+      </div>
+
+      <!-- Age Navigation Pills -->
+      <div id="ageTabsContainer" class="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none text-xs font-mono">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Age Content Container -->
+      <div id="ageContentArea" class="space-y-6">
+        <!-- Rendered by JS -->
       </div>
     </section>
 
-    <!-- Interactive Compounding Simulator -->
-    <section class="glass-card p-8 rounded-2xl border border-brand-border space-y-6">
+    <!-- The 15-Year Financial Compounding & Equity Simulator -->
+    <section class="glass-card p-6 sm:p-8 rounded-3xl border border-brand-border space-y-8">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 class="text-2xl font-bold tracking-tight text-white">Interactive Capital Simulator</h2>
-          <p class="text-sm text-slate-400">Model your monthly SIP and compound trajectory over time.</p>
+          <div class="inline-block px-2.5 py-0.5 rounded bg-emerald-950 text-emerald-400 font-mono text-[11px] uppercase tracking-wider border border-emerald-800">
+            Capital Accumulation Model
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Dual-Engine Compounding & Equity Simulator</h2>
+          <p class="text-slate-400 text-sm mt-1">Combines disciplined monthly index investing with Phase 2/3 enterprise equity realizations.</p>
         </div>
-        <div class="font-mono text-xs px-3 py-1 rounded bg-slate-800 text-sky-400 border border-slate-700">
-          Engine: Future Value @ 12.5% CAGR
+        <div class="font-mono text-xs px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 border border-slate-800">
+          Target: <strong class="text-emerald-400">₹25.00 Crore</strong> by Age 43
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="space-y-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Sliders & Inputs -->
+        <div class="lg:col-span-2 space-y-6">
           <div>
-            <label class="block text-xs font-mono text-slate-400 uppercase">Monthly SIP Investment (₹)</label>
-            <input id="sipInput" type="range" min="50000" max="500000" step="10000" value="150000" class="w-full mt-2 accent-sky-400 cursor-pointer">
-            <div class="flex justify-between text-xs font-mono text-slate-400 mt-1">
-              <span>₹50K</span>
-              <span id="sipValue" class="text-sky-400 font-bold">₹1,50,000</span>
-              <span>₹5 Lakhs</span>
+            <div class="flex justify-between text-xs font-mono text-slate-400 mb-1">
+              <span>MONTHLY SIP INVESTMENT (SCALES OVER TIME)</span>
+              <span id="sipValueDisplay" class="text-sky-400 font-bold text-sm">₹1,50,000 / mo</span>
+            </div>
+            <input id="sipSlider" type="range" min="50000" max="750000" step="25000" value="150000" class="w-full accent-sky-400 cursor-pointer bg-slate-800 rounded-lg">
+            <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-1">
+              <span>Phase 1 (₹50k–1.5L)</span>
+              <span>Phase 2 (₹2L–5L)</span>
+              <span>Phase 3 (₹5L–7.5L)</span>
             </div>
           </div>
+
           <div>
-            <label class="block text-xs font-mono text-slate-400 uppercase">Runway Horizon (Years)</label>
-            <input id="yearsInput" type="range" min="10" max="20" step="1" value="15" class="w-full mt-2 accent-sky-400 cursor-pointer">
-            <div class="flex justify-between text-xs font-mono text-slate-400 mt-1">
-              <span>10 Years</span>
-              <span id="yearsValue" class="text-sky-400 font-bold">15 Years</span>
-              <span>20 Years</span>
+            <div class="flex justify-between text-xs font-mono text-slate-400 mb-1">
+              <span>ESTIMATED ENTERPRISE EXIT LIQUIDITY (PHASE 3)</span>
+              <span id="exitValueDisplay" class="text-emerald-400 font-bold text-sm">₹8.0 Crore</span>
+            </div>
+            <input id="exitSlider" type="range" min="0" max="150000000" step="5000000" value="80000000" class="w-full accent-emerald-400 cursor-pointer bg-slate-800 rounded-lg">
+            <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-1">
+              <span>₹0 (Pure SIP Only)</span>
+              <span>₹8 Cr (Conservative M&A)</span>
+              <span>₹15 Cr (Aggressive Buyout)</span>
+            </div>
+          </div>
+
+          <!-- Safe Withdrawal Slider -->
+          <div>
+            <div class="flex justify-between text-xs font-mono text-slate-400 mb-1">
+              <span>POST-EXIT SAFE WITHDRAWAL RATE (AGE 44+)</span>
+              <span id="swrValueDisplay" class="text-purple-400 font-bold text-sm">5.5% Post-Tax</span>
+            </div>
+            <input id="swrSlider" type="range" min="3.5" max="7.0" step="0.25" value="5.5" class="w-full accent-purple-400 cursor-pointer bg-slate-800 rounded-lg">
+            <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-1">
+              <span>3.5% (Ultra-Preservation)</span>
+              <span>5.5% (Balanced Endowment)</span>
+              <span>7.0% (Aggressive Yield)</span>
             </div>
           </div>
         </div>
 
-        <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800 flex flex-col justify-center space-y-2">
-          <div class="font-mono text-xs text-slate-400 uppercase">Projected SIP Value</div>
-          <div id="projectedCorpus" class="text-3xl font-extrabold text-emerald-400 font-mono">₹7.16 Cr</div>
-          <p class="text-xs text-slate-400 leading-relaxed pt-2 border-t border-slate-800">
-            *This reflects raw regular monthly SIP alone. Strategic business equity exits, consulting windfalls, and scale monetization in Phase 2 & 3 accelerate this figure to the <strong class="text-white">₹20–25 Cr</strong> target.
+        <!-- Real-Time Output Card -->
+        <div class="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div>
+              <div class="font-mono text-xs text-slate-400 uppercase">Projected Liquid Corpus @ Age 43</div>
+              <div id="totalProjectedCorpus" class="text-3xl sm:text-4xl font-extrabold text-emerald-400 font-mono mt-1">₹25.16 Cr</div>
+              <div class="text-[11px] text-slate-500 font-mono mt-1">Base SIP: <span id="sipSubtotalDisplay" class="text-slate-300">₹17.16 Cr</span> + M&A: <span id="exitSubtotalDisplay" class="text-slate-300">₹8.00 Cr</span></div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800">
+              <div class="font-mono text-xs text-slate-400 uppercase">Annual Passive Distribution</div>
+              <div id="annualPassiveIncome" class="text-2xl font-extrabold text-sky-400 font-mono mt-1">₹1.38 Cr / yr</div>
+              <div id="monthlyPassiveIncome" class="text-xs text-slate-400 font-mono mt-0.5">≈ ₹11.53 Lakhs / month post-tax</div>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800/80 text-xs text-slate-400 leading-relaxed font-sans">
+            <strong class="text-slate-200">The Purulia Surplus:</strong> At ~₹2.5L/mo living cost in West Bengal, you generate <strong class="text-emerald-400">₹9.0L/month of pure sovereign surplus</strong> for pro-bono clinics and civic research.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terminal 3-Bucket Portfolio Structure -->
+    <section class="glass-card p-6 sm:p-8 rounded-3xl border border-brand-border space-y-6">
+      <div>
+        <div class="inline-block px-2.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[11px] uppercase tracking-wider border border-slate-700">
+          Terminal Asset Architecture
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">The ₹25 Crore Terminal Allocation</h2>
+        <p class="text-slate-400 text-sm mt-1">Defensive 40 / 45 / 15 allocation engineered to withstand severe market drawdowns, inflation, and currency depreciation.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Bucket 1 -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-sky-400 uppercase">Bucket 1: Direct Yield (40%)</span>
+            <span class="font-mono text-xs px-2 py-0.5 rounded bg-sky-950 text-sky-300">₹10.0 Crore</span>
+          </div>
+          <div class="text-xl font-bold text-white">Defensive Debt & Cash Flow</div>
+          <p class="text-xs text-slate-400 leading-relaxed font-sans">
+            Target-maturity G-Sec funds (Bharat Bond / SDLs), high-grade corporate bonds, Sovereign Gold Bonds (SGB), and commercial REITs yielding 7.5% net.
+          </p>
+          <div class="pt-3 border-t border-slate-800 font-mono text-xs text-sky-400">
+            Yield: ₹70L – ₹80L / yr steady payout
+          </div>
+        </div>
+
+        <!-- Bucket 2 -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-emerald-400 uppercase">Bucket 2: Growth Engine (45%)</span>
+            <span class="font-mono text-xs px-2 py-0.5 rounded bg-emerald-950 text-emerald-300">₹11.25 Crore</span>
+          </div>
+          <div class="text-xl font-bold text-white">Broad Global Equities</div>
+          <p class="text-xs text-slate-400 leading-relaxed font-sans">
+            50% Nifty 50 Index, 25% Nifty Midcap 150, and 25% International Tech ETFs (Nasdaq 100). Compounds at 11–13% CAGR to perpetually crush Indian healthcare inflation.
+          </p>
+          <div class="pt-3 border-t border-slate-800 font-mono text-xs text-emerald-400">
+            Function: Doubles principal every 6–7 years
+          </div>
+        </div>
+
+        <!-- Bucket 3 -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-amber-400 uppercase">Bucket 3: Real Assets (15%)</span>
+            <span class="font-mono text-xs px-2 py-0.5 rounded bg-amber-950 text-amber-300">₹3.75 Crore</span>
+          </div>
+          <div class="text-xl font-bold text-white">Commercial Physical Anchor</div>
+          <p class="text-xs text-slate-400 leading-relaxed font-sans">
+            Prime freehold commercial space or diagnostic facility leased to corporate healthcare tenants in West Bengal/Tier-1 hub generating unhackable quarterly rent.
+          </p>
+          <div class="pt-3 border-t border-slate-800 font-mono text-xs text-amber-400">
+            Yield: 7–8% cash yield + appreciation
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fail-Safe Circuit Breakers -->
+    <section class="glass-card p-6 sm:p-8 rounded-3xl border border-brand-border space-y-6">
+      <div>
+        <div class="inline-block px-2.5 py-0.5 rounded bg-rose-950 text-rose-400 font-mono text-[11px] uppercase tracking-wider border border-rose-800">
+          Anti-Fragility Protocols
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Fail-Safe Circuit Breakers</h2>
+        <p class="text-slate-400 text-sm mt-1">Pre-computed algorithms to handle stress, market crashes, or unexpected road blocks.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-2">
+          <div class="text-rose-400 font-bold flex items-center gap-2">
+            <span>⚠️</span> PROLONGED MARKET CRASH (-40% NIFTY)
+          </div>
+          <p class="text-slate-400 font-sans leading-relaxed">
+            <strong class="text-slate-200">Circuit Breaker:</strong> Zero equity sales. Bucket 1 holds 36 months of living expenses. Rebalance surplus cash into deeply discounted broad index funds. Time arbitrage defeats market volatility.
+          </p>
+        </div>
+        
+        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-2">
+          <div class="text-amber-400 font-bold flex items-center gap-2">
+            <span>⚡</span> RESIDENCY BURNOUT / TOXIC ENVRIONMENT
+          </div>
+          <p class="text-slate-400 font-sans leading-relaxed">
+            <strong class="text-slate-200">Circuit Breaker:</strong> Trigger Track B immediately. Resign from residency without hesitation. Transition into Health-Tech Engineering or Medical AI within 30 days commanding ₹20L–30L starting compensation.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-2">
+          <div class="text-sky-400 font-bold flex items-center gap-2">
+            <span>🔄</span> STARTUP / SAAS MISSES PRODUCT-MARKET FIT
+          </div>
+          <p class="text-slate-400 font-sans leading-relaxed">
+            <strong class="text-slate-200">Circuit Breaker:</strong> Pivot software from external B2B SaaS to internal proprietary tool for a physical diagnostic center network. Physical clinical demand provides a steady cash cow floor.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-2">
+          <div class="text-emerald-400 font-bold flex items-center gap-2">
+            <span>🛡️</span> CATASTROPHIC HEALTH OR FAMILY EMERGENCY
+          </div>
+          <p class="text-slate-400 font-sans leading-relaxed">
+            <strong class="text-slate-200">Circuit Breaker:</strong> Dedicated ₹25L super top-up health insurance + ₹2 Cr term plan + ₹5L emergency arbitrage fund insulates principal corpus. Your family never relies on crowdfunding.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Immediate 90-Day Execution Triage -->
-    <section class="glass-card p-8 rounded-2xl border border-brand-border space-y-6">
-      <h2 class="text-2xl font-bold tracking-tight text-white">Current 90-Day Action Triage</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
-        <div class="p-4 rounded-lg bg-slate-900/60 border border-slate-800 space-y-2">
-          <span class="text-sky-400 font-bold">01. EMOTIONAL REBOOT</span>
-          <p class="text-slate-400 leading-relaxed font-sans text-sm">
-            Halt panic outreach. Let the INI-CET percentile arrive as objective data, not identity. Protect baseline sleep and training.
-          </p>
-        </div>
-        <div class="p-4 rounded-lg bg-slate-900/60 border border-slate-800 space-y-2">
-          <span class="text-amber-400 font-bold">02. LOCK 2027 TARGET</span>
-          <p class="text-slate-400 leading-relaxed font-sans text-sm">
-            Commit unambiguously: either an intense 6-month NEET-PG/INI clinical push or direct entry into health-tech engineering.
-          </p>
-        </div>
-        <div class="p-4 rounded-lg bg-slate-900/60 border border-slate-800 space-y-2">
-          <span class="text-emerald-400 font-bold">03. ASSET ENGINE SETUP</span>
-          <p class="text-slate-400 leading-relaxed font-sans text-sm">
-            Automate monthly SIPs on day one of income. Zero lifestyle inflation. Direct all excess surplus to equity instruments.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="text-center font-mono text-xs text-slate-600 py-6 border-t border-brand-border">
-      THE ASYMMETRIC CODE &copy; 2026. BUILT FOR PERSISTENCE.
-    </footer>
   </main>
 
+  <!-- Footer -->
+  <footer class="border-t border-brand-border bg-brand-surface/40 py-8 text-center font-mono text-xs text-slate-500 space-y-2">
+    <div>PROJECT AUTONOMY &copy; 2026. BUILT FOR DETERMINISTIC SOVEREIGNTY.</div>
+    <div class="text-[11px] text-slate-600">Zero Linear Traps. Build once, compound forever.</div>
+  </footer>
+
+  <!-- Execution & Checklist Engine Script -->
   <script>
-    const sipInput = document.getElementById('sipInput');
-    const yearsInput = document.getElementById('yearsInput');
-    const sipValue = document.getElementById('sipValue');
-    const yearsValue = document.getElementById('yearsValue');
-    const projectedCorpus = document.getElementById('projectedCorpus');
+    // Master Age Data Model
+    const AGES_DATA = [
+      {
+        age: 28,
+        year: '2026–2027',
+        phase: 'Phase 1',
+        title: 'Emotional Reboot & Anchor Lock',
+        milestone: '₹6.5 Lakhs Liquid Floor',
+        sip: '₹50,000 / month',
+        networth: '₹6.5 Lakhs',
+        description: 'Clear the emotional turbulence of competitive entrance exams. Treat score as objective data. Establish the financial plumbing, insurance shield, and 2027 path commitment.',
+        checklist: [
+          { id: 'a28_1', category: 'Finance', text: 'Open direct mutual fund account on Zerodha Coin/Groww with automated bank mandates' },
+          { id: 'a28_2', category: 'Finance', text: 'Initiate automated ₹50,000/mo SIP (Nifty 50 + Parag Parikh Flexi Cap)' },
+          { id: 'a28_3', category: 'Legal', text: 'Secure ₹2 Crore pure term insurance + ₹25L independent super top-up health policy' },
+          { id: 'a28_4', category: 'Clinical/Tech', text: 'Evaluate INI-CET percentile against high-leverage branch criteria (Radio/Derm/Psych/Path)' },
+          { id: 'a28_5', category: 'Clinical/Tech', text: 'Lock 2027 direction: either 6-month locked NEET-PG sprint or direct health-tech outreach' },
+          { id: 'a28_6', category: 'Tech', text: 'Maintain weekly GitHub commits on india-geodata & parishkar to protect coding momentum' },
+          { id: 'a28_7', category: 'Health', text: 'Execute baseline metabolic blood panel (ApoB, HbA1c, fasting insulin, vitals)' },
+          { id: 'a28_8', category: 'Gate', text: 'Verification Gate: Net worth ≥ ₹6.5 Lakhs & 2027 anchor fully locked' }
+        ]
+      },
+      {
+        age: 29,
+        year: '2027–2028',
+        phase: 'Phase 1',
+        title: 'Savings Velocity & Operational Rhythm',
+        milestone: '₹18.0 Lakhs Liquid',
+        sip: '₹80,000 / month',
+        networth: '₹18.0 Lakhs',
+        description: 'Capitalize on West Bengal cost advantages to sustain a 65%+ savings rate. Build daily operational consistency whether in residency or engineering sprints.',
+        checklist: [
+          { id: 'a29_1', category: 'Finance', text: 'Step up monthly SIP investment to ₹80,000/month across index funds' },
+          { id: 'a29_2', category: 'Finance', text: 'Accumulate ₹3.0 Lakhs liquid emergency reserve in an Arbitrage/Overnight Fund' },
+          { id: 'a29_3', category: 'Tax', text: 'Utilize Section 44ADA for clinical/consulting earnings (declare 50% profit)' },
+          { id: 'a29_4', category: 'Clinical/Tech', text: 'Track A (Residency): Document top 20 repetitive friction points in daily hospital workflow' },
+          { id: 'a29_5', category: 'Clinical/Tech', text: 'Track B (SWE): Own end-to-end features at health-tech firm (target ₹20L+ CTC)' },
+          { id: 'a29_6', category: 'Health', text: 'Maintain 12–16% body fat, Resting Heart Rate < 60 bpm, 150 min/wk Zone 2 cardio' },
+          { id: 'a29_7', category: 'Gate', text: 'Verification Gate: Liquid net worth ≥ ₹18.0 Lakhs' }
+        ]
+      },
+      {
+        age: 30,
+        year: '2028–2029',
+        phase: 'Phase 1',
+        title: 'Systems Prototyping & Depth',
+        milestone: '₹34.5 Lakhs Liquid',
+        sip: '₹1,10,000 / month',
+        networth: '₹34.5 Lakhs',
+        description: 'Cross the initial financial hurdle. Build the v1 prototype of your Clinic OS / Diagnostic software leveraging your React/Supabase/PWA stack.',
+        checklist: [
+          { id: 'a30_1', category: 'Finance', text: 'Step up monthly SIP investment to ₹1,10,000/month' },
+          { id: 'a30_2', category: 'Tech', text: 'Code v1 prototype of Clinic OS: WhatsApp report bot + ABDM M1/M2 integration' },
+          { id: 'a30_3', category: 'Clinical/Tech', text: 'Achieve Year 2 residency milestone or Staff Engineer promotion at tech firm' },
+          { id: 'a30_4', category: 'Health', text: 'Cardiovascular check: ApoB maintained < 70 mg/dL, VO2 max in top quartile' },
+          { id: 'a30_5', category: 'Civic', text: 'Publish open data update for india-geodata / municipal spatial boundaries' },
+          { id: 'a30_6', category: 'Gate', text: 'Verification Gate: Liquid net worth ≥ ₹34.5 Lakhs' }
+        ]
+      },
+      {
+        age: 31,
+        year: '2029–2030',
+        phase: 'Phase 1 Milestone',
+        title: 'The ₹50 Lakhs Liquid Floor',
+        milestone: '₹50.0 – ₹57.0 Lakhs Liquid',
+        sip: '₹1,50,000 / month',
+        networth: '₹57.0 Lakhs',
+        description: 'Clearing ₹50 Lakhs liquid creates an irreversible psychological floor. Compounding begins to generate substantial passive returns alongside labor income.',
+        checklist: [
+          { id: 'a31_1', category: 'Finance', text: 'Accelerate monthly investment to ₹1,50,000/month' },
+          { id: 'a31_2', category: 'Finance', text: 'Confirm zero outstanding personal, educational, or vehicle debt' },
+          { id: 'a31_3', category: 'Clinical', text: 'Complete MD/MS specialist examinations or reach Principal Engineer status' },
+          { id: 'a31_4', category: 'Strategy', text: 'Conduct on-ground diagnostic demand survey in Purulia / Bankura / tier-2 West Bengal' },
+          { id: 'a31_5', category: 'Gate', text: 'Verification Gate: Liquid net worth crosses ₹50.0 – ₹57.0 Lakhs milestone' }
+        ]
+      },
+      {
+        age: 32,
+        year: '2030–2031',
+        phase: 'Phase 2 Kickoff',
+        title: 'Corporate Incorporation & Product Launch',
+        milestone: '₹89.0 Lakhs Invested',
+        sip: '₹2,00,000 / month',
+        networth: '₹89.0 Lakhs',
+        description: 'Incorporate your Private Limited / LLP. Transition income from individual tax slabs into a 22% corporate tax structure. Launch your diagnostic/clinic platform.',
+        checklist: [
+          { id: 'a32_1', category: 'Corporate', text: 'Incorporate Private Limited Company / LLP for health-tech & clinical software' },
+          { id: 'a32_2', category: 'Corporate', text: 'Route all consulting, SaaS, and clinical contracts through company entity' },
+          { id: 'a32_3', category: 'Tech', text: 'Deploy Clinic OS pilot in 5 partner centers or first company-owned outpatient hub' },
+          { id: 'a32_4', category: 'Finance', text: 'Scale combined capital injections to ₹2,00,000/month (salary + corporate retained)' },
+          { id: 'a32_5', category: 'Governance', text: 'Execute formal will, assign beneficiaries on all financial accounts & vaults' },
+          { id: 'a32_6', category: 'Gate', text: 'Verification Gate: Net worth ≥ ₹89.0 Lakhs & operating company live' }
+        ]
+      },
+      {
+        age: 33,
+        year: '2031–2032',
+        phase: 'Phase 2',
+        title: 'B2B Software Scale & First Physical Outpost',
+        milestone: '₹1.32 Crore Liquid',
+        sip: '₹2,50,000 / month',
+        networth: '₹1.32 Crore',
+        description: 'First physical automated diagnostic center operational in West Bengal. Software layer achieves repeatable subscription revenue.',
+        checklist: [
+          { id: 'a33_1', category: 'Finance', text: 'Increase monthly equity investments to ₹2,50,000/month' },
+          { id: 'a33_2', category: 'Operations', text: 'Launch automated diagnostic outpost with zero paper slips and digital PACS integration' },
+          { id: 'a33_3', category: 'Tech', text: 'Clinic OS platform reaches ₹25–50 Lakhs Annual Recurring Revenue (ARR)' },
+          { id: 'a33_4', category: 'Health', text: 'Comprehensive cardiac imaging (CT Calcium score / Carotid IMT) confirms zero plaque' },
+          { id: 'a33_5', category: 'Gate', text: 'Verification Gate: Liquid net worth crosses ₹1.30 Crore' }
+        ]
+      },
+      {
+        age: 34,
+        year: '2032–2033',
+        phase: 'Phase 2',
+        title: 'Operational Delegation & Automation',
+        milestone: '₹1.90 Crore Invested',
+        sip: '₹3,25,000 / month',
+        networth: '₹1.90 Crore',
+        description: 'Hire operational leadership to manage daily center logistics. Your personal hours shift entirely from linear clinic operations to system architecture.',
+        checklist: [
+          { id: 'a34_1', category: 'Finance', text: 'Increase monthly equity injections to ₹3,25,000/month' },
+          { id: 'a34_2', category: 'Operations', text: 'Hire full-time Operations Manager to remove yourself from front-desk & vendor logistics' },
+          { id: 'a34_3', category: 'Tech', text: 'Bring on 2 junior engineers to maintain code base under your architectural oversight' },
+          { id: 'a34_4', category: 'Civic', text: 'Partner with local municipal bodies using parishkar for civic health tracking' },
+          { id: 'a34_5', category: 'Gate', text: 'Verification Gate: Net worth crosses ₹1.90 Crore' }
+        ]
+      },
+      {
+        age: 35,
+        year: '2033–2034',
+        phase: 'Phase 2',
+        title: 'Commercial Asset Anchor (Bucket 3)',
+        milestone: '₹2.65 Crore Invested',
+        sip: '₹4,00,000 / month',
+        networth: '₹2.65 Crore',
+        description: 'Acquire your first freehold commercial asset (clinic / office space). SaaS layer scales to ₹1.0+ Crore ARR.',
+        checklist: [
+          { id: 'a35_1', category: 'Finance', text: 'Scale monthly equity injections to ₹4,00,000/month' },
+          { id: 'a35_2', category: 'Real Estate', text: 'Acquire prime freehold commercial property (₹1.0–1.5 Cr) yielding 7–8% rental yield' },
+          { id: 'a35_3', category: 'Tech', text: 'Expand B2B health software to 50+ clinics across eastern India (₹1.0–1.5 Cr ARR)' },
+          { id: 'a35_4', category: 'Health', text: 'Maintain VO2 Max > 45 mL/kg/min; complete comprehensive executive health screen' },
+          { id: 'a35_5', category: 'Gate', text: 'Verification Gate: Net worth crosses ₹2.65 Crore' }
+        ]
+      },
+      {
+        age: 36,
+        year: '2034–2035',
+        phase: 'Phase 2',
+        title: 'Diagnostic Hub-and-Spoke Expansion',
+        milestone: '₹3.58 Crore Invested',
+        sip: '₹4,50,000 / month',
+        networth: '₹3.58 Crore',
+        description: 'Expand diagnostic collection points across semi-urban and rural corridors. Achieve NABH / NMC quality certifications.',
+        checklist: [
+          { id: 'a36_1', category: 'Finance', text: 'Scale monthly investment to ₹4,50,000/month' },
+          { id: 'a36_2', category: 'Operations', text: 'Establish 3 hub-and-spoke collection points feeding central diagnostic processing' },
+          { id: 'a36_3', category: 'Legal', text: 'Complete NABH accreditation to maximize institutional valuation for future acquirers' },
+          { id: 'a36_4', category: 'Gate', text: 'Verification Gate: Net worth crosses ₹3.58 Crore' }
+        ]
+      },
+      {
+        age: 37,
+        year: '2035–2036',
+        phase: 'Phase 2 Milestone',
+        title: 'The ₹5.0 Crore Base & 30-Day Disconnect',
+        milestone: '₹4.70 – ₹5.20 Crore Invested',
+        sip: '₹5,00,000 / month',
+        networth: '₹5.0 Crore',
+        description: 'Safe returns from your portfolio now cover all living expenses. Take 30 consecutive days completely offline to verify zero key-man operational risk.',
+        checklist: [
+          { id: 'a37_1', category: 'Finance', text: 'Maintain monthly injections at ₹5,00,000/month' },
+          { id: 'a37_2', category: 'Audit', text: 'Engage top accounting firm for formal 3-year audit of corporate financials & IP' },
+          { id: 'a37_3', category: 'Freedom', text: 'Take 30 consecutive days completely away from business operations (Zero-call test)' },
+          { id: 'a37_4', category: 'Gate', text: 'Verification Gate: Invested liquid portfolio reaches ₹4.70 – ₹5.20 Crore milestone' }
+        ]
+      },
+      {
+        age: 38,
+        year: '2036–2037',
+        phase: 'Phase 3 Kickoff',
+        title: 'Governance Decoupling & Exit Readiness',
+        milestone: '₹6.60 Crore Invested',
+        sip: '₹5,50,000 / month',
+        networth: '₹6.60 Crore',
+        description: 'Step up to Executive Chairman. Hand over executive reins to a professional General Manager. Initiate quiet M&A positioning.',
+        checklist: [
+          { id: 'a38_1', category: 'Finance', text: 'Scale monthly equity injections to ₹5,50,000/month' },
+          { id: 'a38_2', category: 'Governance', text: 'Appoint General Manager / COO; cease personal operational signatures' },
+          { id: 'a38_3', category: 'M&A', text: 'Begin exploratory discussions with hospital chains and diagnostic aggregators' },
+          { id: 'a38_4', category: 'Gate', text: 'Verification Gate: Net worth crosses ₹6.60 Crore' }
+        ]
+      },
+      {
+        age: 39,
+        year: '2037–2038',
+        phase: 'Phase 3',
+        title: 'EBITDA Optimization & Strategic Pilots',
+        milestone: '₹8.25 Crore Invested',
+        sip: '₹6,00,000 / month',
+        networth: '₹8.25 Crore',
+        description: 'Streamline operating margins to maximize trailing 12-month EBITDA, driving superior transaction multiples in exit negotiations.',
+        checklist: [
+          { id: 'a39_1', category: 'Finance', text: 'Scale monthly investment to ₹6,00,000/month' },
+          { id: 'a39_2', category: 'Corporate', text: 'Optimize EBITDA margin to >30% on software and >22% on physical diagnostic ops' },
+          { id: 'a39_3', category: 'Health', text: 'Complete full body MRI & longevity biomarker panel. Biological age test' },
+          { id: 'a39_4', category: 'Gate', text: 'Verification Gate: Net worth crosses ₹8.25 Crore' }
+        ]
+      },
+      {
+        age: 40,
+        year: '2038–2039',
+        phase: 'Phase 3 Liquidity',
+        title: 'The Secondary Partial Equity Exit',
+        milestone: '₹13.10 Crore Liquid',
+        sip: '₹6,50,000 / month',
+        networth: '₹13.10 Crore',
+        description: 'De-risk permanently. Sell a 25–35% equity stake to institutional partners, realizing ₹3.0 Crore in immediate liquid cash.',
+        checklist: [
+          { id: 'a40_1', category: 'Exit', text: 'Execute secondary equity sale: Realize ₹3.0 Crore post-tax liquid capital' },
+          { id: 'a40_2', category: 'Asset Allocation', text: 'Deploy ₹2.0 Cr into Bucket 1 (Debt/SGB) and ₹1.0 Cr into Bucket 2 (Equities)' },
+          { id: 'a40_3', category: 'Finance', text: 'Continue monthly regular deployment of ₹6,50,000/month from corporate earnings' },
+          { id: 'a40_4', category: 'Gate', text: 'Verification Gate: Total liquid net worth crosses ₹13.0 Crore' }
+        ]
+      },
+      {
+        age: 41,
+        year: '2039–2040',
+        phase: 'Phase 3',
+        title: 'Buyout Agreement & Handover Structuring',
+        milestone: '₹15.70 Crore Invested',
+        sip: '₹7,00,000 / month',
+        networth: '₹15.70 Crore',
+        description: 'Negotiate final buyout or asset merger with acquiring healthcare network. Ensure maximum 12-month advisory earnout window.',
+        checklist: [
+          { id: 'a41_1', category: 'M&A', text: 'Sign definitive buyout agreement with institutional acquirer' },
+          { id: 'a41_2', category: 'Finance', text: 'Deploy ₹7,00,000/month in final accumulation sprint' },
+          { id: 'a41_3', category: 'Civic', text: 'Incorporate blueprint for Purulia Pro-Bono Foundation' },
+          { id: 'a41_4', category: 'Gate', text: 'Verification Gate: Net worth reaches ₹15.70 Crore' }
+        ]
+      },
+      {
+        age: 42,
+        year: '2040–2041',
+        phase: 'Phase 3 Terminal Exit',
+        title: 'The Terminal Monetization Event',
+        milestone: '₹23.50 – ₹25.00 Crore Liquid',
+        sip: '₹7,50,000 / month',
+        networth: '₹24.50 Crore',
+        description: 'Receive final acquisition payout (₹5.0–7.0 Cr post-tax). Complete all operational handovers. Resign from corporate boards.',
+        checklist: [
+          { id: 'a42_1', category: 'Exit', text: 'Close final transaction: Receive ₹5.0 – ₹7.0 Crore post-tax acquisition proceeds' },
+          { id: 'a42_2', category: 'Corporate', text: 'Resign executive directorships. Complete 100% operational handover' },
+          { id: 'a42_3', category: 'Portfolio', text: 'Lock terminal 40/45/15 defensive 3-bucket asset allocation' },
+          { id: 'a42_4', category: 'Gate', text: 'Verification Gate: Liquid sovereign corpus reaches ₹23.50 – ₹25.00 Crore' }
+        ]
+      },
+      {
+        age: 43,
+        year: '2041–2042',
+        phase: 'Target Exit Milestone',
+        title: 'Project Autonomy: Sovereign Transition',
+        milestone: '₹25.00 Crore Sovereign Corpus',
+        sip: 'Shift to Yield',
+        networth: '₹25.00 Crore',
+        description: 'The official exit milestone. Shift from capital accumulation to perpetual sovereign distribution. Automated cash-flow tap activates.',
+        checklist: [
+          { id: 'a43_1', category: 'Yield', text: 'Activate Systematic Withdrawal Plan (SWP): ₹10.0–12.5 Lakhs/month post-tax distribution' },
+          { id: 'a43_2', category: 'Lifestyle', text: 'Lock personal lifestyle budget to ₹2.5–3.5L/mo; redirect ₹7.0–9.0L/mo surplus to mission' },
+          { id: 'a43_3', category: 'Foundation', text: 'Register Section 8 Trust for Purulia Community Health and Civic Tech' },
+          { id: 'a43_4', category: 'Gate', text: 'Verification Gate: Complete sovereign autonomy achieved on 43rd birthday' }
+        ]
+      },
+      {
+        age: '44+',
+        year: '2042 Onward',
+        phase: 'Sovereign Freedom',
+        title: 'The Purulia Legacy & Autonomous Life',
+        milestone: '₹1.20 – ₹1.50 Cr/yr Yield',
+        sip: 'Living on Yield',
+        networth: '₹25.0+ Crore Perpetual',
+        description: 'Complete freedom of time and mind. Deliver unpressured pro-bono clinical care in Purulia, build open-source civic tools, and master longevity.',
+        checklist: [
+          { id: 'a44_1', category: 'Clinical', text: 'Run weekly pro-bono outpatient clinics in Purulia with free medicine & subsidized labs' },
+          { id: 'a44_2', category: 'Civic Tech', text: 'Maintain & fund open-source tools (india-geodata, parishkar, municipal spatial GIS)' },
+          { id: 'a44_3', category: 'Mentorship', text: 'Fund 10 annual STEM / Medical scholarships for students from Purulia & Bankura' },
+          { id: 'a44_4', category: 'Longevity', text: 'Daily deep movement, nature immersion, reading, writing, and family presence' },
+          { id: 'a44_5', category: 'Sovereignty', text: 'Zero forced clinical shifts, zero alarms, zero commercial coercion forever' }
+        ]
+      }
+    ];
 
-    function calculateFV() {
-      const p = parseFloat(sipInput.value);
-      const y = parseInt(yearsInput.value);
-      const r = 0.125 / 12; // 12.5% annual return
-      const n = y * 12;
+    // Local Storage State Key
+    const STORAGE_KEY = 'PROJECT_AUTONOMY_CHECKLIST_STATE';
 
-      sipValue.textContent = '₹' + p.toLocaleString('en-IN');
-      yearsValue.textContent = y + ' Years';
-
-      // Future value of SIP formula: P * [((1 + r)^n - 1) / r] * (1 + r)
-      const fv = p * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
-      const cr = (fv / 10000000).toFixed(2);
-      projectedCorpus.textContent = '₹' + cr + ' Cr';
+    function getStoredState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch (e) {
+        return {};
+      }
     }
 
-    sipInput.addEventListener('input', calculateFV);
-    yearsInput.addEventListener('input', calculateFV);
-    calculateFV();
+    function saveState(state) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      updateProgressDisplay();
+    }
+
+    function toggleItem(id) {
+      const state = getStoredState();
+      state[id] = !state[id];
+      saveState(state);
+    }
+
+    // View State
+    let currentViewMode = 'tab'; // 'tab' or 'all'
+    let currentActiveAgeIndex = 0; // default Age 28
+
+    function renderAgeTabs() {
+      const container = document.getElementById('ageTabsContainer');
+      container.innerHTML = '';
+
+      AGES_DATA.forEach((item, index) => {
+        const btn = document.createElement('button');
+        const isActive = index === currentActiveAgeIndex && currentViewMode === 'tab';
+        btn.className = `px-3 py-1.5 rounded-lg border transition whitespace-nowrap flex items-center gap-1.5 ${
+          isActive 
+            ? 'bg-sky-500/20 text-sky-400 border-sky-500/50 font-bold' 
+            : 'bg-slate-900/60 text-slate-400 border-slate-800 hover:text-slate-200 hover:bg-slate-800'
+        }`;
+        
+        // Progress for this age
+        const state = getStoredState();
+        const completed = item.checklist.filter(c => state[c.id]).length;
+        const total = item.checklist.length;
+        const isAllDone = total > 0 && completed === total;
+
+        btn.innerHTML = `
+          <span>Age ${item.age}</span>
+          ${isAllDone ? '<span class="text-emerald-400 text-[10px]">✓</span>' : `<span class="text-[10px] text-slate-500">(${completed}/${total})</span>`}
+        `;
+
+        btn.onclick = () => {
+          currentViewMode = 'tab';
+          currentActiveAgeIndex = index;
+          updateViewButtons();
+          renderAgeTabs();
+          renderAgeContent();
+        };
+
+        container.appendChild(btn);
+      });
+    }
+
+    function renderAgeCard(item) {
+      const state = getStoredState();
+      const completed = item.checklist.filter(c => state[c.id]).length;
+      const total = item.checklist.length;
+      const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+      return `
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-brand-border space-y-6">
+          <!-- Card Header -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-brand-border/80">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-sky-950 text-sky-400 border border-sky-800 uppercase">
+                  Age ${item.age} (${item.year})
+                </span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                  ${item.phase}
+                </span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white mt-2">${item.title}</h3>
+              <p class="text-slate-400 text-xs sm:text-sm mt-1 max-w-2xl leading-relaxed">${item.description}</p>
+            </div>
+
+            <!-- Metrics Column -->
+            <div class="flex sm:flex-col items-center sm:items-end justify-between gap-2 sm:gap-1 text-right font-mono bg-slate-900/60 p-3 sm:p-0 rounded-xl sm:bg-transparent border sm:border-0 border-slate-800">
+              <div>
+                <span class="text-[10px] text-slate-400 uppercase">Target Net Worth</span>
+                <div class="text-lg sm:text-xl font-bold text-emerald-400">${item.networth}</div>
+              </div>
+              <div class="text-xs text-slate-400 sm:mt-1">
+                SIP: <span class="text-sky-400 font-bold">${item.sip}</span>
+              </div>
+              <div class="text-[11px] text-slate-400 mt-1">
+                Completed: <strong class="text-white">${completed}</strong> / ${total} (<span class="text-sky-400">${percent}%</span>)
+              </div>
+            </div>
+          </div>
+
+          <!-- Checklist Grid -->
+          <div class="space-y-3">
+            <div class="text-xs font-mono uppercase tracking-wider text-slate-400 flex items-center gap-2">
+              <span>Action Checklist & Verification Items</span>
+              <span class="h-px bg-slate-800 flex-grow"></span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              ${item.checklist.map(chk => {
+                const isChecked = !!state[chk.id];
+                const catColor = 
+                  chk.category === 'Finance' ? 'text-emerald-400 bg-emerald-950/60 border-emerald-800/80' :
+                  chk.category === 'Clinical' || chk.category === 'Clinical/Tech' ? 'text-sky-400 bg-sky-950/60 border-sky-800/80' :
+                  chk.category === 'Tech' ? 'text-amber-400 bg-amber-950/60 border-amber-800/80' :
+                  chk.category === 'Health' ? 'text-purple-400 bg-purple-950/60 border-purple-800/80' :
+                  chk.category === 'Gate' ? 'text-rose-400 bg-rose-950/60 border-rose-800/80' :
+                  'text-slate-400 bg-slate-800 border-slate-700';
+
+                return `
+                  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-start gap-3 hover:border-slate-700 transition">
+                    <input 
+                      type="checkbox" 
+                      id="${chk.id}" 
+                      ${isChecked ? 'checked' : ''} 
+                      onchange="toggleCheckItem('${chk.id}')"
+                      class="checkbox-custom mt-1 h-4 w-4 rounded border-slate-700 bg-slate-800 text-sky-500 accent-sky-400 cursor-pointer"
+                    >
+                    <label for="${chk.id}" class="text-xs text-slate-300 leading-relaxed cursor-pointer select-none flex-grow">
+                      <span class="inline-block text-[9px] font-mono px-1.5 py-0.2 rounded border mr-1 uppercase ${catColor}">${chk.category}</span>
+                      ${chk.text}
+                    </label>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderAgeContent() {
+      const container = document.getElementById('ageContentArea');
+      if (currentViewMode === 'tab') {
+        const item = AGES_DATA[currentActiveAgeIndex];
+        container.innerHTML = renderAgeCard(item);
+      } else {
+        container.innerHTML = AGES_DATA.map(item => renderAgeCard(item)).join('');
+      }
+    }
+
+    function toggleCheckItem(id) {
+      toggleItem(id);
+      renderAgeTabs();
+      renderAgeContent();
+    }
+
+    function switchView(mode) {
+      currentViewMode = mode;
+      updateViewButtons();
+      renderAgeTabs();
+      renderAgeContent();
+    }
+
+    function updateViewButtons() {
+      const tabBtn = document.getElementById('viewTabBtn');
+      const allBtn = document.getElementById('viewAllBtn');
+      if (currentViewMode === 'tab') {
+        tabBtn.className = 'px-3 py-1.5 rounded-lg bg-sky-950 text-sky-400 border border-sky-800 font-bold transition';
+        allBtn.className = 'px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition';
+      } else {
+        tabBtn.className = 'px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition';
+        allBtn.className = 'px-3 py-1.5 rounded-lg bg-sky-950 text-sky-400 border border-sky-800 font-bold transition';
+      }
+    }
+
+    function updateProgressDisplay() {
+      const state = getStoredState();
+      
+      // Calculate total checklist items across all ages + triage
+      let total = 6; // 6 triage items
+      let completed = 0;
+      for (let i = 1; i <= 6; i++) {
+        if (state[`triage_${i}`]) completed++;
+      }
+
+      AGES_DATA.forEach(item => {
+        total += item.checklist.length;
+        item.checklist.forEach(chk => {
+          if (state[chk.id]) completed++;
+        });
+      });
+
+      const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+      
+      document.getElementById('completedCount').textContent = completed;
+      document.getElementById('totalCount').textContent = total;
+      document.getElementById('progressPercent').textContent = percent + '%';
+      document.getElementById('masterProgressBar').style.width = percent + '%';
+
+      // Update triage checkboxes
+      for (let i = 1; i <= 6; i++) {
+        const el = document.getElementById(`triage_${i}`);
+        if (el) el.checked = !!state[`triage_${i}`];
+      }
+    }
+
+    // Export / Import
+    function exportData() {
+      const state = getStoredState();
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `project-autonomy-progress-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importData(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          if (typeof parsed === 'object') {
+            saveState(parsed);
+            renderAgeTabs();
+            renderAgeContent();
+            alert('Progress imported successfully!');
+          }
+        } catch (err) {
+          alert('Invalid JSON file format.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function resetData() {
+      if (confirm('Are you sure you want to reset all checklist progress?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        updateProgressDisplay();
+        renderAgeTabs();
+        renderAgeContent();
+      }
+    }
+
+    // Interactive Simulator Logic
+    const sipSlider = document.getElementById('sipSlider');
+    const exitSlider = document.getElementById('exitSlider');
+    const swrSlider = document.getElementById('swrSlider');
+    const sipValueDisplay = document.getElementById('sipValueDisplay');
+    const exitValueDisplay = document.getElementById('exitValueDisplay');
+    const swrValueDisplay = document.getElementById('swrValueDisplay');
+    const totalProjectedCorpus = document.getElementById('totalProjectedCorpus');
+    const sipSubtotalDisplay = document.getElementById('sipSubtotalDisplay');
+    const exitSubtotalDisplay = document.getElementById('exitSubtotalDisplay');
+    const annualPassiveIncome = document.getElementById('annualPassiveIncome');
+    const monthlyPassiveIncome = document.getElementById('monthlyPassiveIncome');
+
+    function calculateSimulator() {
+      const p = parseFloat(sipSlider.value);
+      const exitAmount = parseFloat(exitSlider.value);
+      const swrRate = parseFloat(swrSlider.value) / 100;
+      
+      sipValueDisplay.textContent = '₹' + p.toLocaleString('en-IN') + ' / mo';
+      exitValueDisplay.textContent = '₹' + (exitAmount / 10000000).toFixed(1) + ' Crore';
+      swrValueDisplay.textContent = (swrRate * 100).toFixed(2) + '% Post-Tax';
+
+      // 15 years compounding at 12.0% CAGR
+      const r = 0.12 / 12;
+      const n = 15 * 12;
+      const fvSip = p * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+      
+      const totalCorpus = fvSip + exitAmount;
+      const fvSipCr = (fvSip / 10000000).toFixed(2);
+      const exitCr = (exitAmount / 10000000).toFixed(2);
+      const totalCr = (totalCorpus / 10000000).toFixed(2);
+
+      totalProjectedCorpus.textContent = '₹' + totalCr + ' Cr';
+      sipSubtotalDisplay.textContent = '₹' + fvSipCr + ' Cr';
+      exitSubtotalDisplay.textContent = '₹' + exitCr + ' Cr';
+
+      const annualYield = totalCorpus * swrRate;
+      const monthlyYield = annualYield / 12;
+      annualPassiveIncome.textContent = '₹' + (annualYield / 10000000).toFixed(2) + ' Cr / yr';
+      monthlyPassiveIncome.textContent = '≈ ₹' + (monthlyYield / 100000).toFixed(2) + ' Lakhs / month post-tax';
+    }
+
+    sipSlider.addEventListener('input', calculateSimulator);
+    exitSlider.addEventListener('input', calculateSimulator);
+    swrSlider.addEventListener('input', calculateSimulator);
+
+    // Initial Boot
+    renderAgeTabs();
+    renderAgeContent();
+    updateProgressDisplay();
+    calculateSimulator();
   </script>
 </body>
 </html>
