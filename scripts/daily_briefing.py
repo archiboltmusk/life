@@ -49,8 +49,8 @@ message = f"""🌅 *LIFE OS | MORNING BRIEFING*
 👉 [Open Your Dashboard](https://archiboltmusk.github.io/life/)
 """
 
-bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
-chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+bot_token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
+chat_id = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
 
 if not bot_token or not chat_id:
     print("WARNING: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is not configured in repository secrets.")
