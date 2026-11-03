@@ -1,32 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Autonomy | 15-Year Life, Horoscope & Capital Operating System</title>
+  <title>Project Autonomy — 15-Year Life & Capital Operating System</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
-            brand: {
-              bg: '#080b11',
-              surface: '#0f172a',
-              card: '#131d31',
-              border: '#1e293b',
-              accent: '#38bdf8',
-              emerald: '#10b981',
-              amber: '#f59e0b',
-              purple: '#a855f7',
-              rose: '#f43f5e',
+            apple: {
+              black: '#000000',
+              bg: '#050507',
+              card: '#0e0e12',
+              elevated: '#15151c',
+              border: 'rgba(255, 255, 255, 0.08)',
+              borderStrong: 'rgba(255, 255, 255, 0.16)',
+              text: '#f5f5f7',
+              secondary: '#86868b',
+              tertiary: '#515154',
+              blue: '#2997ff',
+              green: '#30d158',
+              orange: '#ff9f0a',
+              purple: '#bf5af2',
+              red: '#ff453a',
             }
           }
         }
@@ -34,511 +39,466 @@
     }
   </script>
   <style>
-    body { background-color: #080b11; color: #f1f5f9; }
-    .glass-card {
-      background: rgba(15, 23, 42, 0.75);
+    body { background-color: #000000; color: #f5f5f7; }
+    
+    /* Apple Glass Effect */
+    .apple-glass {
+      background: rgba(14, 14, 18, 0.72);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
-    .glass-card-interactive {
-      background: rgba(15, 23, 42, 0.75);
+    .apple-glass-card {
+      background: rgba(18, 18, 24, 0.65);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(14px);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .glass-card-interactive:hover {
-      border-color: rgba(56, 189, 248, 0.3);
-      transform: translateY(-2px);
+    .apple-glass-card:hover {
+      border-color: rgba(255, 255, 255, 0.18);
     }
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: #080b11; }
-    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+
+    /* Apple Custom Scrollbar */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #000000; }
+    ::-webkit-scrollbar-thumb { background: #2c2c2e; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #48484a; }
+
+    /* Custom Apple Range Slider */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: #1c1c1e;
+      border-radius: 9999px;
+      height: 6px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 18px;
+      width: 18px;
+      border-radius: 50%;
+      background: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      transition: transform 0.15s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
 
     .checkbox-custom:checked + label {
       text-decoration: line-through;
-      color: #64748b;
+      color: #636366;
     }
   </style>
 </head>
-<body class="font-sans antialiased selection:bg-sky-500 selection:text-white min-h-screen flex flex-col">
+<body class="font-sans antialiased selection:bg-apple-blue selection:text-white min-h-screen flex flex-col tracking-[-0.01em]">
 
-  <!-- Top Sticky Navigation & Live Progress -->
-  <header class="border-b border-brand-border/80 sticky top-0 z-50 glass-card">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+  <!-- Global Apple Header -->
+  <header class="border-b border-apple-border sticky top-0 z-50 apple-glass">
+    <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <div class="h-3 w-3 rounded-full bg-emerald-400 animate-pulse"></div>
-        <div>
-          <span class="font-mono text-xs sm:text-sm tracking-widest uppercase font-bold text-slate-100">PROJECT: AUTONOMY</span>
-          <span class="hidden sm:inline-block ml-2 text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950 text-sky-400 border border-sky-800">COMJNMH → PURULIA</span>
-        </div>
+        <span class="text-sm font-semibold tracking-tight text-white flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-apple-green animate-pulse"></span>
+          Project Autonomy
+        </span>
+        <span class="hidden md:inline-block text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-white/[0.06] text-apple-secondary border border-white/[0.08]">
+          Purulia &middot; Age 28 &rarr; 43
+        </span>
       </div>
       
-      <!-- Progress Bar & Target -->
-      <div class="flex items-center gap-4 sm:gap-6">
-        <div class="hidden md:flex flex-col text-right">
-          <div class="font-mono text-[10px] text-slate-400 uppercase">Master Progress</div>
-          <div class="font-mono text-xs font-bold text-sky-400"><span id="completedCount">0</span> / <span id="totalCount">0</span> Completed (<span id="progressPercent">0%</span>)</div>
+      <!-- Progress & Quick Controls -->
+      <div class="flex items-center gap-4">
+        <div class="hidden sm:flex items-center gap-2 text-xs font-mono">
+          <span class="text-apple-secondary">Progress</span>
+          <div class="w-20 bg-apple-elevated h-1.5 rounded-full overflow-hidden border border-white/[0.06]">
+            <div id="masterProgressBar" class="bg-gradient-to-r from-apple-blue to-apple-green h-full w-0 transition-all duration-300"></div>
+          </div>
+          <span id="progressPercent" class="text-white font-medium text-[11px]">0%</span>
         </div>
-        <div class="w-24 sm:w-32 bg-slate-800 h-2 rounded-full overflow-hidden border border-slate-700">
-          <div id="masterProgressBar" class="bg-gradient-to-r from-sky-400 to-emerald-400 h-full w-0 transition-all duration-300"></div>
-        </div>
-        <div class="font-mono text-xs text-slate-300">
-          <span class="text-sky-400 font-bold">AGE 43</span> | <span class="text-emerald-400 font-bold">₹25 CR</span>
+        <div class="text-xs font-medium tracking-tight">
+          <span class="text-apple-secondary">Corpus</span> <span class="text-white font-semibold">&euro;25 Cr</span>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Main Container -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-10 space-y-16 flex-grow">
+  <!-- Main Body Content -->
+  <main class="max-w-6xl mx-auto px-6 py-16 sm:py-24 space-y-28 flex-grow">
     
-    <!-- Hero / The Strategic Thesis -->
-    <section class="space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 font-mono text-xs uppercase tracking-wider">
-          <span class="h-1.5 w-1.5 rounded-full bg-sky-400"></span>
-          15-Year Life Operating System (2026–2041)
-        </div>
-        <div class="flex items-center gap-2 font-mono text-xs">
-          <button onclick="exportData()" class="px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition">Export OS State</button>
-          <label class="px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 cursor-pointer transition">
-            Import
-            <input type="file" id="importInput" onchange="importData(event)" class="hidden" accept=".json">
-          </label>
-          <button onclick="resetData()" class="px-2.5 py-1 rounded bg-rose-950/40 hover:bg-rose-900/60 text-rose-400 border border-rose-900/60 transition" title="Reset all checkboxes">Reset</button>
-        </div>
+    <!-- Hero Section (Apple Pro Style) -->
+    <section class="space-y-8 text-center max-w-4xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/[0.12] bg-white/[0.04] text-xs font-medium text-apple-secondary backdrop-blur-md">
+        <span>The 15-Year Life Operating System</span>
+        <span class="text-white">&bull;</span>
+        <span class="text-apple-blue">2026&ndash;2041</span>
       </div>
 
-      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white max-w-4xl leading-tight">
-        The Asymmetric Blueprint: Clinical Depth, Software Leverage, and Sovereign Autonomy.
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold tracking-[-0.03em] text-white leading-[1.08]">
+        Clinical Depth.<br />
+        <span class="bg-gradient-to-r from-white via-neutral-300 to-apple-secondary bg-clip-text text-transparent">
+          Software Leverage.
+        </span><br />
+        <span class="bg-gradient-to-r from-apple-blue via-sky-300 to-apple-green bg-clip-text text-transparent">
+          Sovereign Wealth.
+        </span>
       </h1>
-      <p class="text-slate-400 text-base sm:text-lg max-w-3xl leading-relaxed">
-        Trading linear hours for clinical shifts hits an unavoidable ceiling. This deterministic system transforms medical domain credibility into software leverage, equity capitalization, and an unshakeable ₹25 Crore perpetual yield engine—terminating in pro-bono service in Purulia and sovereign civic engineering.
+
+      <p class="text-apple-secondary text-lg sm:text-xl font-normal max-w-2xl mx-auto leading-relaxed">
+        Trading linear time for wages hits an unavoidable ceiling. This system transitions clinical stability into software leverage, equity ownership, and a self-sustaining &euro;25 Crore perpetual yield engine&mdash;terminating in pro-bono service in Purulia.
       </p>
+
+      <!-- Apple Action Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-2 font-medium text-xs sm:text-sm">
+        <a href="#triageSection" class="px-5 py-2.5 rounded-full bg-white text-black hover:bg-neutral-200 transition">
+          Immediate 90-Day Triage
+        </a>
+        <a href="#kundaliSection" class="px-5 py-2.5 rounded-full bg-apple-elevated text-apple-text hover:bg-neutral-800 border border-apple-border transition">
+          Janam Kundali &amp; Sade Sati
+        </a>
+        <button onclick="exportData()" class="px-4 py-2.5 rounded-full bg-white/[0.06] text-apple-secondary hover:text-white border border-apple-border transition">
+          Export OS State
+        </button>
+        <label class="px-4 py-2.5 rounded-full bg-white/[0.06] text-apple-secondary hover:text-white border border-apple-border cursor-pointer transition">
+          Import
+          <input type="file" id="importInput" onchange="importData(event)" class="hidden" accept=".json">
+        </label>
+      </div>
     </section>
 
-    <!-- Key Metrics Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="glass-card p-5 rounded-2xl border border-brand-border">
-        <div class="font-mono text-xs text-slate-400 uppercase tracking-wider">Target Exit Age</div>
-        <div class="text-2xl sm:text-3xl font-extrabold text-white mt-1">42 – 45 <span class="text-sm font-normal text-slate-500">(Age 43 Anchor)</span></div>
-        <div class="text-xs text-slate-500 mt-2 font-mono">15-year execution horizon</div>
+    <!-- Key Metrics Grid (Apple Bento Box) -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="apple-glass-card p-6 rounded-3xl border border-apple-border flex flex-col justify-between">
+        <div class="text-xs text-apple-secondary uppercase tracking-wider font-mono">Exit Age</div>
+        <div class="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-3">43</div>
+        <div class="text-xs text-apple-secondary mt-3">15-year execution horizon</div>
       </div>
-      <div class="glass-card p-5 rounded-2xl border border-brand-border">
-        <div class="font-mono text-xs text-slate-400 uppercase tracking-wider">Target Liquid Corpus</div>
-        <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1">₹20 – 25 Cr</div>
-        <div class="text-xs text-slate-500 mt-2 font-mono">Inflation-shielded principal</div>
+      <div class="apple-glass-card p-6 rounded-3xl border border-apple-border flex flex-col justify-between">
+        <div class="text-xs text-apple-secondary uppercase tracking-wider font-mono">Liquid Corpus</div>
+        <div class="text-3xl sm:text-4xl font-bold text-apple-green tracking-tight mt-3">&euro;25 Cr</div>
+        <div class="text-xs text-apple-secondary mt-3">Inflation-shielded principal</div>
       </div>
-      <div class="glass-card p-5 rounded-2xl border border-brand-border">
-        <div class="font-mono text-xs text-slate-400 uppercase tracking-wider">Safe Passive Yield</div>
-        <div class="text-2xl sm:text-3xl font-extrabold text-sky-400 mt-1">₹1.2 – 1.5 Cr/yr</div>
-        <div class="text-xs text-slate-500 mt-2 font-mono">~₹10–12.5L/month post-tax</div>
+      <div class="apple-glass-card p-6 rounded-3xl border border-apple-border flex flex-col justify-between">
+        <div class="text-xs text-apple-secondary uppercase tracking-wider font-mono">Passive Yield</div>
+        <div class="text-3xl sm:text-4xl font-bold text-apple-blue tracking-tight mt-3">&euro;1.5 Cr<span class="text-sm font-normal text-apple-secondary">/yr</span></div>
+        <div class="text-xs text-apple-secondary mt-3">&approx; &euro;11.5L/month post-tax</div>
       </div>
-      <div class="glass-card p-5 rounded-2xl border border-brand-border">
-        <div class="font-mono text-xs text-slate-400 uppercase tracking-wider">Operating Axiom</div>
-        <div class="text-xl sm:text-2xl font-bold text-amber-400 mt-1">Zero Linear Traps</div>
-        <div class="text-xs text-slate-500 mt-2 font-mono">Build once, compound forever</div>
+      <div class="apple-glass-card p-6 rounded-3xl border border-apple-border flex flex-col justify-between">
+        <div class="text-xs text-apple-secondary uppercase tracking-wider font-mono">Operating Axiom</div>
+        <div class="text-xl sm:text-2xl font-bold text-white tracking-tight mt-3">Zero Linear Traps</div>
+        <div class="text-xs text-apple-secondary mt-3">Build once, compound forever</div>
       </div>
-    </div>
+    </section>
 
-    <!-- Vedic Astrology & Planetary Cycles Section -->
-    <section class="glass-card p-6 sm:p-8 rounded-3xl border border-purple-500/30 bg-gradient-to-b from-purple-950/20 to-brand-surface space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <!-- Janam Kundali & Sade Sati Section (Apple Pro Feature Card) -->
+    <section id="kundaliSection" class="apple-glass-card p-8 sm:p-12 rounded-[36px] border border-apple-border space-y-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <div class="inline-block px-2.5 py-0.5 rounded bg-purple-950 text-purple-400 font-mono text-[11px] uppercase tracking-wider border border-purple-800">
-            Janam Kundali & Astrological Architecture
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Cosmic Blueprint: 04 Jan 1998, 07:10 AM, Purulia</h2>
-          <p class="text-slate-400 text-sm mt-1">Lagna: <strong class="text-sky-400">Gemini (Mithuna 29°)</strong> | Moon: <strong class="text-purple-400">Aquarius (Kumbha 29°)</strong> | Lagna Lord: <strong class="text-emerald-400">Mercury in 6th House of Medicine & Exams</strong></p>
+          <span class="text-xs font-mono text-apple-purple uppercase tracking-wider block">Astrological &amp; Cosmic Calibration</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-2">Janam Kundali &amp; Sade Sati Status</h2>
+          <p class="text-apple-secondary text-sm mt-1 max-w-xl">
+            Calculated for <strong>04 January 1998, 07:10 AM, Purulia</strong>. Your chart explains your current symptoms (hair thinning, dark circles, exam paralysis) and maps your exact release in early 2027.
+          </p>
         </div>
-        <div class="font-mono text-xs px-3 py-1.5 rounded-lg bg-slate-900 text-purple-300 border border-slate-800">
-          Transit Alert: <strong class="text-amber-400">Peak SADE SATI (Ends 2027)</strong>
-        </div>
-      </div>
-
-      <!-- Kundali Core Alignment Matrix -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
-        <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
-          <div class="text-[10px] text-slate-500 uppercase">Ascendant (Lagna)</div>
-          <div class="text-sm font-bold text-sky-400 mt-0.5">Mithuna 29°25'</div>
-          <div class="text-[10px] text-slate-400 mt-1">Punarvasu (Guru) • Coder-Physician Dual Mind</div>
-        </div>
-        <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
-          <div class="text-[10px] text-slate-500 uppercase">Moon Sign (Rashi)</div>
-          <div class="text-sm font-bold text-purple-400 mt-0.5">Kumbha 29°41'</div>
-          <div class="text-[10px] text-slate-400 mt-1">Purva Bhadrapada • Civic Tech & Purulia Roots</div>
-        </div>
-        <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
-          <div class="text-[10px] text-slate-500 uppercase">Current Mahadasha</div>
-          <div class="text-sm font-bold text-emerald-400 mt-0.5">Mercury (2021–38)</div>
-          <div class="text-[10px] text-slate-400 mt-1">Lord in 6th House of Medical Exams (Jyeshtha)</div>
-        </div>
-        <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
-          <div class="text-[10px] text-slate-500 uppercase">Current Sub-Period</div>
-          <div class="text-sm font-bold text-amber-400 mt-0.5">Mercury - Venus</div>
-          <div class="text-[10px] text-slate-400 mt-1">Oct 2024 – Aug 2027 • Ego Reset & Base Building</div>
+        <div class="px-4 py-2 rounded-full bg-apple-purple/10 border border-apple-purple/20 text-xs font-mono text-apple-purple">
+          Chart Ruler: Mercury in 6th (Exams/Medicine)
         </div>
       </div>
 
-      <!-- Live Sade Sati Progress Gauge -->
-      <div class="p-5 rounded-2xl bg-slate-900/90 border border-amber-500/30 space-y-3">
+      <!-- Core Astrological Data Pillars -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 font-mono text-xs">
+        <div class="p-4 rounded-2xl bg-apple-card border border-apple-border">
+          <div class="text-[11px] text-apple-secondary uppercase">Ascendant (Lagna)</div>
+          <div class="text-base font-semibold text-white mt-1">Mithuna 29&deg;25'</div>
+          <div class="text-[11px] text-apple-secondary mt-1">Punarvasu (Guru) &bull; Coder-Doctor Mind</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-apple-card border border-apple-border">
+          <div class="text-[11px] text-apple-secondary uppercase">Moon Sign (Rashi)</div>
+          <div class="text-base font-semibold text-apple-purple mt-1">Kumbha 29&deg;41'</div>
+          <div class="text-[11px] text-apple-secondary mt-1">Purva Bhadrapada &bull; Purulia &amp; Civic Tech</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-apple-card border border-apple-border">
+          <div class="text-[11px] text-apple-secondary uppercase">Active Mahadasha</div>
+          <div class="text-base font-semibold text-apple-green mt-1">Mercury (2021&ndash;38)</div>
+          <div class="text-[11px] text-apple-secondary mt-1">Lagna Lord in 6th (Jyeshtha)</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-apple-card border border-apple-border">
+          <div class="text-[11px] text-apple-secondary uppercase">Active Sub-Period</div>
+          <div class="text-base font-semibold text-apple-orange mt-1">Mercury - Venus</div>
+          <div class="text-[11px] text-apple-secondary mt-1">Oct 2024 &ndash; Aug 2027 &bull; Base Building</div>
+        </div>
+      </div>
+
+      <!-- Live Sade Sati Timeline Gauge -->
+      <div class="p-6 rounded-3xl bg-apple-elevated/70 border border-apple-border space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div class="flex items-center gap-2">
-            <span class="h-2 w-2 rounded-full bg-amber-400 animate-pulse"></span>
-            <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">SADE SATI TIMELINE (KUMBHA RASHI 29°)</span>
+            <span class="h-2 w-2 rounded-full bg-apple-orange animate-pulse"></span>
+            <span class="text-xs font-mono font-medium text-apple-orange uppercase tracking-wider">Sade Sati Transit (Kumbha Rashi 29&deg;)</span>
           </div>
-          <div class="font-mono text-xs text-slate-400">
-            Current Phase: <strong class="text-rose-400">Peak Janma Shani (80% Cleared)</strong>
+          <div class="font-mono text-xs text-apple-secondary">
+            Current Stage: <span class="text-white font-medium">Peak Janma Shani (&approx;80% Cleared)</span>
           </div>
         </div>
-        
+
         <div class="space-y-1.5">
-          <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden border border-slate-700 flex">
-            <div class="bg-slate-600 h-full w-1/3" title="Phase 1: Rising (2022-2024) [Done]"></div>
-            <div class="bg-gradient-to-r from-amber-500 to-rose-500 h-full w-[28%]" title="Phase 2: Peak Janma Shani (2024-2026) [Active Now]"></div>
-            <div class="bg-slate-700/50 h-full flex-grow" title="Phase 3: Setting (2027-2029)"></div>
+          <div class="w-full bg-neutral-900 h-2.5 rounded-full overflow-hidden border border-white/[0.06] flex">
+            <div class="bg-neutral-600 h-full w-1/3" title="Phase 1: Rising (2022-2024) [Done]"></div>
+            <div class="bg-gradient-to-r from-apple-orange to-apple-red h-full w-[28%]" title="Phase 2: Peak Janma Shani (Active Now)"></div>
+            <div class="bg-neutral-800 h-full flex-grow" title="Phase 3: Setting (2027-2029)"></div>
           </div>
-          <div class="flex justify-between font-mono text-[10px] text-slate-500">
-            <span>2022: Onset</span>
-            <span class="text-amber-400 font-bold">NOW (Peak Grinding Phase)</span>
-            <span class="text-emerald-400 font-bold">Early 2027: Peak Lifts</span>
-            <span>2029: Complete Freedom</span>
+          <div class="flex justify-between font-mono text-[10px] text-apple-tertiary">
+            <span>2022 Onset</span>
+            <span class="text-apple-orange font-medium">NOW (Peak Grinding)</span>
+            <span class="text-apple-green font-medium">Early 2027: Heavy Fog Lifts</span>
+            <span>2029 Complete Freedom</span>
           </div>
         </div>
-        <p class="text-xs text-slate-400 font-sans leading-relaxed pt-1">
-          You are in the final brutal months of the central peak. Saturn is finishing its exact degree crossing over your natal Moon. The acute feeling of helplessness, exam dread, and lethargy will begin lifting rapidly in 2027.
+        <p class="text-xs text-apple-secondary leading-relaxed pt-1">
+          You are in the final grueling months of the central peak. Saturn is finishing its direct degree crossing over your natal Moon. The physical symptoms (hair thinning, dark circles, feeling stuck) are typical markers of Janma Shani that lift permanently as Saturn shifts into Pisces in early 2027.
         </p>
       </div>
 
-      <!-- Visual Vedic Birth Chart (D-1 Kundali Grid) -->
-      <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-mono font-bold text-purple-400 uppercase tracking-wider">D-1 Rashi Chakra (Natal Planetary Houses)</span>
-          <span class="text-[11px] font-mono text-slate-500">Birth: 04-Jan-1998 07:10 AM Purulia</span>
-        </div>
-        
+      <!-- D-1 Natal Chart Grid (12 Houses) -->
+      <div class="space-y-3">
+        <div class="text-xs font-mono uppercase tracking-wider text-apple-secondary">D-1 Rashi Chakra (Natal Planetary Placements)</div>
         <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2.5 font-mono text-xs">
-          <div class="p-3 rounded-xl bg-slate-950 border border-sky-500/30">
-            <div class="text-[10px] text-slate-500 uppercase">H1 (Gemini)</div>
-            <div class="font-bold text-sky-400">LAGNA 29°</div>
-            <div class="text-[10px] text-slate-400 mt-1">Punarvasu (Guru)</div>
+          <div class="p-3.5 rounded-2xl bg-apple-card border border-apple-blue/30">
+            <div class="text-[10px] text-apple-secondary uppercase">H1 (Gemini)</div>
+            <div class="font-semibold text-apple-blue">LAGNA 29&deg;</div>
+            <div class="text-[10px] text-apple-secondary mt-1">Punarvasu (Guru)</div>
           </div>
-          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800">
-            <div class="text-[10px] text-slate-500 uppercase">H3 (Leo)</div>
-            <div class="font-bold text-amber-400">Rahu 19°</div>
-            <div class="text-[10px] text-slate-400 mt-1">Software / Coding Drive</div>
+          <div class="p-3.5 rounded-2xl bg-apple-card border border-apple-border">
+            <div class="text-[10px] text-apple-secondary uppercase">H3 (Leo)</div>
+            <div class="font-semibold text-apple-orange">Rahu 19&deg;</div>
+            <div class="text-[10px] text-apple-secondary mt-1">Software / Coding Drive</div>
           </div>
-          <div class="p-3 rounded-xl bg-slate-950 border border-emerald-500/30">
-            <div class="text-[10px] text-slate-500 uppercase">H6 (Scorpio)</div>
-            <div class="font-bold text-emerald-400">Mercury 27°</div>
-            <div class="text-[10px] text-slate-400 mt-1">Lagna Lord in Exam House</div>
+          <div class="p-3.5 rounded-2xl bg-apple-card border border-apple-green/30">
+            <div class="text-[10px] text-apple-secondary uppercase">H6 (Scorpio)</div>
+            <div class="font-semibold text-apple-green">Mercury 27&deg;</div>
+            <div class="text-[10px] text-apple-secondary mt-1">Lagna Lord in Exam House</div>
           </div>
-          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800">
-            <div class="text-[10px] text-slate-500 uppercase">H7 (Sagittarius)</div>
-            <div class="font-bold text-amber-300">Sun 19°</div>
-            <div class="text-[10px] text-slate-400 mt-1">Purva Ashadha • Public Stand</div>
+          <div class="p-3.5 rounded-2xl bg-apple-card border border-apple-border">
+            <div class="text-[10px] text-apple-secondary uppercase">H7 (Sagittarius)</div>
+            <div class="font-semibold text-white">Sun 19&deg;</div>
+            <div class="text-[10px] text-apple-secondary mt-1">Purva Ashadha &bull; Public Stand</div>
           </div>
-          <div class="p-3 rounded-xl bg-slate-950 border border-rose-500/30">
-            <div class="text-[10px] text-slate-500 uppercase">H8 (Capricorn)</div>
-            <div class="font-bold text-rose-400">Mars (Uchha) 19°</div>
-            <div class="text-[10px] text-slate-400 mt-1">Jupiter 29° + Venus 8°</div>
+          <div class="p-3.5 rounded-2xl bg-apple-card border border-apple-red/30">
+            <div class="text-[10px] text-apple-secondary uppercase">H8 (Capricorn)</div>
+            <div class="font-semibold text-apple-red">Mars (Uchha) 19&deg;</div>
+            <div class="text-[10px] text-apple-secondary mt-1">Jupiter 29&deg; + Venus 8&deg;</div>
           </div>
-          <div class="p-3 rounded-xl bg-slate-950 border border-purple-500/30">
-            <div class="text-[10px] text-slate-500 uppercase">H9 (Aquarius)</div>
-            <div class="font-bold text-purple-400">Moon 29° + Ketu</div>
-            <div class="text-[10px] text-slate-400 mt-1">Civic Mind • Purulia Roots</div>
+          <div class="p-3.5 rounded-2xl bg-apple-card border border-apple-purple/30">
+            <div class="text-[10px] text-apple-secondary uppercase">H9 (Aquarius)</div>
+            <div class="font-semibold text-apple-purple">Moon 29&deg; + Ketu</div>
+            <div class="text-[10px] text-apple-secondary mt-1">Purulia Roots &bull; Seva</div>
           </div>
         </div>
       </div>
 
-      <!-- Daily Biological & Mental Reset Habit Tracker -->
-      <div class="p-5 rounded-2xl bg-gradient-to-r from-slate-900 to-sky-950/30 border border-brand-border space-y-4">
+      <!-- Daily Tapasya & Biological Reset Tracker -->
+      <div class="p-6 rounded-3xl bg-apple-card border border-apple-border space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <div class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">DAILY BIOLOGICAL & TAPASYA TRACKER</div>
-            <div class="text-xs text-slate-400">Check off daily to appease Shani and activate 6th house Mercury:</div>
+            <div class="text-xs font-mono font-medium text-apple-blue uppercase tracking-wider">DAILY BIOLOGICAL &amp; TAPASYA ENGINE</div>
+            <div class="text-xs text-apple-secondary">Daily non-negotiables to calm Shani and activate your 6th house Mercury:</div>
           </div>
-          <div class="font-mono text-xs text-slate-300">
-            Daily Habits: <strong id="dailyHabitCount" class="text-sky-400">0</strong> / 6 Completed
+          <div class="font-mono text-xs text-apple-text">
+            Habits: <strong id="dailyHabitCount" class="text-apple-blue">0</strong> / 6 Completed
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 font-mono text-xs">
-          <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-start gap-2.5">
-            <input type="checkbox" id="habit_1" onchange="toggleHabit('habit_1')" class="checkbox-custom mt-0.5 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-sky-500 accent-sky-400 cursor-pointer">
-            <label for="habit_1" class="text-xs text-slate-300 cursor-pointer select-none">
-              <span class="text-amber-400 font-bold block text-[10px] uppercase">Shani Remedy</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 font-mono text-xs">
+          <div class="p-3.5 rounded-2xl bg-apple-elevated border border-apple-border flex items-start gap-3">
+            <input type="checkbox" id="habit_1" onchange="toggleHabit('habit_1')" class="checkbox-custom mt-0.5 h-4 w-4 rounded border-apple-border bg-neutral-900 text-apple-blue accent-apple-blue cursor-pointer">
+            <label for="habit_1" class="text-xs text-apple-text cursor-pointer select-none">
+              <span class="text-apple-orange font-semibold block text-[10px] uppercase">Shani Remedy</span>
               07:00 AM Wake + 500ml Water + 15m Sun
             </label>
           </div>
-          <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-start gap-2.5">
-            <input type="checkbox" id="habit_2" onchange="toggleHabit('habit_2')" class="checkbox-custom mt-0.5 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-sky-500 accent-sky-400 cursor-pointer">
-            <label for="habit_2" class="text-xs text-slate-300 cursor-pointer select-none">
-              <span class="text-emerald-400 font-bold block text-[10px] uppercase">Biology Fix</span>
+          <div class="p-3.5 rounded-2xl bg-apple-elevated border border-apple-border flex items-start gap-3">
+            <input type="checkbox" id="habit_2" onchange="toggleHabit('habit_2')" class="checkbox-custom mt-0.5 h-4 w-4 rounded border-apple-border bg-neutral-900 text-apple-blue accent-apple-blue cursor-pointer">
+            <label for="habit_2" class="text-xs text-apple-text cursor-pointer select-none">
+              <span class="text-apple-green font-semibold block text-[10px] uppercase">Biological Base</span>
               80g Protein (Eggs, Sattu, Paneer)
             </label>
           </div>
-          <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-start gap-2.5">
-            <input type="checkbox" id="habit_3" onchange="toggleHabit('habit_3')" class="checkbox-custom mt-0.5 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-sky-500 accent-sky-400 cursor-pointer">
-            <label for="habit_3" class="text-xs text-slate-300 cursor-pointer select-none">
-              <span class="text-sky-400 font-bold block text-[10px] uppercase">Mercury 6th House</span>
-              50 MCQs Timed Block + Error Log
+          <div class="p-3.5 rounded-2xl bg-apple-elevated border border-apple-border flex items-start gap-3">
+            <input type="checkbox" id="habit_3" onchange="toggleHabit('habit_3')" class="checkbox-custom mt-0.5 h-4 w-4 rounded border-apple-border bg-neutral-900 text-apple-blue accent-apple-blue cursor-pointer">
+            <label for="habit_3" class="text-xs text-apple-text cursor-pointer select-none">
+              <span class="text-apple-blue font-semibold block text-[10px] uppercase">Mercury 6th House</span>
+              50 MCQs Timed Block + Error Audit
             </label>
           </div>
-          <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-start gap-2.5">
-            <input type="checkbox" id="habit_4" onchange="toggleHabit('habit_4')" class="checkbox-custom mt-0.5 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-sky-500 accent-sky-400 cursor-pointer">
-            <label for="habit_4" class="text-xs text-slate-300 cursor-pointer select-none">
-              <span class="text-rose-400 font-bold block text-[10px] uppercase">Rahu Filter</span>
+          <div class="p-3.5 rounded-2xl bg-apple-elevated border border-apple-border flex items-start gap-3">
+            <input type="checkbox" id="habit_4" onchange="toggleHabit('habit_4')" class="checkbox-custom mt-0.5 h-4 w-4 rounded border-apple-border bg-neutral-900 text-apple-blue accent-apple-blue cursor-pointer">
+            <label for="habit_4" class="text-xs text-apple-text cursor-pointer select-none">
+              <span class="text-apple-red font-semibold block text-[10px] uppercase">Rahu Shield</span>
               Zero Reels / Shorts Doomscrolling
             </label>
           </div>
-          <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-start gap-2.5">
-            <input type="checkbox" id="habit_5" onchange="toggleHabit('habit_5')" class="checkbox-custom mt-0.5 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-sky-500 accent-sky-400 cursor-pointer">
-            <label for="habit_5" class="text-xs text-slate-300 cursor-pointer select-none">
-              <span class="text-purple-400 font-bold block text-[10px] uppercase">Circadian Lock</span>
+          <div class="p-3.5 rounded-2xl bg-apple-elevated border border-apple-border flex items-start gap-3">
+            <input type="checkbox" id="habit_5" onchange="toggleHabit('habit_5')" class="checkbox-custom mt-0.5 h-4 w-4 rounded border-apple-border bg-neutral-900 text-apple-blue accent-apple-blue cursor-pointer">
+            <label for="habit_5" class="text-xs text-apple-text cursor-pointer select-none">
+              <span class="text-apple-purple font-semibold block text-[10px] uppercase">Circadian Lock</span>
               7.5h Sleep (Phone outside room)
             </label>
           </div>
-          <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-start gap-2.5">
-            <input type="checkbox" id="habit_6" onchange="toggleHabit('habit_6')" class="checkbox-custom mt-0.5 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-sky-500 accent-sky-400 cursor-pointer">
-            <label for="habit_6" class="text-xs text-slate-300 cursor-pointer select-none">
-              <span class="text-emerald-400 font-bold block text-[10px] uppercase">Cashflow Anchor</span>
-              2 Duties/Wk Active (₹35k-50k/mo)
+          <div class="p-3.5 rounded-2xl bg-apple-elevated border border-apple-border flex items-start gap-3">
+            <input type="checkbox" id="habit_6" onchange="toggleHabit('habit_6')" class="checkbox-custom mt-0.5 h-4 w-4 rounded border-apple-border bg-neutral-900 text-apple-blue accent-apple-blue cursor-pointer">
+            <label for="habit_6" class="text-xs text-apple-text cursor-pointer select-none">
+              <span class="text-apple-green font-semibold block text-[10px] uppercase">Dignity Anchor</span>
+              2 Duties/Wk Active (&euro;35k&ndash;50k/mo)
             </label>
           </div>
-        </div>
-      </div>
-
-      <!-- Why You Feel Trapped Right Now & The 4 Planetary Eras -->
-      <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3 font-sans">
-        <div class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider flex items-center gap-2">
-          <span>⚡</span> THE ASTROLOGICAL CAUSE OF YOUR CURRENT CRISIS (PEAK SADE SATI)
-        </div>
-        <p class="text-xs text-slate-300 leading-relaxed">
-          Your Moon sits at <strong class="text-purple-300">29° Kumbha (Aquarius)</strong>. Saturn is actively transiting directly across your Moon degree throughout 2024–2026. This produces the textbook symptoms of <strong class="text-white">Peak Janma Shani</strong>: feeling isolated at home, chronic mental fatigue, dark circles, hair loss, and exam panic (over-attempting questions blindly). <strong class="text-emerald-400">The heavy psychological fog lifts permanently in early 2027 as Saturn crosses into Pisces.</strong>
-        </p>
-      </div>
-
-      <!-- 4 Astrological Eras Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold text-amber-400">AGES 28–29 (2024–27)</span>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950 text-amber-300">Mercury-Venus</span>
-          </div>
-          <div class="text-base font-bold text-white">The Shani Crucible & Reset</div>
-          <p class="text-xs text-slate-400 leading-relaxed font-sans">
-            Venus in 8th house strips away vanity (1L+ rank) to force real discipline. Lagna Lord Mercury in 6th house requires forensic MCQ drills. Surrender to <strong class="text-slate-200">Tapasya</strong> (7.5h sleep, 3L water, 80g protein, 50 MCQs/day).
-          </p>
-          <div class="pt-2 text-[11px] font-mono text-amber-400 border-t border-slate-800">Target: ₹6.5L → ₹18L Liquid Base</div>
-        </div>
-
-        <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold text-sky-400">AGES 30–33 (2027–31)</span>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950 text-sky-300">Mercury-Sun/Moon</span>
-          </div>
-          <div class="text-base font-bold text-white">Sade Sati Lifts & ₹50L Floor</div>
-          <p class="text-xs text-slate-400 leading-relaxed font-sans">
-            Saturn leaves your Moon; mental clarity returns. Sun (3rd) and Moon (2nd) activate wealth and public standing. Clinical specialization completes or Tech Lead status achieved.
-          </p>
-          <div class="pt-2 text-[11px] font-mono text-sky-400 border-t border-slate-800">Milestone: ₹50.0 Lakhs Floor Cleared</div>
-        </div>
-
-        <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold text-rose-400">AGES 34–39 (2031–37)</span>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950 text-rose-300">Mercury-Mars/Rahu</span>
-          </div>
-          <div class="text-base font-bold text-white">Exalted Mars S-Curve Surge</div>
-          <p class="text-xs text-slate-400 leading-relaxed font-sans">
-            Exalted Mars (Capricorn) + Rahu in 3rd House of software create an unstoppable enterprise. Automated Clinic OS + diagnostic center network scaled under 22% corporate tax.
-          </p>
-          <div class="pt-2 text-[11px] font-mono text-rose-400 border-t border-slate-800">Target: ₹5.0 Cr Base → ₹13 Cr Secondary</div>
-        </div>
-
-        <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold text-emerald-400">AGE 40–43+ (2038–45)</span>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300">Ketu Mahadasha</span>
-          </div>
-          <div class="text-base font-bold text-white">The Purulia Sovereign Seva</div>
-          <p class="text-xs text-slate-400 leading-relaxed font-sans">
-            Ketu sits in 9th house (Kumbha) with Moon. Astrologically and mathematically aligns with your Age 43 exit: ₹25 Cr locked in 3 defensive buckets, running unhurried pro-bono clinics in Purulia.
-          </p>
-          <div class="pt-2 text-[11px] font-mono text-emerald-400 border-t border-slate-800">Terminal: ₹1.5 Cr/yr Yield + Seva</div>
-        </div>
-      </div>
-
-      <!-- Personalized Astrological Prescription Card -->
-      <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4 font-mono text-xs">
-        <div class="space-y-1">
-          <div class="font-bold text-purple-400 uppercase tracking-wider">Planetary Behavioral Upayas (Remedies)</div>
-          <div class="text-slate-300 font-sans text-xs">1. Wake at 07:00 AM + 500ml water | 2. 50 MCQs/day (Mercury 6th house food) | 3. 80g protein | 4. 2 duties/wk for cashflow</div>
-        </div>
-        <div class="px-3 py-1.5 rounded-lg bg-emerald-950/80 text-emerald-300 border border-emerald-800 font-bold whitespace-nowrap">
-          ✓ Kundali Calibrated to Purulia
         </div>
       </div>
     </section>
 
-    <!-- Linear Trap vs Exponential Blueprint Comparison -->
-    <section class="glass-card p-6 sm:p-8 rounded-3xl border border-brand-border space-y-6">
+    <!-- Immediate 90-Day Triage Section -->
+    <section id="triageSection" class="apple-glass-card p-8 sm:p-12 rounded-[36px] border border-apple-border space-y-8">
+      <div>
+        <span class="text-xs font-mono text-apple-blue uppercase tracking-wider block">Phase 0 Execution</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-2">Immediate 90-Day Action Triage</h2>
+        <p class="text-apple-secondary text-sm mt-1">Nov 2026 &ndash; Feb 2027 &bull; The psychological reset and directional lock.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Triage 1 -->
+        <div class="p-6 rounded-3xl bg-apple-card border border-apple-border space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-apple-blue">01. EMOTIONAL REBOOT</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-apple-elevated text-apple-secondary">Biology First</span>
+          </div>
+          <p class="text-xs text-apple-secondary leading-relaxed">
+            Halt reactive outreach &amp; forum scrolling. Treat the incoming INI-CET percentile as pure objective data, not personal identity. Protect circadian anchor: 7.5h sleep + daily heavy training.
+          </p>
+          <div class="pt-3 border-t border-apple-border space-y-2.5">
+            <div class="flex items-start gap-2.5">
+              <input type="checkbox" id="triage_1" onchange="toggleItem('triage_1')" class="checkbox-custom mt-0.5 h-3.5 w-3.5 rounded border-apple-border bg-neutral-900 text-apple-blue accent-apple-blue cursor-pointer">
+              <label for="triage_1" class="text-xs text-apple-text cursor-pointer select-none">Halt all exam forum scrolling &amp; gossip channels</label>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <input type="checkbox" id="triage_2" onchange="toggleItem('triage_2')" class="checkbox-custom mt-0.5 h-3.5 w-3.5 rounded border-apple-border bg-neutral-900 text-apple-blue accent-apple-blue cursor-pointer">
+              <label for="triage_2" class="text-xs text-apple-text cursor-pointer select-none">Baseline blood panel (ApoB, HbA1c, Vitals)</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Triage 2 -->
+        <div class="p-6 rounded-3xl bg-apple-card border border-apple-border space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-apple-orange">02. LOCK 2027 TARGET</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-apple-elevated text-apple-secondary">Decision Gate</span>
+          </div>
+          <p class="text-xs text-apple-secondary leading-relaxed">
+            Commit unambiguously: either an intense 6-month NEET-PG push for high-leverage branch (Radio/Derm/Psych/Path/DNB) or direct entry into health-tech engineering/founding. No limbo.
+          </p>
+          <div class="pt-3 border-t border-apple-border space-y-2.5">
+            <div class="flex items-start gap-2.5">
+              <input type="checkbox" id="triage_3" onchange="toggleItem('triage_3')" class="checkbox-custom mt-0.5 h-3.5 w-3.5 rounded border-apple-border bg-neutral-900 text-apple-orange accent-apple-orange cursor-pointer">
+              <label for="triage_3" class="text-xs text-apple-text cursor-pointer select-none">Review INI-CET score against branch criteria</label>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <input type="checkbox" id="triage_4" onchange="toggleItem('triage_4')" class="checkbox-custom mt-0.5 h-3.5 w-3.5 rounded border-apple-border bg-neutral-900 text-apple-orange accent-apple-orange cursor-pointer">
+              <label for="triage_4" class="text-xs text-apple-text cursor-pointer select-none">Lock 6-mo NEET sprint or sign tech contract</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Triage 3 -->
+        <div class="p-6 rounded-3xl bg-apple-card border border-apple-border space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-apple-green">03. ASSET PIPING</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-apple-elevated text-apple-secondary">Capital Base</span>
+          </div>
+          <p class="text-xs text-apple-secondary leading-relaxed">
+            Automate monthly SIPs on day one of income. Zero lifestyle inflation. Direct all excess surplus to equity instruments; secure pure term life and independent super top-up health insurance.
+          </p>
+          <div class="pt-3 border-t border-apple-border space-y-2.5">
+            <div class="flex items-start gap-2.5">
+              <input type="checkbox" id="triage_5" onchange="toggleItem('triage_5')" class="checkbox-custom mt-0.5 h-3.5 w-3.5 rounded border-apple-border bg-neutral-900 text-apple-green accent-apple-green cursor-pointer">
+              <label for="triage_5" class="text-xs text-apple-text cursor-pointer select-none">Setup auto-debit index SIPs (&euro;50k/mo initial)</label>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <input type="checkbox" id="triage_6" onchange="toggleItem('triage_6')" class="checkbox-custom mt-0.5 h-3.5 w-3.5 rounded border-apple-border bg-neutral-900 text-apple-green accent-apple-green cursor-pointer">
+              <label for="triage_6" class="text-xs text-apple-text cursor-pointer select-none">Secure &euro;2 Cr Term + Super Top-up Health</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Linear Trap vs. Exponential Blueprint -->
+    <section class="apple-glass-card p-8 sm:p-12 rounded-[36px] border border-apple-border space-y-8">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div class="inline-block px-2.5 py-0.5 rounded bg-sky-950 text-sky-400 font-mono text-[11px] uppercase tracking-wider border border-sky-800">
-            Trajectory Simulator
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Linear Trap vs. Exponential Blueprint</h2>
-          <p class="text-slate-400 text-sm mt-1">Compare the year-by-year outcome of trading hours for wages versus building sovereign systems.</p>
+          <span class="text-xs font-mono text-apple-blue uppercase tracking-wider block">Trajectory Contrast</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-2">Linear Doctor Trap vs. Exponential Blueprint</h2>
+          <p class="text-apple-secondary text-sm mt-1">Year-by-year mathematical proof comparing trading hours for fees versus capitalizing equity.</p>
         </div>
         <div class="flex items-center gap-2 font-mono text-xs">
-          <button id="showExpBtn" onclick="togglePathMode('exp')" class="px-3 py-1.5 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 font-bold transition">Exponential (Project Autonomy)</button>
-          <button id="showLinBtn" onclick="togglePathMode('lin')" class="px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition">Linear Doctor Trap</button>
+          <button id="showExpBtn" onclick="togglePathMode('exp')" class="px-4 py-2 rounded-full bg-apple-green/10 text-apple-green border border-apple-green/30 font-medium transition">Exponential (Project Autonomy)</button>
+          <button id="showLinBtn" onclick="togglePathMode('lin')" class="px-4 py-2 rounded-full bg-apple-card text-apple-secondary border border-apple-border hover:text-white transition">Linear Doctor Trap</button>
         </div>
       </div>
 
-      <!-- Comparative Highlight Metrics -->
+      <!-- Comparative Bento Stats -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-2">
-          <div class="font-mono text-xs text-slate-400 uppercase">Age 43 Net Worth Delta</div>
-          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">₹25.0 Cr vs ₹1.8 Cr</div>
-          <p class="text-xs text-slate-400">Path B generates <strong class="text-white">13.8x higher liquid wealth</strong> by capitalizing equity value instead of trading hours.</p>
+        <div class="p-6 rounded-3xl bg-apple-card border border-apple-border space-y-2">
+          <div class="text-xs text-apple-secondary font-mono uppercase">Age 43 Net Worth Delta</div>
+          <div class="text-3xl font-bold text-apple-green font-mono tracking-tight">&euro;25.0 Cr vs &euro;1.8 Cr</div>
+          <p class="text-xs text-apple-secondary">Path B generates <strong class="text-white">13.8x higher liquid wealth</strong> by capitalizing enterprise equity rather than trading hours.</p>
         </div>
-        <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-2">
-          <div class="font-mono text-xs text-slate-400 uppercase">Age 43 Weekly Labor Required</div>
-          <div class="text-2xl sm:text-3xl font-extrabold text-sky-400 font-mono">0 Hours vs 65 Hours</div>
-          <p class="text-xs text-slate-400">Path A doctor cannot stop seeing OPD patients without income falling to ₹0. Path B lives on passive yield.</p>
+        <div class="p-6 rounded-3xl bg-apple-card border border-apple-border space-y-2">
+          <div class="text-xs text-apple-secondary font-mono uppercase">Age 43 Weekly Labor Required</div>
+          <div class="text-3xl font-bold text-apple-blue font-mono tracking-tight">0 Hours vs 65 Hours</div>
+          <p class="text-xs text-apple-secondary">Path A doctor cannot stop seeing OPD patients without income falling to zero. Path B lives on passive yield.</p>
         </div>
-        <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-2">
-          <div class="font-mono text-xs text-slate-400 uppercase">Effective Tax Rate</div>
-          <div class="text-2xl sm:text-3xl font-extrabold text-purple-400 font-mono">22% vs 39%</div>
-          <p class="text-xs text-slate-400">Corporate entity structure retains 78% of profits to compound internally; salary earner loses nearly 40%.</p>
+        <div class="p-6 rounded-3xl bg-apple-card border border-apple-border space-y-2">
+          <div class="text-xs text-apple-secondary font-mono uppercase">Effective Tax Rate</div>
+          <div class="text-3xl font-bold text-apple-purple font-mono tracking-tight">22% vs 39%</div>
+          <p class="text-xs text-apple-secondary">Corporate entity structure retains 78% of profits to compound internally; salary earner loses nearly 40%.</p>
         </div>
       </div>
 
-      <!-- Year-by-Year Comparative Table Container -->
-      <div class="overflow-x-auto rounded-2xl border border-brand-border">
+      <!-- Trajectory Table -->
+      <div class="overflow-x-auto rounded-3xl border border-apple-border">
         <table class="w-full text-left font-mono text-xs">
-          <thead class="bg-slate-900/90 text-slate-400 uppercase border-b border-brand-border">
+          <thead class="bg-apple-card text-apple-secondary uppercase border-b border-apple-border">
             <tr>
-              <th class="p-3.5">Age</th>
-              <th class="p-3.5">Cosmic Archetype</th>
-              <th class="p-3.5 text-rose-400">Path A: The Linear Doctor Trap</th>
-              <th class="p-3.5 text-emerald-400">Path B: Project Autonomy (Exponential)</th>
-              <th class="p-3.5 text-right">Net Worth (Exp)</th>
+              <th class="p-4">Age</th>
+              <th class="p-4">Cosmic Transit</th>
+              <th class="p-4 text-apple-red">Path A: The Linear Doctor Trap</th>
+              <th class="p-4 text-apple-green">Path B: Project Autonomy (Exponential)</th>
+              <th class="p-4 text-right">Net Worth</th>
             </tr>
           </thead>
-          <tbody id="trajectoryTableBody" class="divide-y divide-brand-border/60 text-slate-300">
+          <tbody id="trajectoryTableBody" class="divide-y divide-apple-border/60 text-apple-text">
             <!-- Rendered by JS -->
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- Immediate 90-Day Triage Section (Active Focus) -->
-    <section class="glass-card p-6 sm:p-8 rounded-3xl border border-sky-500/30 bg-gradient-to-b from-sky-950/20 to-brand-surface relative overflow-hidden space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <div class="inline-block px-2.5 py-0.5 rounded bg-sky-950 text-sky-400 font-mono text-[11px] uppercase tracking-wider border border-sky-800">
-            Immediate Tactical Horizon
-          </div>
-          <h2 class="text-2xl font-bold text-white mt-2">Current 90-Day Action Triage (Nov 2026 – Feb 2027)</h2>
-        </div>
-        <div class="font-mono text-xs text-slate-400">
-          Age: <span class="text-white font-bold">28</span> | Baseline: <span class="text-emerald-400 font-bold">COMJNMH Graduate</span>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <!-- Triage 1 -->
-        <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold text-sky-400">01. EMOTIONAL REBOOT</span>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Phase 0</span>
-          </div>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Halt reactive outreach & forum scrolling. Treat the upcoming INI-CET percentile as pure objective market data, not personal identity. Protect circadian anchor: 7.5h sleep + daily heavy training.
-          </p>
-          <div class="pt-2 border-t border-slate-800 space-y-2">
-            <div class="flex items-start gap-2.5">
-              <input type="checkbox" id="triage_1" onchange="toggleItem('triage_1')" class="checkbox-custom mt-1 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-sky-500 accent-sky-400 cursor-pointer">
-              <label for="triage_1" class="text-xs text-slate-300 cursor-pointer select-none">Halt all exam forum scrolling & gossip channels</label>
-            </div>
-            <div class="flex items-start gap-2.5">
-              <input type="checkbox" id="triage_2" onchange="toggleItem('triage_2')" class="checkbox-custom mt-1 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-sky-500 accent-sky-400 cursor-pointer">
-              <label for="triage_2" class="text-xs text-slate-300 cursor-pointer select-none">Baseline blood panel (ApoB, HbA1c, Vitals)</label>
-            </div>
-          </div>
-        </div>
-
-        <!-- Triage 2 -->
-        <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold text-amber-400">02. LOCK 2027 TARGET</span>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Decision Gate</span>
-          </div>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Commit unambiguously: either an intense 6-month NEET-PG push for high-leverage branch (Radio/Derm/Psych/Path/DNB) or direct entry into health-tech engineering/founding. No limbo.
-          </p>
-          <div class="pt-2 border-t border-slate-800 space-y-2">
-            <div class="flex items-start gap-2.5">
-              <input type="checkbox" id="triage_3" onchange="toggleItem('triage_3')" class="checkbox-custom mt-1 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-amber-500 accent-amber-400 cursor-pointer">
-              <label for="triage_3" class="text-xs text-slate-300 cursor-pointer select-none">Review INI-CET percentile against branch criteria</label>
-            </div>
-            <div class="flex items-start gap-2.5">
-              <input type="checkbox" id="triage_4" onchange="toggleItem('triage_4')" class="checkbox-custom mt-1 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-amber-500 accent-amber-400 cursor-pointer">
-              <label for="triage_4" class="text-xs text-slate-300 cursor-pointer select-none">Lock 6-mo NEET sprint or sign tech contract</label>
-            </div>
-          </div>
-        </div>
-
-        <!-- Triage 3 -->
-        <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold text-emerald-400">03. ASSET ENGINE PIPING</span>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Financial Base</span>
-          </div>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Automate monthly SIPs on day one of income. Zero lifestyle inflation. Direct all excess surplus to equity instruments; secure pure term life and independent super top-up health insurance.
-          </p>
-          <div class="pt-2 border-t border-slate-800 space-y-2">
-            <div class="flex items-start gap-2.5">
-              <input type="checkbox" id="triage_5" onchange="toggleItem('triage_5')" class="checkbox-custom mt-1 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-emerald-500 accent-emerald-400 cursor-pointer">
-              <label for="triage_5" class="text-xs text-slate-300 cursor-pointer select-none">Setup auto-debit index SIPs (₹50k/mo initial)</label>
-            </div>
-            <div class="flex items-start gap-2.5">
-              <input type="checkbox" id="triage_6" onchange="toggleItem('triage_6')" class="checkbox-custom mt-1 h-3.5 w-3.5 rounded border-slate-700 bg-slate-800 text-emerald-500 accent-emerald-400 cursor-pointer">
-              <label for="triage_6" class="text-xs text-slate-300 cursor-pointer select-none">Secure ₹2 Cr Term Insurance + Super Top-up Health</label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- The Master Age-by-Age Checklist Engine -->
-    <section class="space-y-6">
+    <!-- Master Age-by-Age Checklist Engine -->
+    <section class="space-y-8">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <div class="inline-block px-2.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[11px] uppercase tracking-wider border border-slate-700">
-            Interactive Roadmap
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Age-by-Age Execution Checklists</h2>
-          <p class="text-slate-400 text-sm mt-1">Every age between 28 and 45+ has concrete milestones, financial thresholds, and verification gates.</p>
+          <span class="text-xs font-mono text-apple-blue uppercase tracking-wider block">Deterministic Execution</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-2">Age-by-Age Execution Checklists</h2>
+          <p class="text-apple-secondary text-sm mt-1">Every age between 28 and 45+ has concrete milestones, financial thresholds, and verification gates.</p>
         </div>
 
         <!-- Filter / View Modes -->
         <div class="flex items-center gap-2 font-mono text-xs">
-          <span class="text-slate-500">View:</span>
-          <button id="viewTabBtn" onclick="switchView('tab')" class="px-3 py-1.5 rounded-lg bg-sky-950 text-sky-400 border border-sky-800 font-bold transition">Single Age</button>
-          <button id="viewAllBtn" onclick="switchView('all')" class="px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition">All Ages</button>
+          <button id="viewTabBtn" onclick="switchView('tab')" class="px-4 py-2 rounded-full bg-apple-blue/10 text-apple-blue border border-apple-blue/30 font-medium transition">Single Age</button>
+          <button id="viewAllBtn" onclick="switchView('all')" class="px-4 py-2 rounded-full bg-apple-card text-apple-secondary border border-apple-border hover:text-white transition">All Ages</button>
         </div>
       </div>
 
       <!-- Age Navigation Pills -->
-      <div id="ageTabsContainer" class="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none text-xs font-mono">
+      <div id="ageTabsContainer" class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs font-mono">
         <!-- Rendered by JS -->
       </div>
 
@@ -548,190 +508,183 @@
       </div>
     </section>
 
-    <!-- The 15-Year Financial Compounding & Equity Simulator -->
-    <section class="glass-card p-6 sm:p-8 rounded-3xl border border-brand-border space-y-8">
+    <!-- The 15-Year Dual-Engine Capital Simulator -->
+    <section class="apple-glass-card p-8 sm:p-12 rounded-[36px] border border-apple-border space-y-10">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div class="inline-block px-2.5 py-0.5 rounded bg-emerald-950 text-emerald-400 font-mono text-[11px] uppercase tracking-wider border border-emerald-800">
-            Capital Accumulation Model
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Dual-Engine Compounding & Equity Simulator</h2>
-          <p class="text-slate-400 text-sm mt-1">Combines disciplined monthly index investing with Phase 2/3 enterprise equity realizations.</p>
+          <span class="text-xs font-mono text-apple-green uppercase tracking-wider block">Capital Compounding Model</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-2">Dual-Engine Capital &amp; Equity Simulator</h2>
+          <p class="text-apple-secondary text-sm mt-1">Combines monthly index investing with Phase 2/3 enterprise equity realizations.</p>
         </div>
-        <div class="font-mono text-xs px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 border border-slate-800">
-          Target: <strong class="text-emerald-400">₹25.00 Crore</strong> by Age 43
+        <div class="font-mono text-xs px-4 py-2 rounded-full bg-apple-elevated text-apple-secondary border border-apple-border">
+          Target: <strong class="text-apple-green font-semibold">&euro;25.00 Crore</strong> @ Age 43
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Sliders & Inputs -->
-        <div class="lg:col-span-2 space-y-6">
-          <div>
-            <div class="flex justify-between text-xs font-mono text-slate-400 mb-1">
-              <span>MONTHLY SIP INVESTMENT (SCALES OVER TIME)</span>
-              <span id="sipValueDisplay" class="text-sky-400 font-bold text-sm">₹1,50,000 / mo</span>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Sliders -->
+        <div class="lg:col-span-2 space-y-8">
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs font-mono text-apple-secondary">
+              <span>MONTHLY SIP INVESTMENT</span>
+              <span id="sipValueDisplay" class="text-apple-blue font-bold text-sm">&euro;1,50,000 / mo</span>
             </div>
-            <input id="sipSlider" type="range" min="50000" max="750000" step="25000" value="150000" class="w-full accent-sky-400 cursor-pointer bg-slate-800 rounded-lg">
-            <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-1">
-              <span>Phase 1 (₹50k–1.5L)</span>
-              <span>Phase 2 (₹2L–5L)</span>
-              <span>Phase 3 (₹5L–7.5L)</span>
+            <input id="sipSlider" type="range" min="50000" max="750000" step="25000" value="150000" class="w-full">
+            <div class="flex justify-between text-[11px] font-mono text-apple-tertiary">
+              <span>Phase 1 (&euro;50k&ndash;1.5L)</span>
+              <span>Phase 2 (&euro;2L&ndash;5L)</span>
+              <span>Phase 3 (&euro;5L&ndash;7.5L)</span>
             </div>
           </div>
 
-          <div>
-            <div class="flex justify-between text-xs font-mono text-slate-400 mb-1">
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs font-mono text-apple-secondary">
               <span>ESTIMATED ENTERPRISE EXIT LIQUIDITY (PHASE 3)</span>
-              <span id="exitValueDisplay" class="text-emerald-400 font-bold text-sm">₹8.0 Crore</span>
+              <span id="exitValueDisplay" class="text-apple-green font-bold text-sm">&euro;8.0 Crore</span>
             </div>
-            <input id="exitSlider" type="range" min="0" max="150000000" step="5000000" value="80000000" class="w-full accent-emerald-400 cursor-pointer bg-slate-800 rounded-lg">
-            <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-1">
-              <span>₹0 (Pure SIP Only)</span>
-              <span>₹8 Cr (Conservative M&A)</span>
-              <span>₹15 Cr (Aggressive Buyout)</span>
+            <input id="exitSlider" type="range" min="0" max="150000000" step="5000000" value="80000000" class="w-full">
+            <div class="flex justify-between text-[11px] font-mono text-apple-tertiary">
+              <span>&euro;0 (Pure SIP)</span>
+              <span>&euro;8 Cr (Conservative M&amp;A)</span>
+              <span>&euro;15 Cr (Strategic Buyout)</span>
             </div>
           </div>
 
-          <!-- Safe Withdrawal Slider -->
-          <div>
-            <div class="flex justify-between text-xs font-mono text-slate-400 mb-1">
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs font-mono text-apple-secondary">
               <span>POST-EXIT SAFE WITHDRAWAL RATE (AGE 44+)</span>
-              <span id="swrValueDisplay" class="text-purple-400 font-bold text-sm">5.5% Post-Tax</span>
+              <span id="swrValueDisplay" class="text-apple-purple font-bold text-sm">5.5% Post-Tax</span>
             </div>
-            <input id="swrSlider" type="range" min="3.5" max="7.0" step="0.25" value="5.5" class="w-full accent-purple-400 cursor-pointer bg-slate-800 rounded-lg">
-            <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-1">
+            <input id="swrSlider" type="range" min="3.5" max="7.0" step="0.25" value="5.5" class="w-full">
+            <div class="flex justify-between text-[11px] font-mono text-apple-tertiary">
               <span>3.5% (Ultra-Preservation)</span>
-              <span>5.5% (Balanced Endowment)</span>
+              <span>5.5% (Endowment)</span>
               <span>7.0% (Aggressive Yield)</span>
             </div>
           </div>
         </div>
 
-        <!-- Real-Time Output Card -->
-        <div class="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between space-y-6">
+        <!-- Output Card -->
+        <div class="p-8 rounded-3xl bg-apple-elevated border border-apple-border flex flex-col justify-between space-y-6">
           <div class="space-y-4">
             <div>
-              <div class="font-mono text-xs text-slate-400 uppercase">Projected Liquid Corpus @ Age 43</div>
-              <div id="totalProjectedCorpus" class="text-3xl sm:text-4xl font-extrabold text-emerald-400 font-mono mt-1">₹25.16 Cr</div>
-              <div class="text-[11px] text-slate-500 font-mono mt-1">Base SIP: <span id="sipSubtotalDisplay" class="text-slate-300">₹17.16 Cr</span> + M&A: <span id="exitSubtotalDisplay" class="text-slate-300">₹8.00 Cr</span></div>
+              <div class="font-mono text-xs text-apple-secondary uppercase">Projected Liquid Corpus @ Age 43</div>
+              <div id="totalProjectedCorpus" class="text-4xl font-bold text-apple-green font-mono tracking-tight mt-1">&euro;25.16 Cr</div>
+              <div class="text-[11px] text-apple-tertiary font-mono mt-1">SIP: <span id="sipSubtotalDisplay" class="text-white">&euro;17.16 Cr</span> + M&amp;A: <span id="exitSubtotalDisplay" class="text-white">&euro;8.00 Cr</span></div>
             </div>
 
-            <div class="pt-4 border-t border-slate-800">
-              <div class="font-mono text-xs text-slate-400 uppercase">Annual Passive Distribution</div>
-              <div id="annualPassiveIncome" class="text-2xl font-extrabold text-sky-400 font-mono mt-1">₹1.38 Cr / yr</div>
-              <div id="monthlyPassiveIncome" class="text-xs text-slate-400 font-mono mt-0.5">≈ ₹11.53 Lakhs / month post-tax</div>
+            <div class="pt-4 border-t border-apple-border">
+              <div class="font-mono text-xs text-apple-secondary uppercase">Annual Passive Distribution</div>
+              <div id="annualPassiveIncome" class="text-2xl font-bold text-apple-blue font-mono mt-1">&euro;1.38 Cr / yr</div>
+              <div id="monthlyPassiveIncome" class="text-xs text-apple-secondary font-mono mt-0.5">&approx; &euro;11.53 Lakhs / month post-tax</div>
             </div>
           </div>
 
-          <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800/80 text-xs text-slate-400 leading-relaxed font-sans">
-            <strong class="text-slate-200">The Purulia Surplus:</strong> At ~₹2.5L/mo living cost in West Bengal, you generate <strong class="text-emerald-400">₹9.0L/month of pure sovereign surplus</strong> for pro-bono clinics and civic research.
+          <div class="p-4 rounded-2xl bg-apple-card border border-white/[0.06] text-xs text-apple-secondary leading-relaxed font-sans">
+            <strong class="text-white">The Purulia Surplus:</strong> At &approx;&euro;2.5L/mo living cost in West Bengal, you generate <strong class="text-apple-green">&euro;9.0L/month of pure sovereign surplus</strong> for pro-bono clinics and civic research.
           </div>
         </div>
       </div>
     </section>
 
     <!-- Terminal 3-Bucket Portfolio Structure -->
-    <section class="glass-card p-6 sm:p-8 rounded-3xl border border-brand-border space-y-6">
+    <section class="apple-glass-card p-8 sm:p-12 rounded-[36px] border border-apple-border space-y-8">
       <div>
-        <div class="inline-block px-2.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[11px] uppercase tracking-wider border border-slate-700">
-          Terminal Asset Architecture
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">The ₹25 Crore Terminal Allocation</h2>
-        <p class="text-slate-400 text-sm mt-1">Defensive 40 / 45 / 15 allocation engineered to withstand severe market drawdowns, inflation, and currency depreciation.</p>
+        <span class="text-xs font-mono text-apple-blue uppercase tracking-wider block">Endowment Architecture</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-2">The &euro;25 Crore Terminal Allocation</h2>
+        <p class="text-apple-secondary text-sm mt-1">Defensive 40 / 45 / 15 allocation engineered to withstand market drawdowns, inflation, and currency shifts.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Bucket 1 -->
-        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold text-sky-400 uppercase">Bucket 1: Direct Yield (40%)</span>
-            <span class="font-mono text-xs px-2 py-0.5 rounded bg-sky-950 text-sky-300">₹10.0 Crore</span>
+        <div class="p-6 rounded-3xl bg-apple-card border border-apple-border space-y-3">
+          <div class="flex items-center justify-between font-mono">
+            <span class="text-xs font-bold text-apple-blue uppercase">Bucket 1: Direct Yield (40%)</span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-apple-elevated text-apple-blue">&euro;10.0 Cr</span>
           </div>
-          <div class="text-xl font-bold text-white">Defensive Debt & Cash Flow</div>
-          <p class="text-xs text-slate-400 leading-relaxed font-sans">
-            Target-maturity G-Sec funds (Bharat Bond / SDLs), high-grade corporate bonds, Sovereign Gold Bonds (SGB), and commercial REITs yielding 7.5% net.
+          <div class="text-xl font-semibold text-white tracking-tight">Defensive Debt &amp; Cash Flow</div>
+          <p class="text-xs text-apple-secondary leading-relaxed font-sans">
+            Target-maturity G-Sec funds, high-grade corporate bonds, Sovereign Gold Bonds (SGB), and commercial REITs yielding 7.5% net.
           </p>
-          <div class="pt-3 border-t border-slate-800 font-mono text-xs text-sky-400">
-            Yield: ₹70L – ₹80L / yr steady payout
+          <div class="pt-3 border-t border-apple-border font-mono text-xs text-apple-blue">
+            Yield: &euro;70L &ndash; &euro;80L / yr steady payout
           </div>
         </div>
 
         <!-- Bucket 2 -->
-        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold text-emerald-400 uppercase">Bucket 2: Growth Engine (45%)</span>
-            <span class="font-mono text-xs px-2 py-0.5 rounded bg-emerald-950 text-emerald-300">₹11.25 Crore</span>
+        <div class="p-6 rounded-3xl bg-apple-card border border-apple-border space-y-3">
+          <div class="flex items-center justify-between font-mono">
+            <span class="text-xs font-bold text-apple-green uppercase">Bucket 2: Growth Engine (45%)</span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-apple-elevated text-apple-green">&euro;11.25 Cr</span>
           </div>
-          <div class="text-xl font-bold text-white">Broad Global Equities</div>
-          <p class="text-xs text-slate-400 leading-relaxed font-sans">
-            50% Nifty 50 Index, 25% Nifty Midcap 150, and 25% International Tech ETFs (Nasdaq 100). Compounds at 11–13% CAGR to perpetually crush Indian healthcare inflation.
+          <div class="text-xl font-semibold text-white tracking-tight">Broad Global Equities</div>
+          <p class="text-xs text-apple-secondary leading-relaxed font-sans">
+            50% Nifty 50 Index, 25% Nifty Midcap 150, and 25% International Tech ETFs (Nasdaq 100). Compounds at 11&ndash;13% CAGR to perpetually crush Indian healthcare inflation.
           </p>
-          <div class="pt-3 border-t border-slate-800 font-mono text-xs text-emerald-400">
-            Function: Doubles principal every 6–7 years
+          <div class="pt-3 border-t border-apple-border font-mono text-xs text-apple-green">
+            Function: Doubles principal every 6&ndash;7 years
           </div>
         </div>
 
         <!-- Bucket 3 -->
-        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-bold text-amber-400 uppercase">Bucket 3: Real Assets (15%)</span>
-            <span class="font-mono text-xs px-2 py-0.5 rounded bg-amber-950 text-amber-300">₹3.75 Crore</span>
+        <div class="p-6 rounded-3xl bg-apple-card border border-apple-border space-y-3">
+          <div class="flex items-center justify-between font-mono">
+            <span class="text-xs font-bold text-apple-orange uppercase">Bucket 3: Real Assets (15%)</span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-apple-elevated text-apple-orange">&euro;3.75 Cr</span>
           </div>
-          <div class="text-xl font-bold text-white">Commercial Physical Anchor</div>
-          <p class="text-xs text-slate-400 leading-relaxed font-sans">
+          <div class="text-xl font-semibold text-white tracking-tight">Commercial Physical Anchor</div>
+          <p class="text-xs text-apple-secondary leading-relaxed font-sans">
             Prime freehold commercial space or diagnostic facility leased to corporate healthcare tenants in West Bengal/Tier-1 hub generating unhackable quarterly rent.
           </p>
-          <div class="pt-3 border-t border-slate-800 font-mono text-xs text-amber-400">
-            Yield: 7–8% cash yield + appreciation
+          <div class="pt-3 border-t border-apple-border font-mono text-xs text-apple-orange">
+            Yield: 7&ndash;8% cash yield + appreciation
           </div>
         </div>
       </div>
     </section>
 
     <!-- Fail-Safe Circuit Breakers -->
-    <section class="glass-card p-6 sm:p-8 rounded-3xl border border-brand-border space-y-6">
+    <section class="apple-glass-card p-8 sm:p-12 rounded-[36px] border border-apple-border space-y-8">
       <div>
-        <div class="inline-block px-2.5 py-0.5 rounded bg-rose-950 text-rose-400 font-mono text-[11px] uppercase tracking-wider border border-rose-800">
-          Anti-Fragility Protocols
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Fail-Safe Circuit Breakers</h2>
-        <p class="text-slate-400 text-sm mt-1">Pre-computed algorithms to handle stress, market crashes, or unexpected road blocks.</p>
+        <span class="text-xs font-mono text-apple-red uppercase tracking-wider block">Anti-Fragility Protocols</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-2">Fail-Safe Circuit Breakers</h2>
+        <p class="text-apple-secondary text-sm mt-1">Pre-computed algorithms to handle stress, market crashes, or unexpected roadblocks.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
-        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-2">
-          <div class="text-rose-400 font-bold flex items-center gap-2">
-            <span>⚠️</span> PROLONGED MARKET CRASH (-40% NIFTY)
+        <div class="p-5 rounded-3xl bg-apple-card border border-apple-border space-y-2">
+          <div class="text-apple-red font-semibold flex items-center gap-2">
+            <span>&bull;</span> PROLONGED MARKET CRASH (-40% NIFTY)
           </div>
-          <p class="text-slate-400 font-sans leading-relaxed">
-            <strong class="text-slate-200">Circuit Breaker:</strong> Zero equity sales. Bucket 1 holds 36 months of living expenses. Rebalance surplus cash into deeply discounted broad index funds. Time arbitrage defeats market volatility.
+          <p class="text-apple-secondary font-sans leading-relaxed">
+            <strong class="text-white">Circuit Breaker:</strong> Zero equity sales. Bucket 1 holds 36 months of living expenses. Rebalance surplus cash into deeply discounted broad index funds. Time arbitrage defeats market volatility.
           </p>
         </div>
         
-        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-2">
-          <div class="text-amber-400 font-bold flex items-center gap-2">
-            <span>⚡</span> RESIDENCY BURNOUT / TOXIC ENVRIONMENT
+        <div class="p-5 rounded-3xl bg-apple-card border border-apple-border space-y-2">
+          <div class="text-apple-orange font-semibold flex items-center gap-2">
+            <span>&bull;</span> RESIDENCY BURNOUT / TOXIC ENVRIONMENT
           </div>
-          <p class="text-slate-400 font-sans leading-relaxed">
-            <strong class="text-slate-200">Circuit Breaker:</strong> Trigger Track B immediately. Resign from residency without hesitation. Transition into Health-Tech Engineering or Medical AI within 30 days commanding ₹20L–30L starting compensation.
+          <p class="text-apple-secondary font-sans leading-relaxed">
+            <strong class="text-white">Circuit Breaker:</strong> Trigger Track B immediately. Resign from residency without hesitation. Transition into Health-Tech Engineering or Medical AI within 30 days commanding &euro;20L&ndash;30L starting compensation.
           </p>
         </div>
 
-        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-2">
-          <div class="text-sky-400 font-bold flex items-center gap-2">
-            <span>🔄</span> STARTUP / SAAS MISSES PRODUCT-MARKET FIT
+        <div class="p-5 rounded-3xl bg-apple-card border border-apple-border space-y-2">
+          <div class="text-apple-blue font-semibold flex items-center gap-2">
+            <span>&bull;</span> STARTUP / SAAS MISSES PRODUCT-MARKET FIT
           </div>
-          <p class="text-slate-400 font-sans leading-relaxed">
-            <strong class="text-slate-200">Circuit Breaker:</strong> Pivot software from external B2B SaaS to internal proprietary tool for a physical diagnostic center network. Physical clinical demand provides a steady cash cow floor.
+          <p class="text-apple-secondary font-sans leading-relaxed">
+            <strong class="text-white">Circuit Breaker:</strong> Pivot software from external B2B SaaS to internal proprietary tool for a physical diagnostic center network. Physical clinical demand provides a steady cash cow floor.
           </p>
         </div>
 
-        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-2">
-          <div class="text-emerald-400 font-bold flex items-center gap-2">
-            <span>🛡️</span> CATASTROPHIC HEALTH OR FAMILY EMERGENCY
+        <div class="p-5 rounded-3xl bg-apple-card border border-apple-border space-y-2">
+          <div class="text-apple-green font-semibold flex items-center gap-2">
+            <span>&bull;</span> CATASTROPHIC HEALTH OR FAMILY EMERGENCY
           </div>
-          <p class="text-slate-400 font-sans leading-relaxed">
-            <strong class="text-slate-200">Circuit Breaker:</strong> Dedicated ₹25L super top-up health insurance + ₹2 Cr term plan + ₹5L emergency arbitrage fund insulates principal corpus. Your family never relies on crowdfunding.
+          <p class="text-apple-secondary font-sans leading-relaxed">
+            <strong class="text-white">Circuit Breaker:</strong> Dedicated &euro;25L super top-up health insurance + &euro;2 Cr term plan + &euro;5L emergency arbitrage fund insulates principal corpus. Your family never relies on crowdfunding.
           </p>
         </div>
       </div>
@@ -739,44 +692,46 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-brand-border bg-brand-surface/40 py-8 text-center font-mono text-xs text-slate-500 space-y-2">
-    <div>PROJECT AUTONOMY &copy; 2026. BUILT FOR DETERMINISTIC SOVEREIGNTY.</div>
-    <div class="text-[11px] text-slate-600">Zero Linear Traps. Build once, compound forever.</div>
+  <!-- Apple Minimalist Footer -->
+  <footer class="border-t border-apple-border bg-apple-black py-12 text-center text-xs text-apple-secondary font-sans space-y-3">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>Project Autonomy &copy; 2026. Designed for Deterministic Sovereignty.</div>
+      <div class="font-mono text-[11px] text-apple-tertiary">Zero Linear Traps &bull; Purulia, West Bengal</div>
+    </div>
   </footer>
 
-  <!-- Execution & Checklist Engine Script -->
+  <!-- Master Application Script -->
   <script>
     // Comparative Trajectory Data (Linear vs Exponential)
     const TRAJECTORY_DATA = [
-      { age: 28, cycle: 'Shani Wake-Up', linear: 'Sitting at home, doomscrolling 6 hrs/day, 1L+ rank, ₹0 income, hair loss, feeling like a burden to 66yo Mom', exp: 'Biological reset: 3L water, 80g protein, morning sunlight, delete IG, 2 duties/wk (₹35k/mo), 50 MCQs/day', nw: '₹6.5 Lakhs' },
-      { age: 29, cycle: 'Shani Tapasya', linear: 'Random duty doctor jobs (₹350/hr), spending all earnings on food delivery, zero long-term strategy', exp: 'High-leverage PG residency OR Health-Tech SWE (₹20L CTC); automated ₹80k/mo SIP begins', nw: '₹18.0 Lakhs' },
-      { age: 30, cycle: 'Shani-Budh Crossover', linear: 'Exhausted by 80-hr emergency calls, coding skills lost to rust, mounting marriage panic', exp: 'Year 2 PG / Senior SWE; prototypes Clinic OS / WhatsApp ABDM integration; ₹1.1L/mo SIP', nw: '₹34.5 Lakhs' },
-      { age: 31, cycle: 'Guru Entrance', linear: 'Passes MD/MS, takes ₹80L home loan flat EMI, trapped in corporate hospital pecking order', exp: 'Passes exams / Tech Lead; ₹50 Lakhs Liquid Floor reached; zero debt; Purulia survey', nw: '₹57.0 Lakhs' },
-      { age: 32, cycle: 'Budh Commercial Moat', linear: 'Junior Consultant (₹1.2L/mo), paying 30% slab tax, exhausted, trading linear time for OPD fees', exp: 'Incorporates Pvt Ltd / LLP; 22% corporate tax rate; launches automated diagnostic/software pilot', nw: '₹89.0 Lakhs' },
-      { age: 33, cycle: 'Budh-Guru Scale', linear: 'Runs between 3 clinics in traffic; if illness strikes and clinic closes, daily income is ₹0', exp: 'First automated diagnostic center live in West Bengal; SaaS hits ₹35L ARR; SIP: ₹2.5L/mo', nw: '₹1.32 Crore' },
-      { age: 34, cycle: 'Guru S-Curve', linear: 'Permanent dark circles, high blood pressure, zero time for 72yo Mom, hospital politics stress', exp: 'Hires Operations Manager & 2 junior devs; completely steps back from front-desk triage', nw: '₹1.90 Crore' },
-      { age: 35, cycle: 'Guru Capital Base', linear: 'Buys luxury car on 7-year loan to signal status; net worth negative on paper after liabilities', exp: 'Acquires freehold commercial clinic (₹1.2 Cr); B2B SaaS reaches 50+ clinics (₹1.2 Cr ARR)', nw: '₹2.65 Crore' },
-      { age: 36, cycle: 'Mars Activation', linear: 'Hospital demands higher patient admission quotas; moral compromise; exhaustion routine', exp: 'Hub-and-spoke collection points scale across semi-urban corridors; NABH accreditation', nw: '₹3.58 Crore' },
-      { age: 37, cycle: 'The ₹5 Cr Inflection', linear: 'Stuck at ₹2.5L/month salary ceiling; paying ₹8L/year income tax; zero equity ownership', exp: '30-day full disconnect test passed; company runs smoothly without personal presence', nw: '₹5.00 Crore' },
-      { age: 38, cycle: 'Rahu Strategic Shift', linear: 'Realizes that after 15 yrs of clinical medicine, liquid net worth is under ₹80 Lakhs', exp: 'Steps up to Executive Chairman; hires General Manager; begins exploratory M&A discussions', nw: '₹6.60 Crore' },
-      { age: 39, cycle: 'Rahu Valuation Sprint', linear: 'Still doing night emergency calls at age 39; feeling aged; family rarely sees him rested', exp: 'Optimizes EBITDA to >30%; completes full-body biological scan (biological age 32)', nw: '₹8.25 Crore' },
-      { age: 40, cycle: 'Rahu Secondary Exit', linear: 'Takes ₹3 Crore bank loan to open private nursing home; enters maximum lifetime debt stress', exp: 'Secondary Exit: Sells 30% equity stake; realizes ₹3.0 Cr post-tax cash off the table', nw: '₹13.10 Crore' },
-      { age: 41, cycle: 'Rahu-Mangal Climax', linear: 'Trapped by bank interest and hospital administration; cannot sleep without sedatives', exp: 'Signs definitive buyout agreement with national health network; advisory earnout locked', nw: '₹15.70 Crore' },
-      { age: 42, cycle: 'Terminal Monetization', linear: 'Realizes retirement is impossible before age 65 due to high lifestyle maintenance costs', exp: 'Final Buyout Closing: Receives ₹6.0 Cr post-tax cash; resigns all corporate directorships', nw: '₹24.50 Crore' },
-      { age: 43, cycle: 'Surya Sovereignty', linear: 'Trapped on the treadmill until old age; health broken; linear wages never compounded', exp: 'PROJECT AUTONOMY ACHIEVED: ₹25.0 Cr Liquid Corpus locked in 3-Bucket Defensive Portfolio', nw: '₹25.00 Crore' },
-      { age: '44+', cycle: 'Ketu Dharmic Freedom', linear: 'Forced to work OPD shifts with arthritis just to cover household maintenance; deep regret', exp: 'Living on ₹1.2–1.5 Cr/yr passive yield; running Purulia pro-bono clinic; open-source GIS tools', nw: 'Sovereign' }
+      { age: 28, cycle: 'Shani Wake-Up', linear: 'Sitting at home, doomscrolling 6 hrs/day, 1L+ rank, \u20B90 income, hair loss, feeling like a burden to 66yo Mom', exp: 'Biological reset: 3L water, 80g protein, morning sunlight, delete IG, 2 duties/wk (\u20B935k/mo), 50 MCQs/day', nw: '\u20B96.5 Lakhs' },
+      { age: 29, cycle: 'Shani Tapasya', linear: 'Random duty doctor jobs (\u20B9350/hr), spending all earnings on food delivery, zero long-term strategy', exp: 'High-leverage PG residency OR Health-Tech SWE (\u20B920L CTC); automated \u20B980k/mo SIP begins', nw: '\u20B918.0 Lakhs' },
+      { age: 30, cycle: 'Shani-Budh Crossover', linear: 'Exhausted by 80-hr emergency calls, coding skills lost to rust, mounting marriage panic', exp: 'Year 2 PG / Senior SWE; prototypes Clinic OS / WhatsApp ABDM integration; \u20B91.1L/mo SIP', nw: '\u20B934.5 Lakhs' },
+      { age: 31, cycle: 'Guru Entrance', linear: 'Passes MD/MS, takes \u20B980L home loan flat EMI, trapped in corporate hospital pecking order', exp: 'Passes exams / Tech Lead; \u20B950 Lakhs Liquid Floor reached; zero debt; Purulia survey', nw: '\u20B957.0 Lakhs' },
+      { age: 32, cycle: 'Budh Commercial Moat', linear: 'Junior Consultant (\u20B91.2L/mo), paying 30% slab tax, exhausted, trading linear time for OPD fees', exp: 'Incorporates Pvt Ltd / LLP; 22% corporate tax rate; launches automated diagnostic/software pilot', nw: '\u20B989.0 Lakhs' },
+      { age: 33, cycle: 'Budh-Guru Scale', linear: 'Runs between 3 clinics in traffic; if illness strikes and clinic closes, daily income is \u20B90', exp: 'First automated diagnostic center live in West Bengal; SaaS hits \u20B935L ARR; SIP: \u20B92.5L/mo', nw: '\u20B91.32 Crore' },
+      { age: 34, cycle: 'Guru S-Curve', linear: 'Permanent dark circles, high blood pressure, zero time for 72yo Mom, hospital politics stress', exp: 'Hires Operations Manager & 2 junior devs; completely steps back from front-desk triage', nw: '\u20B91.90 Crore' },
+      { age: 35, cycle: 'Guru Capital Base', linear: 'Buys luxury car on 7-year loan to signal status; net worth negative on paper after liabilities', exp: 'Acquires freehold commercial clinic (\u20B91.2 Cr); B2B SaaS reaches 50+ clinics (\u20B91.2 Cr ARR)', nw: '\u20B92.65 Crore' },
+      { age: 36, cycle: 'Mars Activation', linear: 'Hospital demands higher patient admission quotas; moral compromise; exhaustion routine', exp: 'Hub-and-spoke collection points scale across semi-urban corridors; NABH accreditation', nw: '\u20B93.58 Crore' },
+      { age: 37, cycle: 'The \u20B95 Cr Inflection', linear: 'Stuck at \u20B92.5L/month salary ceiling; paying \u20B98L/year income tax; zero equity ownership', exp: '30-day full disconnect test passed; company runs smoothly without personal presence', nw: '\u20B95.00 Crore' },
+      { age: 38, cycle: 'Rahu Strategic Shift', linear: 'Realizes that after 15 yrs of clinical medicine, liquid net worth is under \u20B980 Lakhs', exp: 'Steps up to Executive Chairman; hires General Manager; begins exploratory M&A discussions', nw: '\u20B96.60 Crore' },
+      { age: 39, cycle: 'Rahu Valuation Sprint', linear: 'Still doing night emergency calls at age 39; feeling aged; family rarely sees him rested', exp: 'Optimizes EBITDA to >30%; completes full-body biological scan (biological age 32)', nw: '\u20B98.25 Crore' },
+      { age: 40, cycle: 'Rahu Secondary Exit', linear: 'Takes \u20B93 Crore bank loan to open private nursing home; enters maximum lifetime debt stress', exp: 'Secondary Exit: Sells 30% equity stake; realizes \u20B93.0 Cr post-tax cash off the table', nw: '\u20B913.10 Crore' },
+      { age: 41, cycle: 'Rahu-Mangal Climax', linear: 'Trapped by bank interest and hospital administration; cannot sleep without sedatives', exp: 'Signs definitive buyout agreement with national health network; advisory earnout locked', nw: '\u20B915.70 Crore' },
+      { age: 42, cycle: 'Terminal Monetization', linear: 'Realizes retirement is impossible before age 65 due to high lifestyle maintenance costs', exp: 'Final Buyout Closing: Receives \u20B96.0 Cr post-tax cash; resigns all corporate directorships', nw: '\u20B924.50 Crore' },
+      { age: 43, cycle: 'Surya Sovereignty', linear: 'Trapped on the treadmill until old age; health broken; linear wages never compounded', exp: 'PROJECT AUTONOMY ACHIEVED: \u20B925.0 Cr Liquid Corpus locked in 3-Bucket Defensive Portfolio', nw: '\u20B925.00 Crore' },
+      { age: '44+', cycle: 'Ketu Dharmic Freedom', linear: 'Forced to work OPD shifts with arthritis just to cover household maintenance; deep regret', exp: 'Living on \u20B91.2\u20131.5 Cr/yr passive yield; running Purulia pro-bono clinic; open-source GIS tools', nw: 'Sovereign' }
     ];
 
     function renderTrajectoryTable() {
       const tbody = document.getElementById('trajectoryTableBody');
       tbody.innerHTML = TRAJECTORY_DATA.map(row => `
-        <tr class="hover:bg-slate-900/60 transition">
-          <td class="p-3.5 font-bold text-white whitespace-nowrap">Age ${row.age}</td>
-          <td class="p-3.5 text-purple-300 text-[11px] whitespace-nowrap">${row.cycle}</td>
-          <td class="p-3.5 text-rose-300/90 font-sans leading-relaxed text-xs">${row.linear}</td>
-          <td class="p-3.5 text-emerald-300 font-sans leading-relaxed text-xs font-medium">${row.exp}</td>
-          <td class="p-3.5 text-right font-bold text-emerald-400 whitespace-nowrap">${row.nw}</td>
+        <tr class="hover:bg-white/[0.02] transition">
+          <td class="p-4 font-semibold text-white whitespace-nowrap">Age ${row.age}</td>
+          <td class="p-4 text-apple-purple text-[11px] whitespace-nowrap">${row.cycle}</td>
+          <td class="p-4 text-apple-red/90 font-sans leading-relaxed text-xs">${row.linear}</td>
+          <td class="p-4 text-apple-green font-sans leading-relaxed text-xs font-medium">${row.exp}</td>
+          <td class="p-4 text-right font-semibold text-white whitespace-nowrap">${row.nw}</td>
         </tr>
       `).join('');
     }
@@ -785,304 +740,283 @@
       const expBtn = document.getElementById('showExpBtn');
       const linBtn = document.getElementById('showLinBtn');
       if (mode === 'exp') {
-        expBtn.className = 'px-3 py-1.5 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 font-bold transition';
-        linBtn.className = 'px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition';
+        expBtn.className = 'px-4 py-2 rounded-full bg-apple-green/10 text-apple-green border border-apple-green/30 font-medium transition';
+        linBtn.className = 'px-4 py-2 rounded-full bg-apple-card text-apple-secondary border border-apple-border hover:text-white transition';
       } else {
-        expBtn.className = 'px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition';
-        linBtn.className = 'px-3 py-1.5 rounded-lg bg-rose-950 text-rose-400 border border-rose-800 font-bold transition';
+        expBtn.className = 'px-4 py-2 rounded-full bg-apple-card text-apple-secondary border border-apple-border hover:text-white transition';
+        linBtn.className = 'px-4 py-2 rounded-full bg-apple-red/10 text-apple-red border border-apple-red/30 font-medium transition';
       }
-    }
-
-    function updateHoroscopeProfile() {
-      const rashi = document.getElementById('rashiSelector').value;
-      const pill = document.getElementById('astrologyAdvicePill');
-      const rashiAdvice = {
-        makara: 'Shani Mandate: Daily Tapasya, Bone Health & Structured Repetition',
-        kumbha: 'Shani Mandate: Systems Architecture, Open Source & Detached Labor',
-        mesha: 'Mangal Mandate: Channel Fire into Timed MCQ Blocks, Avoid Impulsivity',
-        vrischika: 'Mangal Mandate: Deep Diagnostic Research, Root Out Self-Doubt',
-        mithuna: 'Budh Mandate: Full-Stack SaaS, ABDM Standards & Rapid Synthesis',
-        kanya: 'Budh Mandate: Relentless Detail Precision, Error Log Classification',
-        vrishabha: 'Shukra Mandate: Long-Term Compounding, Zero Emotional Spending',
-        tula: 'Shukra Mandate: Equilibrium Between Clinical Care and Software Moat',
-        dhanu: 'Guru Mandate: Highest Dharmic Vision, Purulia Pro-Bono Foundation',
-        meena: 'Guru Mandate: Transmute Anxiety into Spiritual Purpose & Seva',
-        karka: 'Chandra Mandate: Protect Sleep Sanctuary, Strengthen Family Bond with Mom',
-        simha: 'Surya Mandate: Unshakeable Executive Sovereignty, No Apologies for Ambition'
-      };
-      pill.textContent = rashiAdvice[rashi] || 'Planetary Mandate: Relentless Consistency';
-      localStorage.setItem('SELECTED_RASHI', rashi);
     }
 
     // Master Age Data Model
     const AGES_DATA = [
       {
         age: 28,
-        year: '2026–2027',
+        year: '2026\u20132027',
         phase: 'Phase 1',
         title: 'Emotional Reboot & Anchor Lock',
-        milestone: '₹6.5 Lakhs Liquid Floor',
-        sip: '₹50,000 / month',
-        networth: '₹6.5 Lakhs',
-        description: 'Clear the emotional turbulence of competitive entrance exams. Treat score as objective data. Establish the financial plumbing, insurance shield, and 2027 path commitment.',
+        milestone: '\u20B96.5 Lakhs Liquid Floor',
+        sip: '\u20B950,000 / mo',
+        networth: '\u20B96.5 Lakhs',
+        description: 'Clear the emotional turbulence of competitive entrance exams. Treat score as objective data. Establish financial plumbing, insurance shield, and 2027 path commitment.',
         checklist: [
           { id: 'a28_1', category: 'Finance', text: 'Open direct mutual fund account on Zerodha Coin/Groww with automated bank mandates' },
-          { id: 'a28_2', category: 'Finance', text: 'Initiate automated ₹50,000/mo SIP (Nifty 50 + Parag Parikh Flexi Cap)' },
-          { id: 'a28_3', category: 'Legal', text: 'Secure ₹2 Crore pure term insurance + ₹25L independent super top-up health policy' },
+          { id: 'a28_2', category: 'Finance', text: 'Initiate automated \u20B950,000/mo SIP (Nifty 50 + Parag Parikh Flexi Cap)' },
+          { id: 'a28_3', category: 'Legal', text: 'Secure \u20B92 Crore pure term insurance + \u20B925L independent super top-up health policy' },
           { id: 'a28_4', category: 'Clinical/Tech', text: 'Evaluate INI-CET percentile against high-leverage branch criteria (Radio/Derm/Psych/Path)' },
           { id: 'a28_5', category: 'Clinical/Tech', text: 'Lock 2027 direction: either 6-month locked NEET-PG sprint or direct health-tech outreach' },
           { id: 'a28_6', category: 'Tech', text: 'Maintain weekly GitHub commits on india-geodata & parishkar to protect coding momentum' },
           { id: 'a28_7', category: 'Health', text: 'Execute baseline metabolic blood panel (ApoB, HbA1c, fasting insulin, vitals)' },
-          { id: 'a28_8', category: 'Gate', text: 'Verification Gate: Net worth ≥ ₹6.5 Lakhs & 2027 anchor fully locked' }
+          { id: 'a28_8', category: 'Gate', text: 'Verification Gate: Net worth \u2265 \u20B96.5 Lakhs & 2027 anchor fully locked' }
         ]
       },
       {
         age: 29,
-        year: '2027–2028',
+        year: '2027\u20132028',
         phase: 'Phase 1',
         title: 'Savings Velocity & Operational Rhythm',
-        milestone: '₹18.0 Lakhs Liquid',
-        sip: '₹80,000 / month',
-        networth: '₹18.0 Lakhs',
+        milestone: '\u20B918.0 Lakhs Liquid',
+        sip: '\u20B980,000 / mo',
+        networth: '\u20B918.0 Lakhs',
         description: 'Capitalize on West Bengal cost advantages to sustain a 65%+ savings rate. Build daily operational consistency whether in residency or engineering sprints.',
         checklist: [
-          { id: 'a29_1', category: 'Finance', text: 'Step up monthly SIP investment to ₹80,000/month across index funds' },
-          { id: 'a29_2', category: 'Finance', text: 'Accumulate ₹3.0 Lakhs liquid emergency reserve in an Arbitrage/Overnight Fund' },
+          { id: 'a29_1', category: 'Finance', text: 'Step up monthly SIP investment to \u20B980,000/month across index funds' },
+          { id: 'a29_2', category: 'Finance', text: 'Accumulate \u20B93.0 Lakhs liquid emergency reserve in an Arbitrage/Overnight Fund' },
           { id: 'a29_3', category: 'Tax', text: 'Utilize Section 44ADA for clinical/consulting earnings (declare 50% profit)' },
           { id: 'a29_4', category: 'Clinical/Tech', text: 'Track A (Residency): Document top 20 repetitive friction points in daily hospital workflow' },
-          { id: 'a29_5', category: 'Clinical/Tech', text: 'Track B (SWE): Own end-to-end features at health-tech firm (target ₹20L+ CTC)' },
-          { id: 'a29_6', category: 'Health', text: 'Maintain 12–16% body fat, Resting Heart Rate < 60 bpm, 150 min/wk Zone 2 cardio' },
-          { id: 'a29_7', category: 'Gate', text: 'Verification Gate: Liquid net worth ≥ ₹18.0 Lakhs' }
+          { id: 'a29_5', category: 'Clinical/Tech', text: 'Track B (SWE): Own end-to-end features at health-tech firm (target \u20B920L+ CTC)' },
+          { id: 'a29_6', category: 'Health', text: 'Maintain 12\u201316% body fat, Resting Heart Rate < 60 bpm, 150 min/wk Zone 2 cardio' },
+          { id: 'a29_7', category: 'Gate', text: 'Verification Gate: Liquid net worth \u2265 \u20B918.0 Lakhs' }
         ]
       },
       {
         age: 30,
-        year: '2028–2029',
+        year: '2028\u20132029',
         phase: 'Phase 1',
         title: 'Systems Prototyping & Depth',
-        milestone: '₹34.5 Lakhs Liquid',
-        sip: '₹1,10,000 / month',
-        networth: '₹34.5 Lakhs',
+        milestone: '\u20B934.5 Lakhs Liquid',
+        sip: '\u20B91,10,000 / mo',
+        networth: '\u20B934.5 Lakhs',
         description: 'Cross the initial financial hurdle. Build the v1 prototype of your Clinic OS / Diagnostic software leveraging your React/Supabase/PWA stack.',
         checklist: [
-          { id: 'a30_1', category: 'Finance', text: 'Step up monthly SIP investment to ₹1,10,000/month' },
+          { id: 'a30_1', category: 'Finance', text: 'Step up monthly SIP investment to \u20B91,10,000/month' },
           { id: 'a30_2', category: 'Tech', text: 'Code v1 prototype of Clinic OS: WhatsApp report bot + ABDM M1/M2 integration' },
           { id: 'a30_3', category: 'Clinical/Tech', text: 'Achieve Year 2 residency milestone or Staff Engineer promotion at tech firm' },
           { id: 'a30_4', category: 'Health', text: 'Cardiovascular check: ApoB maintained < 70 mg/dL, VO2 max in top quartile' },
           { id: 'a30_5', category: 'Civic', text: 'Publish open data update for india-geodata / municipal spatial boundaries' },
-          { id: 'a30_6', category: 'Gate', text: 'Verification Gate: Liquid net worth ≥ ₹34.5 Lakhs' }
+          { id: 'a30_6', category: 'Gate', text: 'Verification Gate: Liquid net worth \u2265 \u20B934.5 Lakhs' }
         ]
       },
       {
         age: 31,
-        year: '2029–2030',
+        year: '2029\u20132030',
         phase: 'Phase 1 Milestone',
-        title: 'The ₹50 Lakhs Liquid Floor',
-        milestone: '₹50.0 – ₹57.0 Lakhs Liquid',
-        sip: '₹1,50,000 / month',
-        networth: '₹57.0 Lakhs',
-        description: 'Clearing ₹50 Lakhs liquid creates an irreversible psychological floor. Compounding begins to generate substantial passive returns alongside labor income.',
+        title: 'The \u20B950 Lakhs Liquid Floor',
+        milestone: '\u20B950.0 \u2013 \u20B957.0 Lakhs Liquid',
+        sip: '\u20B91,50,000 / mo',
+        networth: '\u20B957.0 Lakhs',
+        description: 'Clearing \u20B950 Lakhs liquid creates an irreversible psychological floor. Compounding begins to generate substantial passive returns alongside labor income.',
         checklist: [
-          { id: 'a31_1', category: 'Finance', text: 'Accelerate monthly investment to ₹1,50,000/month' },
+          { id: 'a31_1', category: 'Finance', text: 'Accelerate monthly investment to \u20B91,50,000/month' },
           { id: 'a31_2', category: 'Finance', text: 'Confirm zero outstanding personal, educational, or vehicle debt' },
           { id: 'a31_3', category: 'Clinical', text: 'Complete MD/MS specialist examinations or reach Principal Engineer status' },
           { id: 'a31_4', category: 'Strategy', text: 'Conduct on-ground diagnostic demand survey in Purulia / Bankura / tier-2 West Bengal' },
-          { id: 'a31_5', category: 'Gate', text: 'Verification Gate: Liquid net worth crosses ₹50.0 – ₹57.0 Lakhs milestone' }
+          { id: 'a31_5', category: 'Gate', text: 'Verification Gate: Liquid net worth crosses \u20B950.0 \u2013 \u20B957.0 Lakhs milestone' }
         ]
       },
       {
         age: 32,
-        year: '2030–2031',
+        year: '2030\u20132031',
         phase: 'Phase 2 Kickoff',
         title: 'Corporate Incorporation & Product Launch',
-        milestone: '₹89.0 Lakhs Invested',
-        sip: '₹2,00,000 / month',
-        networth: '₹89.0 Lakhs',
+        milestone: '\u20B989.0 Lakhs Invested',
+        sip: '\u20B92,00,000 / mo',
+        networth: '\u20B989.0 Lakhs',
         description: 'Incorporate your Private Limited / LLP. Transition income from individual tax slabs into a 22% corporate tax structure. Launch your diagnostic/clinic platform.',
         checklist: [
           { id: 'a32_1', category: 'Corporate', text: 'Incorporate Private Limited Company / LLP for health-tech & clinical software' },
           { id: 'a32_2', category: 'Corporate', text: 'Route all consulting, SaaS, and clinical contracts through company entity' },
           { id: 'a32_3', category: 'Tech', text: 'Deploy Clinic OS pilot in 5 partner centers or first company-owned outpatient hub' },
-          { id: 'a32_4', category: 'Finance', text: 'Scale combined capital injections to ₹2,00,000/month (salary + corporate retained)' },
+          { id: 'a32_4', category: 'Finance', text: 'Scale combined capital injections to \u20B92,00,000/month (salary + corporate retained)' },
           { id: 'a32_5', category: 'Governance', text: 'Execute formal will, assign beneficiaries on all financial accounts & vaults' },
-          { id: 'a32_6', category: 'Gate', text: 'Verification Gate: Net worth ≥ ₹89.0 Lakhs & operating company live' }
+          { id: 'a32_6', category: 'Gate', text: 'Verification Gate: Net worth \u2265 \u20B989.0 Lakhs & operating company live' }
         ]
       },
       {
         age: 33,
-        year: '2031–2032',
+        year: '2031\u20132032',
         phase: 'Phase 2',
         title: 'B2B Software Scale & First Physical Outpost',
-        milestone: '₹1.32 Crore Liquid',
-        sip: '₹2,50,000 / month',
-        networth: '₹1.32 Crore',
+        milestone: '\u20B91.32 Crore Liquid',
+        sip: '\u20B92,50,000 / mo',
+        networth: '\u20B91.32 Crore',
         description: 'First physical automated diagnostic center operational in West Bengal. Software layer achieves repeatable subscription revenue.',
         checklist: [
-          { id: 'a33_1', category: 'Finance', text: 'Increase monthly equity investments to ₹2,50,000/month' },
+          { id: 'a33_1', category: 'Finance', text: 'Increase monthly equity investments to \u20B92,50,000/month' },
           { id: 'a33_2', category: 'Operations', text: 'Launch automated diagnostic outpost with zero paper slips and digital PACS integration' },
-          { id: 'a33_3', category: 'Tech', text: 'Clinic OS platform reaches ₹25–50 Lakhs Annual Recurring Revenue (ARR)' },
+          { id: 'a33_3', category: 'Tech', text: 'Clinic OS platform reaches \u20B925\u201350 Lakhs Annual Recurring Revenue (ARR)' },
           { id: 'a33_4', category: 'Health', text: 'Comprehensive cardiac imaging (CT Calcium score / Carotid IMT) confirms zero plaque' },
-          { id: 'a33_5', category: 'Gate', text: 'Verification Gate: Liquid net worth crosses ₹1.30 Crore' }
+          { id: 'a33_5', category: 'Gate', text: 'Verification Gate: Liquid net worth crosses \u20B91.30 Crore' }
         ]
       },
       {
         age: 34,
-        year: '2032–2033',
+        year: '2032\u20132033',
         phase: 'Phase 2',
         title: 'Operational Delegation & Automation',
-        milestone: '₹1.90 Crore Invested',
-        sip: '₹3,25,000 / month',
-        networth: '₹1.90 Crore',
+        milestone: '\u20B91.90 Crore Invested',
+        sip: '\u20B93,25,000 / mo',
+        networth: '\u20B91.90 Crore',
         description: 'Hire operational leadership to manage daily center logistics. Your personal hours shift entirely from linear clinic operations to system architecture.',
         checklist: [
-          { id: 'a34_1', category: 'Finance', text: 'Increase monthly equity injections to ₹3,25,000/month' },
+          { id: 'a34_1', category: 'Finance', text: 'Increase monthly equity injections to \u20B93,25,000/month' },
           { id: 'a34_2', category: 'Operations', text: 'Hire full-time Operations Manager to remove yourself from front-desk & vendor logistics' },
           { id: 'a34_3', category: 'Tech', text: 'Bring on 2 junior engineers to maintain code base under your architectural oversight' },
           { id: 'a34_4', category: 'Civic', text: 'Partner with local municipal bodies using parishkar for civic health tracking' },
-          { id: 'a34_5', category: 'Gate', text: 'Verification Gate: Net worth crosses ₹1.90 Crore' }
+          { id: 'a34_5', category: 'Gate', text: 'Verification Gate: Net worth crosses \u20B91.90 Crore' }
         ]
       },
       {
         age: 35,
-        year: '2033–2034',
+        year: '2033\u20132034',
         phase: 'Phase 2',
         title: 'Commercial Asset Anchor (Bucket 3)',
-        milestone: '₹2.65 Crore Invested',
-        sip: '₹4,00,000 / month',
-        networth: '₹2.65 Crore',
-        description: 'Acquire your first freehold commercial asset (clinic / office space). SaaS layer scales to ₹1.0+ Crore ARR.',
+        milestone: '\u20B92.65 Crore Invested',
+        sip: '\u20B94,00,000 / mo',
+        networth: '\u20B92.65 Crore',
+        description: 'Acquire your first freehold commercial asset (clinic / office space). SaaS layer scales to \u20B91.0+ Crore ARR.',
         checklist: [
-          { id: 'a35_1', category: 'Finance', text: 'Scale monthly equity injections to ₹4,00,000/month' },
-          { id: 'a35_2', category: 'Real Estate', text: 'Acquire prime freehold commercial property (₹1.0–1.5 Cr) yielding 7–8% rental yield' },
-          { id: 'a35_3', category: 'Tech', text: 'Expand B2B health software to 50+ clinics across eastern India (₹1.0–1.5 Cr ARR)' },
+          { id: 'a35_1', category: 'Finance', text: 'Scale monthly equity injections to \u20B94,00,000/month' },
+          { id: 'a35_2', category: 'Real Estate', text: 'Acquire prime freehold commercial property (\u20B91.0\u20131.5 Cr) yielding 7\u20138% rental yield' },
+          { id: 'a35_3', category: 'Tech', text: 'Expand B2B health software to 50+ clinics across eastern India (\u20B91.0\u20131.5 Cr ARR)' },
           { id: 'a35_4', category: 'Health', text: 'Maintain VO2 Max > 45 mL/kg/min; complete comprehensive executive health screen' },
-          { id: 'a35_5', category: 'Gate', text: 'Verification Gate: Net worth crosses ₹2.65 Crore' }
+          { id: 'a35_5', category: 'Gate', text: 'Verification Gate: Net worth crosses \u20B92.65 Crore' }
         ]
       },
       {
         age: 36,
-        year: '2034–2035',
+        year: '2034\u20132035',
         phase: 'Phase 2',
         title: 'Diagnostic Hub-and-Spoke Expansion',
-        milestone: '₹3.58 Crore Invested',
-        sip: '₹4,50,000 / month',
-        networth: '₹3.58 Crore',
+        milestone: '\u20B93.58 Crore Invested',
+        sip: '\u20B94,50,000 / mo',
+        networth: '\u20B93.58 Crore',
         description: 'Expand diagnostic collection points across semi-urban and rural corridors. Achieve NABH / NMC quality certifications.',
         checklist: [
-          { id: 'a36_1', category: 'Finance', text: 'Scale monthly investment to ₹4,50,000/month' },
+          { id: 'a36_1', category: 'Finance', text: 'Scale monthly investment to \u20B94,50,000/month' },
           { id: 'a36_2', category: 'Operations', text: 'Establish 3 hub-and-spoke collection points feeding central diagnostic processing' },
           { id: 'a36_3', category: 'Legal', text: 'Complete NABH accreditation to maximize institutional valuation for future acquirers' },
-          { id: 'a36_4', category: 'Gate', text: 'Verification Gate: Net worth crosses ₹3.58 Crore' }
+          { id: 'a36_4', category: 'Gate', text: 'Verification Gate: Net worth crosses \u20B93.58 Crore' }
         ]
       },
       {
         age: 37,
-        year: '2035–2036',
+        year: '2035\u20132036',
         phase: 'Phase 2 Milestone',
-        title: 'The ₹5.0 Crore Base & 30-Day Disconnect',
-        milestone: '₹4.70 – ₹5.20 Crore Invested',
-        sip: '₹5,00,000 / month',
-        networth: '₹5.0 Crore',
+        title: 'The \u20B95.0 Crore Base & 30-Day Disconnect',
+        milestone: '\u20B94.70 \u2013 \u20B95.20 Crore Invested',
+        sip: '\u20B95,00,000 / mo',
+        networth: '\u20B95.0 Crore',
         description: 'Safe returns from your portfolio now cover all living expenses. Take 30 consecutive days completely offline to verify zero key-man operational risk.',
         checklist: [
-          { id: 'a37_1', category: 'Finance', text: 'Maintain monthly injections at ₹5,00,000/month' },
+          { id: 'a37_1', category: 'Finance', text: 'Maintain monthly injections at \u20B95,00,000/month' },
           { id: 'a37_2', category: 'Audit', text: 'Engage top accounting firm for formal 3-year audit of corporate financials & IP' },
           { id: 'a37_3', category: 'Freedom', text: 'Take 30 consecutive days completely away from business operations (Zero-call test)' },
-          { id: 'a37_4', category: 'Gate', text: 'Verification Gate: Invested liquid portfolio reaches ₹4.70 – ₹5.20 Crore milestone' }
+          { id: 'a37_4', category: 'Gate', text: 'Verification Gate: Invested liquid portfolio reaches \u20B94.70 \u2013 \u20B95.20 Crore milestone' }
         ]
       },
       {
         age: 38,
-        year: '2036–2037',
+        year: '2036\u20132037',
         phase: 'Phase 3 Kickoff',
         title: 'Governance Decoupling & Exit Readiness',
-        milestone: '₹6.60 Crore Invested',
-        sip: '₹5,50,000 / month',
-        networth: '₹6.60 Crore',
+        milestone: '\u20B96.60 Crore Invested',
+        sip: '\u20B95,50,000 / mo',
+        networth: '\u20B96.60 Crore',
         description: 'Step up to Executive Chairman. Hand over executive reins to a professional General Manager. Initiate quiet M&A positioning.',
         checklist: [
-          { id: 'a38_1', category: 'Finance', text: 'Scale monthly equity injections to ₹5,50,000/month' },
+          { id: 'a38_1', category: 'Finance', text: 'Scale monthly equity injections to \u20B95,50,000/month' },
           { id: 'a38_2', category: 'Governance', text: 'Appoint General Manager / COO; cease personal operational signatures' },
           { id: 'a38_3', category: 'M&A', text: 'Begin exploratory discussions with hospital chains and diagnostic aggregators' },
-          { id: 'a38_4', category: 'Gate', text: 'Verification Gate: Net worth crosses ₹6.60 Crore' }
+          { id: 'a38_4', category: 'Gate', text: 'Verification Gate: Net worth crosses \u20B96.60 Crore' }
         ]
       },
       {
         age: 39,
-        year: '2037–2038',
+        year: '2037\u20132038',
         phase: 'Phase 3',
         title: 'EBITDA Optimization & Strategic Pilots',
-        milestone: '₹8.25 Crore Invested',
-        sip: '₹6,00,000 / month',
-        networth: '₹8.25 Crore',
+        milestone: '\u20B98.25 Crore Invested',
+        sip: '\u20B96,00,000 / mo',
+        networth: '\u20B98.25 Crore',
         description: 'Streamline operating margins to maximize trailing 12-month EBITDA, driving superior transaction multiples in exit negotiations.',
         checklist: [
-          { id: 'a39_1', category: 'Finance', text: 'Scale monthly investment to ₹6,00,000/month' },
+          { id: 'a39_1', category: 'Finance', text: 'Scale monthly investment to \u20B96,00,000/month' },
           { id: 'a39_2', category: 'Corporate', text: 'Optimize EBITDA margin to >30% on software and >22% on physical diagnostic ops' },
           { id: 'a39_3', category: 'Health', text: 'Complete full body MRI & longevity biomarker panel. Biological age test' },
-          { id: 'a39_4', category: 'Gate', text: 'Verification Gate: Net worth crosses ₹8.25 Crore' }
+          { id: 'a39_4', category: 'Gate', text: 'Verification Gate: Net worth crosses \u20B98.25 Crore' }
         ]
       },
       {
         age: 40,
-        year: '2038–2039',
+        year: '2038\u20132039',
         phase: 'Phase 3 Liquidity',
         title: 'The Secondary Partial Equity Exit',
-        milestone: '₹13.10 Crore Liquid',
-        sip: '₹6,50,000 / month',
-        networth: '₹13.10 Crore',
-        description: 'De-risk permanently. Sell a 25–35% equity stake to institutional partners, realizing ₹3.0 Crore in immediate liquid cash.',
+        milestone: '\u20B913.10 Crore Liquid',
+        sip: '\u20B96,50,000 / mo',
+        networth: '\u20B913.10 Crore',
+        description: 'De-risk permanently. Sell a 25\u201335% equity stake to institutional partners, realizing \u20B93.0 Crore in immediate liquid cash.',
         checklist: [
-          { id: 'a40_1', category: 'Exit', text: 'Execute secondary equity sale: Realize ₹3.0 Crore post-tax liquid capital' },
-          { id: 'a40_2', category: 'Asset Allocation', text: 'Deploy ₹2.0 Cr into Bucket 1 (Debt/SGB) and ₹1.0 Cr into Bucket 2 (Equities)' },
-          { id: 'a40_3', category: 'Finance', text: 'Continue monthly regular deployment of ₹6,50,000/month from corporate earnings' },
-          { id: 'a40_4', category: 'Gate', text: 'Verification Gate: Total liquid net worth crosses ₹13.0 Crore' }
+          { id: 'a40_1', category: 'Exit', text: 'Execute secondary equity sale: Realize \u20B93.0 Crore post-tax liquid capital' },
+          { id: 'a40_2', category: 'Asset Allocation', text: 'Deploy \u20B92.0 Cr into Bucket 1 (Debt/SGB) and \u20B91.0 Cr into Bucket 2 (Equities)' },
+          { id: 'a40_3', category: 'Finance', text: 'Continue monthly regular deployment of \u20B96,50,000/month from corporate earnings' },
+          { id: 'a40_4', category: 'Gate', text: 'Verification Gate: Total liquid net worth crosses \u20B913.0 Crore' }
         ]
       },
       {
         age: 41,
-        year: '2039–2040',
+        year: '2039\u20132040',
         phase: 'Phase 3',
         title: 'Buyout Agreement & Handover Structuring',
-        milestone: '₹15.70 Crore Invested',
-        sip: '₹7,00,000 / month',
-        networth: '₹15.70 Crore',
+        milestone: '\u20B915.70 Crore Invested',
+        sip: '\u20B97,00,000 / mo',
+        networth: '\u20B915.70 Crore',
         description: 'Negotiate final buyout or asset merger with acquiring healthcare network. Ensure maximum 12-month advisory earnout window.',
         checklist: [
           { id: 'a41_1', category: 'M&A', text: 'Sign definitive buyout agreement with institutional acquirer' },
-          { id: 'a41_2', category: 'Finance', text: 'Deploy ₹7,00,000/month in final accumulation sprint' },
+          { id: 'a41_2', category: 'Finance', text: 'Deploy \u20B97,00,000/month in final accumulation sprint' },
           { id: 'a41_3', category: 'Civic', text: 'Incorporate blueprint for Purulia Pro-Bono Foundation' },
-          { id: 'a41_4', category: 'Gate', text: 'Verification Gate: Net worth reaches ₹15.70 Crore' }
+          { id: 'a41_4', category: 'Gate', text: 'Verification Gate: Net worth reaches \u20B915.70 Crore' }
         ]
       },
       {
         age: 42,
-        year: '2040–2041',
+        year: '2040\u20132041',
         phase: 'Phase 3 Terminal Exit',
         title: 'The Terminal Monetization Event',
-        milestone: '₹23.50 – ₹25.00 Crore Liquid',
-        sip: '₹7,50,000 / month',
-        networth: '₹24.50 Crore',
-        description: 'Receive final acquisition payout (₹5.0–7.0 Cr post-tax). Complete all operational handovers. Resign from corporate boards.',
+        milestone: '\u20B923.50 \u2013 \u20B925.00 Crore Liquid',
+        sip: '\u20B97,50,000 / mo',
+        networth: '\u20B924.50 Crore',
+        description: 'Receive final acquisition payout (\u20B95.0\u20137.0 Cr post-tax). Complete all operational handovers. Resign from corporate boards.',
         checklist: [
-          { id: 'a42_1', category: 'Exit', text: 'Close final transaction: Receive ₹5.0 – ₹7.0 Crore post-tax acquisition proceeds' },
+          { id: 'a42_1', category: 'Exit', text: 'Close final transaction: Receive \u20B95.0 \u2013 \u20B97.0 Crore post-tax acquisition proceeds' },
           { id: 'a42_2', category: 'Corporate', text: 'Resign executive directorships. Complete 100% operational handover' },
           { id: 'a42_3', category: 'Portfolio', text: 'Lock terminal 40/45/15 defensive 3-bucket asset allocation' },
-          { id: 'a42_4', category: 'Gate', text: 'Verification Gate: Liquid sovereign corpus reaches ₹23.50 – ₹25.00 Crore' }
+          { id: 'a42_4', category: 'Gate', text: 'Verification Gate: Liquid sovereign corpus reaches \u20B923.50 \u2013 \u20B925.00 Crore' }
         ]
       },
       {
         age: 43,
-        year: '2041–2042',
+        year: '2041\u20132042',
         phase: 'Target Exit Milestone',
         title: 'Project Autonomy: Sovereign Transition',
-        milestone: '₹25.00 Crore Sovereign Corpus',
+        milestone: '\u20B925.00 Crore Sovereign Corpus',
         sip: 'Shift to Yield',
-        networth: '₹25.00 Crore',
+        networth: '\u20B925.00 Crore',
         description: 'The official exit milestone. Shift from capital accumulation to perpetual sovereign distribution. Automated cash-flow tap activates.',
         checklist: [
-          { id: 'a43_1', category: 'Yield', text: 'Activate Systematic Withdrawal Plan (SWP): ₹10.0–12.5 Lakhs/month post-tax distribution' },
-          { id: 'a43_2', category: 'Lifestyle', text: 'Lock personal lifestyle budget to ₹2.5–3.5L/mo; redirect ₹7.0–9.0L/mo surplus to mission' },
+          { id: 'a43_1', category: 'Yield', text: 'Activate Systematic Withdrawal Plan (SWP): \u20B910.0\u201312.5 Lakhs/month post-tax distribution' },
+          { id: 'a43_2', category: 'Lifestyle', text: 'Lock personal lifestyle budget to \u20B92.5\u20133.5L/mo; redirect \u20B97.0\u20139.0L/mo surplus to mission' },
           { id: 'a43_3', category: 'Foundation', text: 'Register Section 8 Trust for Purulia Community Health and Civic Tech' },
           { id: 'a43_4', category: 'Gate', text: 'Verification Gate: Complete sovereign autonomy achieved on 43rd birthday' }
         ]
@@ -1092,9 +1026,9 @@
         year: '2042 Onward',
         phase: 'Sovereign Freedom',
         title: 'The Purulia Legacy & Autonomous Life',
-        milestone: '₹1.20 – ₹1.50 Cr/yr Yield',
+        milestone: '\u20B91.20 \u2013 \u20B91.50 Cr/yr Yield',
         sip: 'Living on Yield',
-        networth: '₹25.0+ Crore Perpetual',
+        networth: '\u20B925.0+ Crore Perpetual',
         description: 'Complete freedom of time and mind. Deliver unpressured pro-bono clinical care in Purulia, build open-source civic tools, and master longevity.',
         checklist: [
           { id: 'a44_1', category: 'Clinical', text: 'Run weekly pro-bono outpatient clinics in Purulia with free medicine & subsidized labs' },
@@ -1129,6 +1063,25 @@
       saveState(state);
     }
 
+    function toggleHabit(id) {
+      toggleItem(id);
+      updateHabitDisplay();
+    }
+
+    function updateHabitDisplay() {
+      const state = getStoredState();
+      let habitCompleted = 0;
+      for (let i = 1; i <= 6; i++) {
+        const el = document.getElementById(`habit_${i}`);
+        if (el) {
+          el.checked = !!state[`habit_${i}`];
+          if (state[`habit_${i}`]) habitCompleted++;
+        }
+      }
+      const countEl = document.getElementById('dailyHabitCount');
+      if (countEl) countEl.textContent = habitCompleted;
+    }
+
     // View State
     let currentViewMode = 'tab'; // 'tab' or 'all'
     let currentActiveAgeIndex = 0; // default Age 28
@@ -1140,13 +1093,12 @@
       AGES_DATA.forEach((item, index) => {
         const btn = document.createElement('button');
         const isActive = index === currentActiveAgeIndex && currentViewMode === 'tab';
-        btn.className = `px-3 py-1.5 rounded-lg border transition whitespace-nowrap flex items-center gap-1.5 ${
+        btn.className = `px-4 py-2 rounded-full border transition whitespace-nowrap flex items-center gap-1.5 ${
           isActive 
-            ? 'bg-sky-500/20 text-sky-400 border-sky-500/50 font-bold' 
-            : 'bg-slate-900/60 text-slate-400 border-slate-800 hover:text-slate-200 hover:bg-slate-800'
+            ? 'bg-white text-black border-white font-semibold' 
+            : 'bg-apple-card text-apple-secondary border-apple-border hover:text-white hover:border-white/[0.2]'
         }`;
         
-        // Progress for this age
         const state = getStoredState();
         const completed = item.checklist.filter(c => state[c.id]).length;
         const total = item.checklist.length;
@@ -1154,7 +1106,7 @@
 
         btn.innerHTML = `
           <span>Age ${item.age}</span>
-          ${isAllDone ? '<span class="text-emerald-400 text-[10px]">✓</span>' : `<span class="text-[10px] text-slate-500">(${completed}/${total})</span>`}
+          ${isAllDone ? '<span class="text-apple-green text-[10px]">&check;</span>' : `<span class="text-[10px] opacity-60">(${completed}/${total})</span>`}
         `;
 
         btn.onclick = () => {
@@ -1176,66 +1128,66 @@
       const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
 
       return `
-        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-brand-border space-y-6">
+        <div class="apple-glass-card p-8 sm:p-10 rounded-[32px] border border-apple-border space-y-6">
           <!-- Card Header -->
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-brand-border/80">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-apple-border">
             <div>
               <div class="flex items-center gap-2">
-                <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-sky-950 text-sky-400 border border-sky-800 uppercase">
-                  Age ${item.age} (${item.year})
+                <span class="text-xs font-mono font-medium px-3 py-1 rounded-full bg-apple-blue/10 text-apple-blue border border-apple-blue/20 uppercase">
+                  Age ${item.age} &bull; ${item.year}
                 </span>
-                <span class="text-xs font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                <span class="text-xs font-mono px-3 py-1 rounded-full bg-apple-elevated text-apple-secondary border border-apple-border">
                   ${item.phase}
                 </span>
               </div>
-              <h3 class="text-xl sm:text-2xl font-bold text-white mt-2">${item.title}</h3>
-              <p class="text-slate-400 text-xs sm:text-sm mt-1 max-w-2xl leading-relaxed">${item.description}</p>
+              <h3 class="text-2xl font-bold text-white tracking-tight mt-3">${item.title}</h3>
+              <p class="text-apple-secondary text-xs sm:text-sm mt-1 max-w-2xl leading-relaxed">${item.description}</p>
             </div>
 
             <!-- Metrics Column -->
-            <div class="flex sm:flex-col items-center sm:items-end justify-between gap-2 sm:gap-1 text-right font-mono bg-slate-900/60 p-3 sm:p-0 rounded-xl sm:bg-transparent border sm:border-0 border-slate-800">
+            <div class="flex sm:flex-col items-center sm:items-end justify-between gap-2 sm:gap-1 text-right font-mono bg-apple-elevated p-4 sm:p-0 rounded-2xl sm:bg-transparent border sm:border-0 border-apple-border">
               <div>
-                <span class="text-[10px] text-slate-400 uppercase">Target Net Worth</span>
-                <div class="text-lg sm:text-xl font-bold text-emerald-400">${item.networth}</div>
+                <span class="text-[10px] text-apple-secondary uppercase">Target Net Worth</span>
+                <div class="text-xl font-bold text-apple-green">${item.networth}</div>
               </div>
-              <div class="text-xs text-slate-400 sm:mt-1">
-                SIP: <span class="text-sky-400 font-bold">${item.sip}</span>
+              <div class="text-xs text-apple-secondary sm:mt-1">
+                SIP: <span class="text-white font-medium">${item.sip}</span>
               </div>
-              <div class="text-[11px] text-slate-400 mt-1">
-                Completed: <strong class="text-white">${completed}</strong> / ${total} (<span class="text-sky-400">${percent}%</span>)
+              <div class="text-[11px] text-apple-secondary mt-1">
+                Completed: <strong class="text-white">${completed}</strong> / ${total} (<span class="text-apple-blue font-medium">${percent}%</span>)
               </div>
             </div>
           </div>
 
           <!-- Checklist Grid -->
           <div class="space-y-3">
-            <div class="text-xs font-mono uppercase tracking-wider text-slate-400 flex items-center gap-2">
-              <span>Action Checklist & Verification Items</span>
-              <span class="h-px bg-slate-800 flex-grow"></span>
+            <div class="text-xs font-mono uppercase tracking-wider text-apple-secondary flex items-center gap-2">
+              <span>Action Checklist &amp; Verification Gates</span>
+              <span class="h-px bg-apple-border flex-grow"></span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
               ${item.checklist.map(chk => {
                 const isChecked = !!state[chk.id];
                 const catColor = 
-                  chk.category === 'Finance' ? 'text-emerald-400 bg-emerald-950/60 border-emerald-800/80' :
-                  chk.category === 'Clinical' || chk.category === 'Clinical/Tech' ? 'text-sky-400 bg-sky-950/60 border-sky-800/80' :
-                  chk.category === 'Tech' ? 'text-amber-400 bg-amber-950/60 border-amber-800/80' :
-                  chk.category === 'Health' ? 'text-purple-400 bg-purple-950/60 border-purple-800/80' :
-                  chk.category === 'Gate' ? 'text-rose-400 bg-rose-950/60 border-rose-800/80' :
-                  'text-slate-400 bg-slate-800 border-slate-700';
+                  chk.category === 'Finance' ? 'text-apple-green bg-apple-green/10 border-apple-green/20' :
+                  chk.category === 'Clinical' || chk.category === 'Clinical/Tech' ? 'text-apple-blue bg-apple-blue/10 border-apple-blue/20' :
+                  chk.category === 'Tech' ? 'text-apple-orange bg-apple-orange/10 border-apple-orange/20' :
+                  chk.category === 'Health' ? 'text-apple-purple bg-apple-purple/10 border-apple-purple/20' :
+                  chk.category === 'Gate' ? 'text-apple-red bg-apple-red/10 border-apple-red/20' :
+                  'text-apple-secondary bg-apple-elevated border-apple-border';
 
                 return `
-                  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-start gap-3 hover:border-slate-700 transition">
+                  <div class="p-4 rounded-2xl bg-apple-card border border-apple-border flex items-start gap-3.5 hover:border-white/[0.16] transition">
                     <input 
                       type="checkbox" 
                       id="${chk.id}" 
                       ${isChecked ? 'checked' : ''} 
                       onchange="toggleCheckItem('${chk.id}')"
-                      class="checkbox-custom mt-1 h-4 w-4 rounded border-slate-700 bg-slate-800 text-sky-500 accent-sky-400 cursor-pointer"
+                      class="checkbox-custom mt-1 h-4 w-4 rounded border-apple-border bg-neutral-900 text-apple-blue accent-apple-blue cursor-pointer"
                     >
-                    <label for="${chk.id}" class="text-xs text-slate-300 leading-relaxed cursor-pointer select-none flex-grow">
-                      <span class="inline-block text-[9px] font-mono px-1.5 py-0.2 rounded border mr-1 uppercase ${catColor}">${chk.category}</span>
+                    <label for="${chk.id}" class="text-xs text-apple-text leading-relaxed cursor-pointer select-none flex-grow">
+                      <span class="inline-block text-[9px] font-mono px-2 py-0.5 rounded-full border mr-1.5 uppercase ${catColor}">${chk.category}</span>
                       ${chk.text}
                     </label>
                   </div>
@@ -1274,37 +1226,17 @@
       const tabBtn = document.getElementById('viewTabBtn');
       const allBtn = document.getElementById('viewAllBtn');
       if (currentViewMode === 'tab') {
-        tabBtn.className = 'px-3 py-1.5 rounded-lg bg-sky-950 text-sky-400 border border-sky-800 font-bold transition';
-        allBtn.className = 'px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition';
+        tabBtn.className = 'px-4 py-2 rounded-full bg-apple-blue/10 text-apple-blue border border-apple-blue/30 font-medium transition';
+        allBtn.className = 'px-4 py-2 rounded-full bg-apple-card text-apple-secondary border border-apple-border hover:text-white transition';
       } else {
-        tabBtn.className = 'px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition';
-        allBtn.className = 'px-3 py-1.5 rounded-lg bg-sky-950 text-sky-400 border border-sky-800 font-bold transition';
+        tabBtn.className = 'px-4 py-2 rounded-full bg-apple-card text-apple-secondary border border-apple-border hover:text-white transition';
+        allBtn.className = 'px-4 py-2 rounded-full bg-apple-blue/10 text-apple-blue border border-apple-blue/30 font-medium transition';
       }
-    }
-
-    function toggleHabit(id) {
-      toggleItem(id);
-      updateHabitDisplay();
-    }
-
-    function updateHabitDisplay() {
-      const state = getStoredState();
-      let habitCompleted = 0;
-      for (let i = 1; i <= 6; i++) {
-        const el = document.getElementById(`habit_${i}`);
-        if (el) {
-          el.checked = !!state[`habit_${i}`];
-          if (state[`habit_${i}`]) habitCompleted++;
-        }
-      }
-      const countEl = document.getElementById('dailyHabitCount');
-      if (countEl) countEl.textContent = habitCompleted;
     }
 
     function updateProgressDisplay() {
       const state = getStoredState();
       
-      // Calculate total checklist items across all ages + triage + habits
       let total = 6 + 6; // 6 triage + 6 habits
       let completed = 0;
       for (let i = 1; i <= 6; i++) {
@@ -1321,12 +1253,9 @@
 
       const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
       
-      document.getElementById('completedCount').textContent = completed;
-      document.getElementById('totalCount').textContent = total;
       document.getElementById('progressPercent').textContent = percent + '%';
       document.getElementById('masterProgressBar').style.width = percent + '%';
 
-      // Update triage checkboxes
       for (let i = 1; i <= 6; i++) {
         const el = document.getElementById(`triage_${i}`);
         if (el) el.checked = !!state[`triage_${i}`];
@@ -1335,7 +1264,6 @@
       updateHabitDisplay();
     }
 
-    // Export / Import
     function exportData() {
       const state = getStoredState();
       const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
@@ -1376,7 +1304,7 @@
       }
     }
 
-    // Interactive Simulator Logic
+    // Capital Simulator Logic
     const sipSlider = document.getElementById('sipSlider');
     const exitSlider = document.getElementById('exitSlider');
     const swrSlider = document.getElementById('swrSlider');
@@ -1394,11 +1322,10 @@
       const exitAmount = parseFloat(exitSlider.value);
       const swrRate = parseFloat(swrSlider.value) / 100;
       
-      sipValueDisplay.textContent = '₹' + p.toLocaleString('en-IN') + ' / mo';
-      exitValueDisplay.textContent = '₹' + (exitAmount / 10000000).toFixed(1) + ' Crore';
+      sipValueDisplay.textContent = '\u20B9' + p.toLocaleString('en-IN') + ' / mo';
+      exitValueDisplay.textContent = '\u20B9' + (exitAmount / 10000000).toFixed(1) + ' Crore';
       swrValueDisplay.textContent = (swrRate * 100).toFixed(2) + '% Post-Tax';
 
-      // 15 years compounding at 12.0% CAGR
       const r = 0.12 / 12;
       const n = 15 * 12;
       const fvSip = p * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
@@ -1408,14 +1335,14 @@
       const exitCr = (exitAmount / 10000000).toFixed(2);
       const totalCr = (totalCorpus / 10000000).toFixed(2);
 
-      totalProjectedCorpus.textContent = '₹' + totalCr + ' Cr';
-      sipSubtotalDisplay.textContent = '₹' + fvSipCr + ' Cr';
-      exitSubtotalDisplay.textContent = '₹' + exitCr + ' Cr';
+      totalProjectedCorpus.textContent = '\u20B9' + totalCr + ' Cr';
+      sipSubtotalDisplay.textContent = '\u20B9' + fvSipCr + ' Cr';
+      exitSubtotalDisplay.textContent = '\u20B9' + exitCr + ' Cr';
 
       const annualYield = totalCorpus * swrRate;
       const monthlyYield = annualYield / 12;
-      annualPassiveIncome.textContent = '₹' + (annualYield / 10000000).toFixed(2) + ' Cr / yr';
-      monthlyPassiveIncome.textContent = '≈ ₹' + (monthlyYield / 100000).toFixed(2) + ' Lakhs / month post-tax';
+      annualPassiveIncome.textContent = '\u20B9' + (annualYield / 10000000).toFixed(2) + ' Cr / yr';
+      monthlyPassiveIncome.textContent = '\u2248 \u20B9' + (monthlyYield / 100000).toFixed(2) + ' Lakhs / month post-tax';
     }
 
     sipSlider.addEventListener('input', calculateSimulator);
@@ -1423,13 +1350,6 @@
     swrSlider.addEventListener('input', calculateSimulator);
 
     // Initial Boot
-    const savedRashi = localStorage.getItem('SELECTED_RASHI');
-    if (savedRashi) {
-      const el = document.getElementById('rashiSelector');
-      if (el) el.value = savedRashi;
-      updateHoroscopeProfile();
-    }
-
     renderTrajectoryTable();
     renderAgeTabs();
     renderAgeContent();
