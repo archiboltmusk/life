@@ -105,8 +105,9 @@
           <a href="#transit" class="text-xs text-apple-muted hover:text-white transition-colors">Saturn</a>
           <a href="#triage" class="text-xs text-apple-muted hover:text-white transition-colors">Activity Rings</a>
           <a href="#pearls" class="text-xs text-apple-muted hover:text-white transition-colors">Visual Pearls</a>
+          <a href="#engine" class="text-xs text-apple-muted hover:text-white transition-colors font-medium text-apple-blue">Exam Engine</a>
           <a href="#family" class="text-xs text-apple-muted hover:text-white transition-colors">Mom HUD</a>
-          <a href="#timeline" class="text-xs text-apple-muted hover:text-white transition-colors">Master Calendar</a>
+          <a href="#timeline" class="text-xs text-apple-muted hover:text-white transition-colors">Timeline</a>
           <a href="#simulator" class="text-xs text-apple-muted hover:text-white transition-colors">Endowment</a>
         </div>
 
@@ -366,6 +367,166 @@
           <button onclick="nextPearl()" class="px-4 py-2 rounded-full border border-white/10 hover:border-white/30 text-xs text-apple-muted hover:text-white transition-all font-mono">
             Next &rarr;
           </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Act III-B: The NEET-PG & INI-CET Diagnostic & Execution Engine -->
+    <section id="engine" class="max-w-4xl mx-auto px-6 space-y-10">
+      <div class="space-y-3 text-center max-w-2xl mx-auto">
+        <span class="text-[11px] font-mono text-apple-blue uppercase tracking-wider block">Algorithmic Exam Telemetry</span>
+        <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white">Engineering, Not Intellect.</h2>
+        <p class="text-apple-muted text-base leading-relaxed">
+          Getting a low rank despite 10–12 hours of study is an engineering failure of exam execution. Isolate your exact bottleneck with data.
+        </p>
+      </div>
+
+      <!-- Interactive GT Diagnostic HUD -->
+      <div class="apple-card p-8 sm:p-10 space-y-8 bg-gradient-to-br from-neutral-900/90 to-neutral-950/80 border border-white/[0.08]">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/[0.08] pb-6">
+          <div>
+            <span class="text-[11px] font-mono text-apple-blue uppercase tracking-wider block">Telemetry Console</span>
+            <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-white">Grand Test (GT) Diagnostic Analyzer</h3>
+          </div>
+          <div class="px-3 py-1 rounded-full bg-apple-blue/10 border border-apple-blue/20 text-xs font-mono text-apple-blue">
+            NEET-PG 200 Qs Standard
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Input Form -->
+          <div class="space-y-4">
+            <div>
+              <label class="text-xs font-mono text-apple-muted block mb-1">Total Attempts (Target: 188–195)</label>
+              <input type="number" id="gtAttempts" value="188" min="100" max="200" class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-2.5 text-white font-mono text-sm focus:border-apple-blue focus:outline-none" oninput="runGtDiagnosis()">
+            </div>
+            <div>
+              <label class="text-xs font-mono text-apple-muted block mb-1">Total Correct</label>
+              <input type="number" id="gtCorrect" value="138" min="0" max="200" class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-2.5 text-apple-green font-mono text-sm focus:border-apple-blue focus:outline-none" oninput="runGtDiagnosis()">
+            </div>
+            <div>
+              <label class="text-xs font-mono text-apple-muted block mb-1">Total Incorrect</label>
+              <input type="number" id="gtIncorrect" value="50" min="0" max="200" class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-2.5 text-apple-red font-mono text-sm focus:border-apple-blue focus:outline-none" oninput="runGtDiagnosis()">
+            </div>
+          </div>
+
+          <!-- Calculated Output -->
+          <div class="p-6 rounded-2xl bg-black/40 border border-white/[0.06] flex flex-col justify-between space-y-4">
+            <div class="space-y-1">
+              <span class="text-[11px] font-mono text-apple-muted uppercase">Estimated Net Score</span>
+              <div id="gtScoreDisplay" class="text-3xl font-bold font-mono text-white">502 / 800</div>
+              <div id="gtAccuracyDisplay" class="text-xs font-mono text-apple-green">Accuracy: 73.4%</div>
+            </div>
+            <div class="pt-4 border-t border-white/[0.08] space-y-1">
+              <span class="text-[10px] font-mono text-apple-muted uppercase">Expected Math on 50/50 Guess</span>
+              <div class="text-xs text-apple-muted leading-tight font-mono">
+                (+4 × 0.5) - (1 × 0.5) = <strong class="text-apple-green">+1.5 Marks/Q</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Automated Algorithmic Diagnosis -->
+          <div class="p-6 rounded-2xl bg-black/40 border border-white/[0.06] flex flex-col justify-between space-y-3">
+            <div>
+              <div class="text-[11px] font-mono text-apple-orange uppercase">Algorithmic Triage</div>
+              <div id="gtDiagnosisTitle" class="text-base font-semibold text-white mt-1">Accuracy Crisis</div>
+              <p id="gtDiagnosisBody" class="text-xs text-apple-muted mt-2 leading-relaxed">
+                High negative marking bleed. Classify your last 100 errors into the 4 types below to stop preventable leakage.
+              </p>
+            </div>
+            <div id="gtPrescriptionBadge" class="p-2.5 rounded-lg bg-apple-orange/10 border border-apple-orange/20 text-[11px] font-mono text-apple-orange">
+              Fix: Anchor-Word Highlighting
+            </div>
+          </div>
+        </div>
+
+        <!-- The 4 Error Archetypes Bento Grid -->
+        <div class="pt-6 border-t border-white/[0.08] space-y-4">
+          <div class="flex items-center justify-between">
+            <h4 class="text-base font-semibold text-white">Classifying the 4 Error Archetypes</h4>
+            <span class="text-xs font-mono text-apple-muted">Audit Last 100 Incorrects</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="p-5 rounded-2xl bg-black/50 border border-white/[0.06] space-y-2">
+              <div class="text-[11px] font-mono text-apple-red uppercase font-bold">Type 1 &bull; >35%</div>
+              <div class="text-sm font-semibold text-white">Knowledge Void</div>
+              <p class="text-[11px] text-apple-muted leading-relaxed">
+                <em>"Never seen this sign."</em> Incomplete core coverage.
+              </p>
+              <div class="pt-2 border-t border-white/[0.06] text-[10px] font-mono text-apple-text">
+                <strong>Fix:</strong> 5-Year PYT audit. If tested in last 5 yrs, 2-line flashcard in 20th notebook; if not, discard.
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-black/50 border border-white/[0.06] space-y-2">
+              <div class="text-[11px] font-mono text-apple-orange uppercase font-bold">Type 2 &bull; >30%</div>
+              <div class="text-sm font-semibold text-white">Cue-Blindness</div>
+              <p class="text-[11px] text-apple-muted leading-relaxed">
+                <em>"Knew it, missed vignette clue."</em> Rote recall over patterns.
+              </p>
+              <div class="pt-2 border-t border-white/[0.06] text-[10px] font-mono text-apple-text">
+                <strong>Fix:</strong> Highlight 3 anchors: (1) Demographics/Time, (2) Cardinal physical/lab, (3) Decisive negative.
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-black/50 border border-white/[0.06] space-y-2">
+              <div class="text-[11px] font-mono text-apple-purple uppercase font-bold">Type 3 &bull; >25%</div>
+              <div class="text-sm font-semibold text-white">The 50/50 Trap</div>
+              <p class="text-[11px] text-apple-muted leading-relaxed">
+                <em>"Cut B &amp; D, picked wrong between A &amp; C."</em> Superficial twins.
+              </p>
+              <div class="pt-2 border-t border-white/[0.06] text-[10px] font-mono text-apple-text">
+                <strong>Fix:</strong> 2-Column Distractor Differential matrix. Isolate single discriminating variable.
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-black/50 border border-white/[0.06] space-y-2">
+              <div class="text-[11px] font-mono text-apple-blue uppercase font-bold">Type 4 &bull; >15%</div>
+              <div class="text-sm font-semibold text-white">Executive Lapse</div>
+              <p class="text-[11px] text-apple-muted leading-relaxed">
+                <em>"Misread EXCEPT or rushed clock."</em> Exam velocity collapse.
+              </p>
+              <div class="pt-2 border-t border-white/[0.06] text-[10px] font-mono text-apple-text">
+                <strong>Fix:</strong> Inverted Stem Rule: Read the last sentence first. Strict sectional pacing: 50 Qs per 50 min.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Step Execution Framework -->
+        <div class="pt-6 border-t border-white/[0.08] space-y-4">
+          <div class="text-xs font-mono text-apple-green uppercase tracking-wider">The 4 Non-Negotiable Operational Steps</div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-apple-muted leading-relaxed">
+            <div class="p-4 rounded-xl bg-black/30 border border-white/[0.06] space-y-1.5">
+              <div class="font-semibold text-white flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-apple-green"></span>
+                Step 1: Single Resource Rule
+              </div>
+              <p>Lock Marrow Plan C. Zero outside PDFs or coaching switching. Better to know 80% of one resource with 100% retrieval than 100% of four resources with 50% retrieval.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-black/30 border border-white/[0.06] space-y-1.5">
+              <div class="font-semibold text-white flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-apple-blue"></span>
+                Step 2: The 20th Notebook (Volatile Log)
+              </div>
+              <p>Dedicate one thin notebook to volatile facts (Biostats formulas, vaccine schedules, developmental milestones, IPC codes). Drill for 45 mins every morning before phone touch.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-black/30 border border-white/[0.06] space-y-1.5">
+              <div class="font-semibold text-white flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-apple-purple"></span>
+                Step 3: Custom Module Triage FIRST
+              </div>
+              <p>Never read notes cover-to-cover passively. Run a 30-MCQ timed module on Marrow first. Only open notes for questions you failed or hesitated on. Saves 70% study time.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-black/30 border border-white/[0.06] space-y-1.5">
+              <div class="font-semibold text-white flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-apple-orange"></span>
+                Step 4: Strict GT Protocol (Every 10–14 Days)
+              </div>
+              <p>Official 09:00 AM – 12:30 PM slot. Target 188–195 attempts. Leaving 35 unattempted mathematically caps rank. Spend evening auditing errors into Type 1–4.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1079,9 +1240,48 @@
     updateRingsUI();
     renderPearl();
     handleUrlParams();
+    runGtDiagnosis();
           updateRingsUI();
           showToast(`✨ Ring Closed via Telegram: ${checkParam.toUpperCase()}`);
         }
+      }
+    }
+
+    
+    // GT Algorithmic Diagnosis Engine
+    function runGtDiagnosis() {
+      const attempts = parseInt(document.getElementById('gtAttempts').value) || 0;
+      const correct = parseInt(document.getElementById('gtCorrect').value) || 0;
+      const incorrect = parseInt(document.getElementById('gtIncorrect').value) || 0;
+
+      const score = (correct * 4) - (incorrect * 1);
+      const accuracy = attempts > 0 ? ((correct / attempts) * 100).toFixed(1) : 0;
+
+      document.getElementById('gtScoreDisplay').textContent = `${score} / 800`;
+      document.getElementById('gtAccuracyDisplay').textContent = `Accuracy: ${accuracy}%`;
+
+      const titleEl = document.getElementById('gtDiagnosisTitle');
+      const bodyEl = document.getElementById('gtDiagnosisBody');
+      const badgeEl = document.getElementById('gtPrescriptionBadge');
+
+      if (attempts < 180) {
+        titleEl.textContent = 'Bottleneck: Pacing & Risk Crisis';
+        titleEl.className = 'text-base font-semibold text-apple-red mt-1';
+        bodyEl.textContent = 'Attempts < 180 mathematically caps your max score. Leaving 30+ questions blank guarantees a 1 Lakh+ rank regardless of intellect. You must eliminate 2 options and force attempts to 188–195.';
+        badgeEl.textContent = 'Fix: Inverted Stem Rule + 50 Qs / 50 Min Pacing';
+        badgeEl.className = 'p-2.5 rounded-lg bg-apple-red/10 border border-apple-red/20 text-[11px] font-mono text-apple-red';
+      } else if (accuracy < 70) {
+        titleEl.textContent = 'Bottleneck: Accuracy & Negative Bleed';
+        titleEl.className = 'text-base font-semibold text-apple-orange mt-1';
+        bodyEl.textContent = 'Attempts are healthy, but negative marks are bleeding your score. High prevalence of Type 2 (Cue-Blindness) and Type 3 (50/50 Trap) errors. Stop blind guessing.';
+        badgeEl.textContent = 'Fix: Anchor-Word Highlighting & 20th Notebook';
+        badgeEl.className = 'p-2.5 rounded-lg bg-apple-orange/10 border border-apple-orange/20 text-[11px] font-mono text-apple-orange';
+      } else {
+        titleEl.textContent = 'High-Tier Rank Trajectory';
+        titleEl.className = 'text-base font-semibold text-apple-green mt-1';
+        bodyEl.textContent = 'Execution is calibrated! Over 75% accuracy with 185+ attempts places you in top clinical residency rank territory. Focus on volatile fact consolidation.';
+        badgeEl.textContent = 'Fix: Maintain Cadence + 45-Min Daily Volatile Drills';
+        badgeEl.className = 'p-2.5 rounded-lg bg-apple-green/10 border border-apple-green/20 text-[11px] font-mono text-apple-green';
       }
     }
 

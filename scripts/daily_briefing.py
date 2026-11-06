@@ -39,6 +39,17 @@ if briefing_type == "morning":
     day_index = now_ist.weekday()
     focus_subject, focus_task = anchors[day_index % len(anchors)]
 
+    exam_tips = [
+        "Inverted Stem Rule: Read the last sentence first. Scan options in 2s so you know what you are hunting for.",
+        "Anchor-Word Highlighting: Circle (1) Demographics/Timeline, (2) Cardinal physical/lab sign, (3) Decisive negative.",
+        "The 20th Notebook Rule: 45 mins of volatile drills (Biostats, Vaccines, Milestones) beats 10 hours of passive videos.",
+        "The Single Resource Rule: 80% of Marrow with 100% retrieval beats 100% of four platforms with 50% retrieval.",
+        "The 50/50 Trap Fix: When down to 2 options, don't guess. Find the single discriminating variable in the differential.",
+        "Target Attempts 188–195: Leaving 35 blank mathematically caps rank. On a 50/50 guess, expected value is +1.5 marks.",
+        "Timed Module FIRST: Solve 30 MCQs before notes. Only open theory for questions you failed or hesitated on."
+    ]
+    daily_exam_tip = exam_tips[day_index % len(exam_tips)]
+
     message = f"""🌅 *LIFE OS | MORNING BRIEFING*
 🗓️ *{date_str}*
 
@@ -47,10 +58,13 @@ if briefing_type == "morning":
 2. *Marrow Rhythm*: {focus_subject} — {focus_task}
 3. *Mother*: 10 mins peaceful presence (zero phone).
 
+🎯 *EXAM EXECUTION PRINCIPLE*
+• _{daily_exam_tip}_
+
 🪐 *ASTRONOMICAL & ASSET GAUGES*
 • *Janma Shani Peak*: ~{max(0, days_to_peak_lift)} days remaining until Saturn compression lifts.
 • *Marrow Runway*: {max(0, days_to_marrow)} active days left on Plan C.
-• *Truth of the Day*: _"Routine heals what thinking paralyzes. Win the next 60 minutes."_
+• *Truth of the Day*: _"Getting a low rank is an engineering failure, not an intellect failure. Win the next 60 minutes."_
 
 📱 *TAP TO LAUNCH LIFE OS*
 👉 [Open Your Dashboard](https://archiboltmusk.github.io/life/)
