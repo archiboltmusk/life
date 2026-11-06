@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-black text-[#f5f5f7] select-none">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
+  <title>SovereignMD — The Physician Operating System</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="SovereignMD" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "SF Pro Display", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom, 24px); }
+    .pt-safe { padding-top: env(safe-area-inset-top, 44px); }
+    .ios-blur {
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+    .apple-card {
+      background: #111115;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+    }
+  </style>
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+  <!-- Main Scrollable App Container -->
+  <main class="flex-1 overflow-y-auto pt-safe px-5 pb-32 max-w-lg mx-auto w-full">
+    
+    <!-- Top Brand HUD -->
+    <header class="flex items-center justify-between py-4 mb-2 border-b border-white/[0.06]">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+        <span class="text-xs font-mono font-bold tracking-wider text-cyan-400">SOVEREIGN MD</span>
+      </div>
+      <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono text-emerald-400">
+        <span>●</span>
+        <span>NMC / State Verified</span>
+      </div>
+    </header>
+
+    <!-- TAB 1: RANK-MAXX (Under-100 Architecture) -->
+    <div id="tab-rank" class="tab-pane space-y-6">
+      <div class="space-y-1">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-cyan-400">Pillar 01 &bull; Exam Execution</span>
+        <h1 class="text-2xl font-bold tracking-tight">Rank-Maxx Engine</h1>
+        <p class="text-xs text-neutral-400">Expose the exact mathematical bottleneck in your GT telemetry.</p>
+      </div>
+
+      <!-- GT Metric HUD -->
+      <div class="apple-card p-5 space-y-5 bg-gradient-to-br from-neutral-900 to-neutral-950">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-[10px] font-mono uppercase text-neutral-400">Estimated Net Score</div>
+            <div id="gtScore" class="text-3xl font-extrabold font-mono text-white tracking-tight">502 / 800</div>
+          </div>
+          <div class="text-right">
+            <div class="text-[10px] font-mono uppercase text-neutral-400">Accuracy</div>
+            <div id="gtAcc" class="text-xl font-bold font-mono text-emerald-400">73.4%</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2">
+          <div>
+            <label class="text-[10px] font-mono text-neutral-400 block mb-1">Attempts</label>
+            <input id="inAttempts" type="number" value="188" class="w-full bg-black/60 border border-white/10 rounded-xl px-2.5 py-2 text-white font-mono text-sm focus:outline-none focus:border-cyan-400" oninput="calcGT()">
+          </div>
+          <div>
+            <label class="text-[10px] font-mono text-neutral-400 block mb-1">Correct (+4)</label>
+            <input id="inCorrect" type="number" value="138" class="w-full bg-black/60 border border-white/10 rounded-xl px-2.5 py-2 text-emerald-400 font-mono text-sm focus:outline-none focus:border-cyan-400" oninput="calcGT()">
+          </div>
+          <div>
+            <label class="text-[10px] font-mono text-neutral-400 block mb-1">Incorrect (-1)</label>
+            <input id="inIncorrect" type="number" value="50" class="w-full bg-black/60 border border-white/10 rounded-xl px-2.5 py-2 text-rose-400 font-mono text-sm focus:outline-none focus:border-cyan-400" oninput="calcGT()">
+          </div>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-black/40 border border-white/[0.06] space-y-1">
+          <div class="text-[10px] font-mono uppercase text-amber-400 font-semibold" id="gtDiagTitle">Negative Bleed Alert</div>
+          <p class="text-xs text-neutral-300 leading-relaxed" id="gtDiagBody">
+            Attempts are healthy (188), but 50 negative marks bleed your score by 50 full marks. Apply the 4 Error Archetypes audit below.
+          </p>
+        </div>
+      </div>
+
+      <!-- The 4 Error Archetypes -->
+      <div class="apple-card p-5 space-y-4">
+        <div class="text-xs font-mono uppercase text-purple-400 font-semibold">The 4 Error Archetypes</div>
+        
+        <div class="space-y-2.5">
+          <div class="p-3 rounded-xl bg-black/40 border border-white/[0.06] space-y-1">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-rose-400">Type 1: Knowledge Void</span>
+              <span class="font-mono text-neutral-400">&gt;35%</span>
+            </div>
+            <p class="text-[11px] text-neutral-400"><em>"Never seen this."</em> 5-Yr PYT Audit: Discard trivia not tested in 5 yrs; log high-yield voids in 20th notebook.</p>
+          </div>
+
+          <div class="p-3 rounded-xl bg-black/40 border border-white/[0.06] space-y-1">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-amber-400">Type 2: Cue-Blindness</span>
+              <span class="font-mono text-neutral-400">&gt;30%</span>
+            </div>
+            <p class="text-[11px] text-neutral-400"><em>"Missed age 65 with painless jaundice."</em> Highlight 3 anchors: Demographics, Cardinal sign, Decisive negative.</p>
+          </div>
+
+          <div class="p-3 rounded-xl bg-black/40 border border-white/[0.06] space-y-1">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-purple-400">Type 3: The 50/50 Trap</span>
+              <span class="font-mono text-neutral-400">&gt;25%</span>
+            </div>
+            <p class="text-[11px] text-neutral-400"><em>"Cut B &amp; D, picked wrong between A &amp; C."</em> Differential matrix: isolate the single discriminating variable.</p>
+          </div>
+
+          <div class="p-3 rounded-xl bg-black/40 border border-white/[0.06] space-y-1">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-cyan-400">Type 4: Executive Lapse</span>
+              <span class="font-mono text-neutral-400">&gt;15%</span>
+            </div>
+            <p class="text-[11px] text-neutral-400"><em>"Misread EXCEPT or rushed clock."</em> Inverted Stem Rule: Read the last sentence first. 50 Qs / 50 min pacing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: BIOMARKERS (Biology & Physique) -->
+    <div id="tab-bio" class="tab-pane hidden space-y-6">
+      <div class="space-y-1">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400">Pillar 02 &bull; Cellular Engine</span>
+        <h1 class="text-2xl font-bold tracking-tight">Biology &amp; Biomarkers</h1>
+        <p class="text-xs text-neutral-400">Reverse hair fall, eliminate dark circles, and optimize cortisol.</p>
+      </div>
+
+      <!-- Live Dials Grid -->
+      <div class="grid grid-cols-2 gap-3">
+        <div class="apple-card p-4 space-y-2">
+          <div class="flex items-center justify-between text-xs text-cyan-400">
+            <span>💧 Hydration</span>
+            <span class="text-[10px] font-mono text-neutral-400">/ 3.0 L</span>
+          </div>
+          <div class="text-2xl font-bold font-mono">2.8 L</div>
+          <div class="text-[10px] text-neutral-400">Pink salt electrolyte mix</div>
+        </div>
+
+        <div class="apple-card p-4 space-y-2">
+          <div class="flex items-center justify-between text-xs text-amber-400">
+            <span>🥩 Protein Floor</span>
+            <span class="text-[10px] font-mono text-neutral-400">/ 90g</span>
+          </div>
+          <div class="text-2xl font-bold font-mono">85g</div>
+          <div class="text-[10px] text-neutral-400">Eggs, sattu, paneer</div>
+        </div>
+
+        <div class="apple-card p-4 space-y-2">
+          <div class="flex items-center justify-between text-xs text-yellow-400">
+            <span>☀️ Morning Sun</span>
+            <span class="text-[10px] font-mono text-neutral-400">/ 20m</span>
+          </div>
+          <div class="text-2xl font-bold font-mono">15m</div>
+          <div class="text-[10px] text-neutral-400">Circadian cortisol reset</div>
+        </div>
+
+        <div class="apple-card p-4 space-y-2">
+          <div class="flex items-center justify-between text-xs text-purple-400">
+            <span>🌙 Sleep Core</span>
+            <span class="text-[10px] font-mono text-neutral-400">/ 7.5h</span>
+          </div>
+          <div class="text-2xl font-bold font-mono">7.2h</div>
+          <div class="text-[10px] text-neutral-400">Phone outside bedroom</div>
+        </div>
+      </div>
+
+      <!-- Scalp & Skin Protocol -->
+      <div class="apple-card p-5 space-y-3">
+        <div class="text-xs font-mono uppercase text-cyan-400 font-semibold">Scalp &amp; Dark Circle Stack</div>
+        <div class="space-y-2 text-xs text-neutral-300">
+          <div class="p-2.5 rounded-xl bg-black/40 border border-white/[0.06] flex items-center justify-between">
+            <span>5% Topical Minoxidil + Dermastamp</span>
+            <span class="text-emerald-400 font-mono text-[11px]">Applied ✓</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-black/40 border border-white/[0.06] flex items-center justify-between">
+            <span>Serum Ferritin &gt; 70 ng/mL</span>
+            <span class="text-emerald-400 font-mono text-[11px]">85 ng/mL (Optimal)</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-black/40 border border-white/[0.06] flex items-center justify-between">
+            <span>Vitamin D3 (25-OH) &gt; 50 ng/mL</span>
+            <span class="text-emerald-400 font-mono text-[11px]">54 ng/mL (Optimal)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: EQ & DATING -->
+    <div id="tab-eq" class="tab-pane hidden space-y-6">
+      <div class="space-y-1">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-purple-400">Pillar 03 &bull; Human Mastery</span>
+        <h1 class="text-2xl font-bold tracking-tight">EQ, Charisma &amp; Romance</h1>
+        <p class="text-xs text-neutral-400">Command respect in casualties, communicate with grace, and build love.</p>
+      </div>
+
+      <!-- Casualty De-escalation Protocol -->
+      <div class="apple-card p-5 space-y-3 bg-gradient-to-br from-neutral-900 to-neutral-950">
+        <div class="text-xs font-mono uppercase text-rose-400 font-semibold">Casualty Ward Calm Command</div>
+        <div class="text-sm font-bold">The 3-Step De-Escalation Rule</div>
+        <div class="space-y-2 text-xs text-neutral-300">
+          <div class="p-2.5 rounded-xl bg-black/40 border border-white/[0.06]">
+            <strong class="text-white block mb-0.5">1. Physical Stance:</strong>
+            Stand at a 45-degree angle with open palms. Drop your vocal pitch by 2 octaves. Never mirror their volume.
+          </div>
+          <div class="p-2.5 rounded-xl bg-black/40 border border-white/[0.06]">
+            <strong class="text-white block mb-0.5">2. The Empathy Mirror:</strong>
+            <em>"I hear that your father is in severe pain and you are terrified. I am here to help him, but I need 60 seconds of silence to deliver the medication."</em>
+          </div>
+          <div class="p-2.5 rounded-xl bg-black/40 border border-white/[0.06]">
+            <strong class="text-white block mb-0.5">3. Zero Institutional Ego:</strong>
+            Never defend hospital delays. Keep eye contact locked solely on the patient's immediate medical stabilization.
+          </div>
+        </div>
+      </div>
+
+      <!-- Doctor Dating Mastery -->
+      <div class="apple-card p-5 space-y-3">
+        <div class="text-xs font-mono uppercase text-amber-400 font-semibold">Dating &amp; Romantic Alignment</div>
+        <div class="space-y-2 text-xs text-neutral-300">
+          <div class="p-2.5 rounded-xl bg-black/40 border border-white/[0.06]">
+            <strong class="text-white block mb-0.5">Dignity Over Display:</strong>
+            Do not overcompensate with fake luxury or burnout boasting. A high-value partner respects calm purpose and authentic presence.
+          </div>
+          <div class="p-2.5 rounded-xl bg-black/40 border border-white/[0.06]">
+            <strong class="text-white block mb-0.5">The Zero-Phone Date Rule:</strong>
+            Give your date 100% undivided attention. Leave hospital drama outside the door.
+          </div>
+          <div class="p-2.5 rounded-xl bg-black/40 border border-white/[0.06]">
+            <strong class="text-white block mb-0.5">Align at 30–31 (Zero Panic):</strong>
+            Do not marry out of exhaustion or societal pressure at 28. Marry when your emotional and financial sovereignty is secure.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: SOVEREIGN WEALTH & ANTI-EXPLOITATION -->
+    <div id="tab-wealth" class="tab-pane hidden space-y-6">
+      <div class="space-y-1">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-amber-400">Pillar 04 &bull; Economic Freedom</span>
+        <h1 class="text-2xl font-bold tracking-tight">Sovereign Wealth</h1>
+        <p class="text-xs text-neutral-400">Audit administrative exploitation and build a ₹25 Crore liquid base.</p>
+      </div>
+
+      <!-- Hourly Wage Exploitation Calculator -->
+      <div class="apple-card p-5 space-y-4 bg-gradient-to-br from-neutral-900 to-neutral-950">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-[10px] font-mono uppercase text-neutral-400">Your True Hourly Wage</div>
+            <div id="trueWage" class="text-3xl font-extrabold font-mono text-rose-400">₹188 / hr</div>
+          </div>
+          <div class="text-right">
+            <div class="text-[10px] font-mono uppercase text-neutral-400">Monthly Hours</div>
+            <div id="monthlyHours" class="text-xl font-bold font-mono text-neutral-200">346 hrs</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="text-[10px] font-mono text-neutral-400 block mb-1">Monthly Stipend (₹)</label>
+            <input id="inStipend" type="number" value="65000" class="w-full bg-black/60 border border-white/10 rounded-xl px-2.5 py-2 text-white font-mono text-sm focus:outline-none focus:border-amber-400" oninput="calcWage()">
+          </div>
+          <div>
+            <label class="text-[10px] font-mono text-neutral-400 block mb-1">Weekly Hours (Actual)</label>
+            <input id="inHours" type="number" value="80" class="w-full bg-black/60 border border-white/10 rounded-xl px-2.5 py-2 text-white font-mono text-sm focus:outline-none focus:border-amber-400" oninput="calcWage()">
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-rose-950/20 border border-rose-500/30 text-xs text-rose-300">
+          <strong>Exploitation Index: Severe.</strong> At ₹188/hr, you are earning less than a plumber or union electrician while assuming 100% medicolegal liability.
+        </div>
+      </div>
+
+      <!-- The ₹25 Crore Sovereign Model -->
+      <div class="apple-card p-5 space-y-3">
+        <div class="text-xs font-mono uppercase text-emerald-400 font-semibold">The Sovereign Endowment Exit</div>
+        <div class="space-y-2 text-xs text-neutral-300">
+          <div class="p-2.5 rounded-xl bg-black/40 border border-white/[0.06]">
+            <strong class="text-white block mb-0.5">Phase 1: ₹35L Liquid Base (Age 30)</strong>
+            Zero consumer loans. Zero lifestyle inflation. Liquid buffer to reject toxic hospital postings.
+          </div>
+          <div class="p-2.5 rounded-xl bg-black/40 border border-white/[0.06]">
+            <strong class="text-white block mb-0.5">Phase 2: Procedural Equity (Age 31–38)</strong>
+            Monetize high-yield interventional skills (USG biopsies, interventional ultrasound) where you own the equipment equity.
+          </div>
+          <div class="p-2.5 rounded-xl bg-black/40 border border-white/[0.06]">
+            <strong class="text-white block mb-0.5">Phase 3: ₹25 Crore Endowment (Age 43)</strong>
+            Generates ₹6.5 Lakh/month passive dividend yield, freeing you for 100% pro-bono service in Purulia.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: THE GUILD (Community & Cross-Barter) -->
+    <div id="tab-guild" class="tab-pane hidden space-y-6">
+      <div class="space-y-1">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-cyan-400">Pillar 05 &bull; Decentralized Power</span>
+          <span class="px-2 py-0.5 rounded-full bg-rose-500/10 border border-rose-500/20 text-[9px] font-mono text-rose-400">SOS Active</span>
+        </div>
+        <h1 class="text-2xl font-bold tracking-tight">The Guild</h1>
+        <p class="text-xs text-neutral-400">Topper cases, Doctor ↔ Lawyer/Tech barter, and collective security.</p>
+      </div>
+
+      <!-- Red Alert Emergency Button -->
+      <div class="p-4 rounded-2xl bg-rose-950/30 border border-rose-500/40 flex items-center justify-between">
+        <div>
+          <div class="text-xs font-bold text-white flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+            Hospital Security SOS Alert
+          </div>
+          <div class="text-[11px] text-rose-200/80">Broadcast emergency location to all nearby doctors.</div>
+        </div>
+        <button onclick="alert('Emergency Alert Broadcast Simulated: Nearby doctors and legal response team alerted.')" class="px-3.5 py-1.5 rounded-full bg-rose-600 hover:bg-rose-500 text-xs font-bold text-white transition-all">
+          Trigger
+        </button>
+      </div>
+
+      <!-- Verified Community Feed -->
+      <div class="space-y-3">
+        <!-- Post 1 -->
+        <div class="apple-card p-4 space-y-2">
+          <div class="flex items-center justify-between text-xs">
+            <div class="flex items-center gap-1.5 font-bold text-white">
+              <span>Dr. R. Sen (AIIMS)</span>
+              <span class="text-cyan-400 text-[10px]">✓</span>
+            </div>
+            <span class="text-[10px] font-mono text-neutral-400">INI-CET Rank 12</span>
+          </div>
+          <div class="text-sm font-semibold text-neutral-200">How I Eliminated the 50/50 Trap in Medicine Vignettes</div>
+          <p class="text-xs text-neutral-400 leading-relaxed">
+            Never debate in your head. Isolate the single discriminating variable: age threshold, onset, or key negative lab value.
+          </p>
+          <div class="pt-2 border-t border-white/[0.06] flex items-center justify-between text-[11px]">
+            <span class="text-purple-400 font-mono">#TopperStrategy</span>
+            <span class="text-cyan-400 cursor-pointer">18 Comments</span>
+          </div>
+        </div>
+
+        <!-- Post 2: Doctor-Lawyer Barter -->
+        <div class="apple-card p-4 space-y-2 border-amber-500/20 bg-gradient-to-br from-neutral-900 to-neutral-950">
+          <div class="flex items-center justify-between text-xs">
+            <div class="flex items-center gap-1.5 font-bold text-amber-400">
+              <span>Adv. S. Banerji (High Court)</span>
+              <span class="text-cyan-400 text-[10px]">✓ Bar Verified</span>
+            </div>
+            <span class="text-[10px] font-mono text-neutral-400">Legal Barter</span>
+          </div>
+          <div class="text-sm font-semibold text-white">Doctor ↔ Lawyer Service Barter: Bond Defense</div>
+          <p class="text-xs text-neutral-400 leading-relaxed">
+            Offering free legal representation and Writ Petition drafting against arbitrary state bond enforcement in exchange for expert medical opinion on a medico-legal brief.
+          </p>
+          <div class="pt-2 border-t border-white/[0.06] flex items-center justify-between text-[11px]">
+            <span class="text-amber-400 font-mono">#CrossBarter</span>
+            <span class="text-cyan-400 cursor-pointer font-semibold">Initiate Barter &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Apple iOS Native Bottom Tab Bar -->
+  <nav class="fixed bottom-0 inset-x-0 bg-neutral-950/80 border-t border-white/[0.08] ios-blur pb-safe pt-2.5 px-3 z-50">
+    <div class="max-w-md mx-auto grid grid-cols-5 text-center">
+      <button onclick="switchTab('rank')" id="btn-rank" class="tab-btn flex flex-col items-center gap-1 text-cyan-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        <span class="text-[10px] font-medium tracking-tight">Rank</span>
+      </button>
+
+      <button onclick="switchTab('bio')" id="btn-bio" class="tab-btn flex flex-col items-center gap-1 text-neutral-500 hover:text-white transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <span class="text-[10px] font-medium tracking-tight">Bio</span>
+      </button>
+
+      <button onclick="switchTab('eq')" id="btn-eq" class="tab-btn flex flex-col items-center gap-1 text-neutral-500 hover:text-white transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span class="text-[10px] font-medium tracking-tight">EQ</span>
+      </button>
+
+      <button onclick="switchTab('wealth')" id="btn-wealth" class="tab-btn flex flex-col items-center gap-1 text-neutral-500 hover:text-white transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M15 9.5H9a2.5 2.5 0 0 1 0-5h6M9 14.5h6a2.5 2.5 0 0 1 0 5H9"/></svg>
+        <span class="text-[10px] font-medium tracking-tight">Wealth</span>
+      </button>
+
+      <button onclick="switchTab('guild')" id="btn-guild" class="tab-btn flex flex-col items-center gap-1 text-neutral-500 hover:text-white transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span class="text-[10px] font-medium tracking-tight">Guild</span>
+      </button>
+    </div>
+  </nav>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
+      document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('text-cyan-400');
+        btn.classList.add('text-neutral-500');
+      });
+      document.getElementById('btn-' + tabId).classList.remove('text-neutral-500');
+      document.getElementById('btn-' + tabId).classList.add('text-cyan-400');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function calcGT() {
+      const att = parseInt(document.getElementById('inAttempts').value) || 0;
+      const cor = parseInt(document.getElementById('inCorrect').value) || 0;
+      const inc = parseInt(document.getElementById('inIncorrect').value) || 0;
+      const score = (cor * 4) - inc;
+      const acc = att > 0 ? ((cor / att) * 100).toFixed(1) : 0;
+
+      document.getElementById('gtScore').textContent = `${score} / 800`;
+      document.getElementById('gtAcc').textContent = `${acc}%`;
+
+      const title = document.getElementById('gtDiagTitle');
+      const body = document.getElementById('gtDiagBody');
+
+      if (att < 180) {
+        title.textContent = 'Pacing & Risk Crisis';
+        title.className = 'text-[10px] font-mono uppercase text-rose-400 font-semibold';
+        body.textContent = 'Leaving 20+ questions blank mathematically caps your rank. Force attempts to 188–195 by eliminating 2 options.';
+      } else if (acc < 70) {
+        title.textContent = 'Negative Bleed Alert';
+        title.className = 'text-[10px] font-mono uppercase text-amber-400 font-semibold';
+        body.textContent = `Attempts are healthy (${att}), but ${inc} negative marks bleed your score. Apply the 4 Error Archetypes audit below.`;
+      } else {
+        title.textContent = 'Top-Tier Trajectory';
+        title.className = 'text-[10px] font-mono uppercase text-emerald-400 font-semibold';
+        body.textContent = `Excellent calibration (${acc}% accuracy). Consolidate volatile memory in the 20th notebook for top-100 rank.`;
+      }
+    }
+
+    function calcWage() {
+      const stipend = parseFloat(document.getElementById('inStipend').value) || 0;
+      const weeklyHours = parseFloat(document.getElementById('inHours').value) || 0;
+      const monthlyHours = weeklyHours * 4.33;
+      const hourlyWage = monthlyHours > 0 ? (stipend / monthlyHours).toFixed(0) : 0;
+
+      document.getElementById('monthlyHours').textContent = `${monthlyHours.toFixed(0)} hrs`;
+      document.getElementById('trueWage').textContent = `₹${hourlyWage} / hr`;
+    }
+
+    calcGT();
+    calcWage();
+  </script>
+</body>
+</html>
